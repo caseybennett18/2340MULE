@@ -31,7 +31,13 @@ public class Person1 {
 	 */
 	private String calc(String input) {
 	  //Person 1 put your implementation here
-	  return null;
+	  String result = "";
+	  for (int i = 2; i <= input.length(); i++) {
+	  	result = result + input.charAt(i);
+	  }
+	  result += (input.charAt(0));
+	  result += (input.charAt(1));
+	  return result;
 	}
 	
 	/**
@@ -45,5 +51,4 @@ public class Person1 {
 	public String toString(String input) {
 	  return name + calc(input);
 	}
-
 }
