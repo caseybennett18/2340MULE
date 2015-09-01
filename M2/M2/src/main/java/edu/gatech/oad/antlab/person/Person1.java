@@ -32,12 +32,14 @@ public class Person1 {
 	private String calc(String input) {
 	  //Person 1 put your implementation here
 	  String result = "";
-	  for (int i = 2; i <= input.length(); i++) {
+	  for (int i = 2; i <= input.length() - 1; i++) {
 	  	result = result + input.charAt(i);
 	  }
 	  result += (input.charAt(0));
 	  result += (input.charAt(1));
+	  System.out.println(result);
 	  return result;
+	  
 	}
 	
 	/**
@@ -50,5 +52,11 @@ public class Person1 {
 	 */
 	public String toString(String input) {
 	  return name + calc(input);
+	}
+	
+	public static void main(String[] args) {
+		String x = new String("gtg123b");
+		Person1 newPerson = new Person1("Casey");
+		newPerson.calc(x);
 	}
 }
