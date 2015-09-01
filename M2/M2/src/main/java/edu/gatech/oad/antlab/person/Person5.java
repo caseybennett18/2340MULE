@@ -30,9 +30,13 @@ public class Person5 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  //Person 5 put your implementation here
-	  return null;
-	}
+	  //Person 5 put your implementation here 
+            if (input.length() > 2) {
+                return(input.substring(2, input.length()) + input.substring(0, 2));
+            } else {
+                return (input);
+            }
+        } 
 	
 	/**
 	 * Return a string rep of this object
@@ -43,7 +47,11 @@ public class Person5 {
 	 *         object
 	 */
 	public String toString(String input) {
-	  return name + calc(input);
+	    return name + calc(input);
 	}
 
+        public static void main(String[] args) {
+            Person5 p5 = new Person5("Clint");
+            System.out.println(p5.toString("gtg123b"));
+        }
 }
