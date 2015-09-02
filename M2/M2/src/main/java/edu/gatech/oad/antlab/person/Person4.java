@@ -31,7 +31,15 @@ public class Person4 {
      */
     private String calc(String input) {
       //Person 4 put your implementation here
-      return null;
+        char newChar;
+        String newString = "";
+        for (int i = 0; i < input.length(); i++) {
+            newChar = input.charAt(i);
+            newChar++;
+            newString += newChar;
+        }
+        System.out.println(newString);
+        return newString;
     }
     
     /**
@@ -44,6 +52,11 @@ public class Person4 {
      */
     public String toString(String input) {
       return name + calc(input);
+    }
+    public static void main(String[] args) {
+        String x = new String("abc123");
+        Person4 newPerson = new Person4("Leia");
+        newPerson.calc(x);
     }
 
 }
