@@ -1,4 +1,4 @@
-Use Case: Player visits Land Office
+Use Case: Player visits Pub 
 
 Scope: M.U.L.E. Game
 
