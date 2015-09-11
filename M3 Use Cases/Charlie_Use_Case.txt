@@ -1,0 +1,37 @@
+Use Case: Player purchases food.
+
+Scope: M.U.L.E. Game
+
+Primary Actor: Player
+
+Stakeholders and Interests:
+	1) Player: interested in maintaining the appropriate amount of resources to 
+    avoid shortages at the end of each collective turn.
+	2) Other Game Players: interested in how many resources (food) the respective
+    player purchases and how that may affect their standing.
+
+Preconditions:
+	1) A game must be set up and started (set up players, pick map, etc.)
+	2) It must be the start of a turn.
+    3) Player must have entered the town.
+    4) Player must have entered the store.
+
+Postconditions:
+	1) A player receives the amount of food purchased.
+
+Main Success Scenario:
+	1) Player selects game settings, then specifies race, name and color.
+	2) Player initiates the game.
+	3) At the beginning of a new turn, Player enters the town.
+    4) Player enters the store.
+    5) Player purchases requested amount food.
+
+Extensions:
+	1) Player attempts to purchase food (Step 5)
+		*alternate flow: insufficient funds.
+	2) Player attempts to purchase food (Step 5)
+		*alternate flow: Store has run out of supply.
+	3) Player enters store (Step 4)
+		*alternate flow: Player then immediately leaves store.
+    4) Player enters town (Step 3)
+		*alternate flow: Player then immediately leaves town.
