@@ -1,0 +1,31 @@
+Use Case: System Generates a random event
+
+Scope: M.U.L.E. Game
+
+Primary Actor: Player
+
+Stakeholders and Interests:
+	1) Player: can be positively or negatively affected by a random event
+	2) Other Game Players: interested in how the random event affects the player
+			       which could indirectly affect their future decisions and state
+
+Preconditions:
+	1) A game must be set up and started (set up players, pick map, etc.)
+	2) It must be the start of a turn (a random event has a %27 chance to occur)
+
+Postconditions:
+	1) A player is affected by a random event
+
+Main Success Scenerio:
+	1) Player requests new game intialization
+	2) Player starts game
+	3) At the beginning of a new turn, a random event occurs to the player
+
+Extensions:
+	1) At the beginning of a new turn
+		*alternate flow: no random event occurs
+	2) At the beginning of a new turn for the player in last place
+		*alternate flow: only a positive random event can occur for the last place player
+	3) At the beginning of a new turn
+		*alternate flow: the random event requires a price calculation and is calculated
+				 dependent upon the current round in the game 
