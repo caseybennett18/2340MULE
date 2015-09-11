@@ -1,0 +1,17 @@
+apply plugin: 'java'
+defaultTasks 'build'
+
+sourceCompatibility = 1.7
+version = '0.1.0'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'lglezer3 Gradle', 'Implementation-Version': version, 'Main-Class': 'edu,gatech.oad.antlab.pkg1.AntLabMain'
+    }
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile files('lib/resources.jar')
+}
