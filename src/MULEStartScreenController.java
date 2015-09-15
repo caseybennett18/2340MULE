@@ -11,12 +11,37 @@
  import javafx.fxml.Initializable;
  import javafx.scene.control.Label;
  import javafx.scene.*;
+ import javafx.stage.Stage;
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.control.Button;
+ import java.io.IOException;
+
  
  public abstract class MULEStartScreenController implements Initializable {
      
      @FXML
-     private void handleButtonAction(ActionEvent event) {
-         Parent playerscreenParent;
-     }
- }
+     private Button button;
+     
+     @FXML
+     private Button button2;
+     
+     @FXML
+     private void handleButtonAction(ActionEvent event) throws IOException {
+         
+         Stage stage;
+         Parent root;
+         
+         if (event.getSource() == button) {
+             stage = (Stage) button.getScene().getWindow();
+             root = FXMLLoader.load(getClass().getResource("PlayerSelectScreen.fxml"));
+        } else {
+             stage = (Stage) button2.getScene().getWindow();
+             root = FXMLLoader.load(getClass().getResource("MULEStartScreen.fxml"));
+        }
+        //create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+}   
   
