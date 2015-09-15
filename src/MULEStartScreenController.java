@@ -12,11 +12,11 @@
  import javafx.scene.control.Label;
  import javafx.scene.*;
  
- public class MULEStartScreenController implements Initializable {
+ public abstract class MULEStartScreenController implements Initializable {
      
      @FXML
      private void handleButtonAction(ActionEvent event) {
-         Parent playerscreenParent
+         Parent playerscreenParent;
      }
  }
   
