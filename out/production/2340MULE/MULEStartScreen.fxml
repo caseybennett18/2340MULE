@@ -10,9 +10,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MULEStartScreenController">
    <children>
-      <ImageView fx:id="background" fitHeight="414.0" fitWidth="617.0" layoutX="-9.0" layoutY="-8.0">
+      <ImageView fitHeight="416.0" fitWidth="613.0" layoutX="-5.0" layoutY="-1.0">
          <image>
-            <Image url="@../../../Pictures/mule-3.jpg" />
+            <Image url="@res/mule-3.jpg" />
          </image>
       </ImageView>
       <MenuButton fx:id="Beginner" layoutX="42.0" layoutY="246.0" mnemonicParsing="false" text="Beginner">
@@ -38,6 +38,6 @@
           <MenuItem mnemonicParsing="false" text="Mountain" />
         </items>
       </MenuButton>
-      <Button fx:id="button" layoutX="269.0" layoutY="317.0" mnemonicParsing="false" text="Start" />
+      <Button fx:id="button" layoutX="269.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Start" />
    </children>
 </Pane>

@@ -6,12 +6,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MULEStartScreenController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0">
          <image>
-            <Image url="@../../../Pictures/Planet-MULE-500.jpg" />
+            <Image url="@res/planet-m.u.l.e.-1.jpg" />
          </image>
       </ImageView>
       <TextField layoutX="188.0" layoutY="88.0" text="Player Name" />
@@ -25,6 +24,6 @@
         </items>
       </MenuButton>
       <ColorPicker layoutX="188.0" layoutY="281.0" />
-      <Button layoutX="452.0" layoutY="181.0" mnemonicParsing="false" text="Continue" AnchorPane.rightAnchor="51.0" />
+      <Button fx:id="button2" layoutX="452.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Continue" AnchorPane.rightAnchor="51.0" />
    </children>
 </AnchorPane>
