@@ -15,7 +15,7 @@ public class Map {
         {TileType.MOUNTAIN_3, TileType.PLAIN, TileType.PLAIN, TileType.PLAIN, TileType.TOWN, TileType.PLAIN, TileType.PLAIN, TileType.PLAIN, TileType.MOUNTAIN_1},
         {TileType.PLAIN, TileType.MOUNTAIN_2, TileType.PLAIN, TileType.PLAIN, TileType.RIVER, TileType.PLAIN, TileType.MOUNTAIN_2, TileType.PLAIN, TileType.PLAIN},
         {TileType.PLAIN, TileType.PLAIN, TileType.MOUNTAIN_2, TileType.PLAIN, TileType.RIVER, TileType.PLAIN, TileType.PLAIN, TileType.PLAIN, TileType.MOUNTAIN_2} 
-    }
+    };
 
     public Map() {
         tiles = createDefaultMap();

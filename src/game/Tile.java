@@ -9,12 +9,14 @@ public class Tile {
     private TileType tileType;
     private int xLocation, yLocation;
     private boolean selected;
+    private Property property;
 
     public Tile(TileType tileType, int x, int y) {
         this.tileType = tileType;
         xLocation = x;
         yLocation = y;
         selected = false;
+        property = new Property(this);
     }
 
     public TileType getTileType() {
@@ -35,5 +37,9 @@ public class Tile {
 
     public void setSelected(boolean a) {
         selected = a;
+    }
+
+    public Property getProperty() {
+        return property;
     }
 }

@@ -1,3 +1,4 @@
+package driver;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,8 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import models.Player;
 import javafx.scene.media.Media;
+import models.Player;
 
  
  public class MuleUI extends Application {
