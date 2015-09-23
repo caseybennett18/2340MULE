@@ -24,12 +24,22 @@ public class Map {
     public Tile[][] createDefaultMap() {
         for (int row = 0; row < 5; row++) {
             for (int col = 0; col < 9; col++) {
-                tiles[row][col] = new Tile(defaultMap[row][col]);
+                tiles[row][col] = new Tile(defaultMap[row][col], row, col);
             }
         }
     }
 
     public Tile getTile(int x, int y) {
         return tiles[x][y];
+    }
+
+    public String[][] getTileImages() {
+        String[][] tileImages = new String[tiles.length][tiles[0].length];
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles[i].length; j++) {
+                tileImages = tiles[i][j].getImagePath();
+            }
+        }
+        return tileImages;
     }
 }
