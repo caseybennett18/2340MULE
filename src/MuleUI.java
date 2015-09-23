@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import models.Player;
 import javafx.scene.media.Media;
 
  
@@ -21,13 +22,13 @@ import javafx.scene.media.Media;
      private int numPlayers;
      private int difficulty; //beginner - 0, standard - 1, tournament - 2
      
-     //private Player[] players;
+     private Player[] players;
      
      public MuleUI() {
          instance = this;
          numPlayers = 1;
          difficulty = 0;
-         //players = new Player[numPlayers];
+         players = new Player[numPlayers];
      }
      
      public int getnumPlayers() {
@@ -36,7 +37,7 @@ import javafx.scene.media.Media;
      
      public void setnumPlayers(int n) {
          numPlayers = n;
-         //players = new Player[numPlayers];
+         players = new Player[numPlayers];
      }
      
      public int getDifficulty() {
@@ -46,7 +47,7 @@ import javafx.scene.media.Media;
      public void setDifficulty(int d) {
          difficulty = d;
      }
-     /*
+
      public Player[] getPlayerArray() {
          return players;
      }
@@ -54,7 +55,7 @@ import javafx.scene.media.Media;
      public void setPlayerArray(Player p, int index) {
          players[index] = p;
      }
-     */
+
      public static MuleUI getInstance() {
          return instance;
      }

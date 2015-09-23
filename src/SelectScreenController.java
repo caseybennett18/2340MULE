@@ -19,6 +19,8 @@
      public void handleContinue() throws Exception {
          MuleUI.getInstance().loadMap();
      }
+
+
      
      public void initialize(URL url, ResourceBundle rb ) {
     }

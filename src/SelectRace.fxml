@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SelectScreenController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="606.0">
          <image>
@@ -29,12 +29,12 @@
           <MenuItem fx:id="bonzoidButton" mnemonicParsing="false" text="Bonzoid" />
         </items>
       </MenuButton>
-      <Label layoutX="50.0" layoutY="99.0" prefHeight="46.0" prefWidth="360.0" text="Select A Race, Asshole..." textFill="#dde818">
+      <Label layoutX="50.0" layoutY="99.0" prefHeight="46.0" prefWidth="360.0" text="Select A Race" textFill="#dde818">
          <font>
             <Font name="System Bold Italic" size="31.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="206.0" prefHeight="46.0" prefWidth="360.0" text="Select A Color, Dipshit..." textFill="#dde818">
+      <Label layoutX="50.0" layoutY="206.0" prefHeight="46.0" prefWidth="360.0" text="Select A Color" textFill="#dde818">
          <font>
             <Font name="System Bold Italic" size="31.0" />
          </font>
@@ -47,6 +47,6 @@
           <MenuItem fx:id="yellowButton" mnemonicParsing="false" text="Yellow" />
         </items>
       </MenuButton>
-      <Button fx:id="continueButton" layoutX="461.0" layoutY="155.0" mnemonicParsing="false" text="Continue" />
+      <Button fx:id="continueButton" layoutX="461.0" layoutY="155.0" mnemonicParsing="false" text="Continue" onAction="#handleContinue"/>
    </children>
 </AnchorPane>

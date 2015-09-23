@@ -5,6 +5,7 @@
  import javafx.fxml.Initializable;
  import javafx.scene.control.Label;
  import javafx.scene.*;
+ import javafx.scene.control.MenuItem;
  import javafx.stage.Stage;
  import javafx.fxml.FXMLLoader;
  import javafx.scene.control.Button;
@@ -15,28 +16,51 @@
      
      @FXML
      Button startButton;
-     /*
+
      @FXML
-     Button beginnerButton;
+     MenuItem beginnerButton;
      @FXML
-     Button standardButton;
+     MenuItem standardButton;
      @FXML
-     Button tournamentButton;
+     MenuItem tournamentButton;
      @FXML
-     Button onePlayerButton;
+     MenuItem onePlayerButton;
      @FXML
-     Button twoPlayersButton;
+     MenuItem twoPlayersButton;
      @FXML
-     Button fourPlayersButton;
-     */
+     MenuItem fourPlayersButton;
+
+
+     private int numPlayers;
      
      @FXML
      private void handleStart(ActionEvent event) throws Exception {
+         this.saveSettings();
          MuleUI.getInstance().loadSelect();
     }
-    
-    public void initialize(URL url, ResourceBundle rb ) {
-    }
-    
+
+
+     @FXML
+     public void initialize(URL url, ResourceBundle rb ) {
+     }
+
+     @FXML
+     public void numPlayersOne() {
+         numPlayers = 1;
+     }
+
+     @FXML
+     public void numPlayersTwo() {
+         numPlayers = 2;
+     }
+
+     @FXML
+     public void numPlayersFour() {
+         numPlayers = 4;
+     }
+
+     public void saveSettings() {
+         MuleUI.getInstance().setnumPlayers(numPlayers);
+     }
 }   
   

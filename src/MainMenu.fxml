@@ -15,9 +15,9 @@
       <Button fx:id="startButton" layoutX="245.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleStart" text="Start Game!" />
       <MenuButton fx:id="numPlayersButton" layoutX="49.0" layoutY="318.0" mnemonicParsing="false" text="# of Players">
         <items>
-          <MenuItem fx:id="onePlayerButton" mnemonicParsing="false" text="1 Player" />
-          <MenuItem fx:id="twoPlayersButton" mnemonicParsing="false" text="2 Players" />
-            <MenuItem fx:id="fourPlayersButton" mnemonicParsing="false" text="4 Players" />
+          <MenuItem fx:id="onePlayerButton" mnemonicParsing="false" onAction="#numPlayersOne" text="1 Player" />
+          <MenuItem fx:id="twoPlayersButton" mnemonicParsing="false" onAction="#numPlayersTwo" text="2 Players" />
+            <MenuItem fx:id="fourPlayersButton" mnemonicParsing="false" onAction="#numPlayersFour" text="4 Players" />
         </items>
       </MenuButton>
       <MenuButton fx:id="difficultyButton" layoutX="409.0" layoutY="318.0" mnemonicParsing="false" text="Difficulty">
