@@ -59,18 +59,19 @@ import javafx.scene.media.Media;
          return instance;
      }
      
-     public void start(Stage stage) throws Exception {
+     public void start(Stage primaryStage) throws Exception {
          
          try {
              FXMLLoader loader = new FXMLLoader();
              loader.setLocation(MuleUI.class.getResource("./MainMenu.fxml"));
              Parent root = loader.load();
              Scene scene = new Scene(root);
-             stage.setScene(scene);
-             stage.setTitle("M.U.L.E on Atari");
+             stage = primaryStage;
+             primaryStage.setScene(scene);
+             primaryStage.setTitle("M.U.L.E on Atari");
              
              StartScreenController controller = loader.getController();
-             stage.show();
+             primaryStage.show();
          } catch (Exception e) {
              e.printStackTrace();
          }
@@ -91,7 +92,7 @@ import javafx.scene.media.Media;
      
      public void loadSelect() throws Exception {
          try {
-             replaceSceneContent("./SelectScreen.fxml");
+             replaceSceneContent("SelectRace.fxml");
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");

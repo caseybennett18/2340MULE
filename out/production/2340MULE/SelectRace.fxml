@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="606.0">
+         <image>
+            <Image url="@res/Blue-Background-Images-HD-Wallpaper-1080x607.jpg" />
+         </image>
+      </ImageView>
+      <TextField layoutX="50.0" layoutY="51.0" />
+      <Label layoutX="50.0" prefHeight="33.0" prefWidth="191.0" text="Player Name" textFill="#dde818">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="raceButton" layoutX="50.0" layoutY="155.0" mnemonicParsing="false" text="Race">
+        <items>
+          <MenuItem fx:id="humanButton" mnemonicParsing="false" text="Human" />
+            <MenuItem fx:id="flapperButton" mnemonicParsing="false" text="Flapper" />
+            <MenuItem fx:id="ugaiteButton" mnemonicParsing="false" text="Ugaite" />
+            <MenuItem fx:id="buzziteButton" mnemonicParsing="false" text="Buzzite" />
+          <MenuItem fx:id="bonzoidButton" mnemonicParsing="false" text="Bonzoid" />
+        </items>
+      </MenuButton>
+      <Label layoutX="50.0" layoutY="99.0" prefHeight="46.0" prefWidth="360.0" text="Select A Race, Asshole..." textFill="#dde818">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="206.0" prefHeight="46.0" prefWidth="360.0" text="Select A Color, Dipshit..." textFill="#dde818">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="colorButton" layoutX="50.0" layoutY="264.0" mnemonicParsing="false" text="Color">
+        <items>
+          <MenuItem fx:id="redButton" mnemonicParsing="false" text="Red" />
+            <MenuItem fx:id="blueButton" mnemonicParsing="false" text="Blue" />
+            <MenuItem fx:id="greenButton" mnemonicParsing="false" text="Green" />
+          <MenuItem fx:id="yellowButton" mnemonicParsing="false" text="Yellow" />
+        </items>
+      </MenuButton>
+      <Button fx:id="continueButton" layoutX="461.0" layoutY="155.0" mnemonicParsing="false" text="Continue" />
+   </children>
+</AnchorPane>
