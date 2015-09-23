@@ -12,7 +12,7 @@
  import javafx.scene.Parent;
  import javafx.scene.Scene;
  import javafx.stage.Stage;
-  import java.io.IOException;
+ import java.io.IOException;
  
  public class MULEApp extends Application {
      
@@ -20,8 +20,9 @@
          
          try {
              FXMLLoader loader = new FXMLLoader();
-             loader.setLocation(MULEApp.class.getResource("MULEStartScreen.fxml"));
-             Parent root = FXMLLoader.load(getClass().getResource("MULEStartScreen.fxml"));
+             loader.setLocation(MULEApp.class.getResource("./MULEStartScreen.fxml"));
+             Parent root = //FXMLLoader.load(getClass().getResource("MULEStartScreen.fxml"));
+                  loader.load();
              Scene scene = new Scene(root);
              stage.setScene(scene);
              stage.setTitle("M.U.L.E on Atari");

@@ -17,7 +17,7 @@
  import java.io.IOException;
 
  
- public abstract class MULEStartScreenController implements Initializable {
+ public  class MULEStartScreenController implements Initializable {
      
      @FXML
      private Button button;
@@ -28,7 +28,7 @@
      @FXML
      private void handleButtonAction(ActionEvent event) throws IOException {
          
-         Stage stage;
+         Stage stage = null;
          Parent root;
          
          if (event.getSource() == button) {
@@ -36,12 +36,17 @@
              root = FXMLLoader.load(getClass().getResource("PlayerSelectScreen.fxml"));
         } else {
              stage = (Stage) button2.getScene().getWindow();
-             root = FXMLLoader.load(getClass().getResource("MULEStartScreen.fxml"));
+             root = FXMLLoader.load(getClass().getResource("MapScreen.fxml"));
         }
         //create a new scene with root and set the stage
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void initialize(URL url, ResourceBundle rb ) {
+        
+    }
+    
 }   
   
