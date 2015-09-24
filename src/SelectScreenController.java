@@ -1,137 +1,182 @@
- import java.net.URL;
- import java.util.ResourceBundle;
- import javafx.fxml.FXML;
- import javafx.fxml.Initializable;
- import javafx.scene.control.TextField;
- import javafx.scene.control.Button;
- import models.Player;
- import models.Race;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import models.Player;
+import models.Race;
 
 
- 
- public class SelectScreenController implements Initializable {
-     
-     @FXML 
-     Button continueButton;
+/**
+ * Controller for SelectScreenController view
+ * 
+ */
+public class SelectScreenController implements Initializable {
 
-     @FXML
-     TextField nameText;
+    @FXML 
+ 	Button continueButton;
 
-     @FXML
-     Button human;
+ 	@FXML
+ 	TextField nameText;
 
-     @FXML
-     Button flapper;
+ 	@FXML
+ 	Button human;
 
-     @FXML
-     Button buzzite;
+ 	@FXML
+ 	Button flapper;
 
-     @FXML
-     Button ugaite;
+ 	@FXML
+ 	Button buzzite;
 
-     @FXML
-     Button bonzoid;
+ 	@FXML
+ 	Button ugaite;
 
-     @FXML
-     Button red;
+ 	@FXML
+ 	Button bonzoid;
 
-     @FXML
-     Button blue;
+ 	@FXML
+ 	Button red;
 
-     @FXML
-     Button green;
+ 	@FXML
+ 	Button blue;
 
-     @FXML
-     Button yellow;
+ 	@FXML
+ 	Button green;
 
-
-     private int infoRound;
-     private int index;
-     private Player player;
-
-     private String name;
-     private String raceId;
-     private int playerColor;
-
-     public SelectScreenController() {
-         this.infoRound = MuleUI.getInstance().getnumPlayers();
-         this.index = 0;
-     }
+ 	@FXML
+ 	Button yellow;
 
 
-     public void handleContinue() throws Exception {
-         this.player = MuleUI.getInstance().getPlayer(index);
-         this.setNameText();
-         this.player.setRace(raceId);
-         this.player.setPlayerColor(playerColor);
-         System.out.println(player.getPlayerName());
-         System.out.println(player.getPlayerRace());
-         System.out.println(player.getPlayerID());
-         System.out.println(player.getPlayerColor());
-         if (infoRound != 1) {
-             index++;
-             infoRound--;
-             this.nameText.clear();
-         } else {
-             MuleUI.getInstance().loadMap();
-         }
-     }
+ 	private int infoRound;
+ 	private int index;
+ 	private Player player;
 
-    @FXML
-    public void setNameText() {
-        this.name = nameText.getText();
-        this.player.setPlayerName(this.name);
-    }
+ 	private String name;
+ 	private String raceId;
+ 	private int playerColor;
 
-     @FXML
-     public void setHumanRace() {
-         this.raceId = "human";
-     }
+ 	/**
+	 * constructor for SelectScreenController
+	 *
+	 */
+ 	public SelectScreenController() {
+ 		this.infoRound = MuleUI.getInstance().getnumPlayers();
+ 		this.index = 0;
+ 	}
 
-     @FXML
-     public void setFlapperRace() {
-        this.raceId = "flapper";
-     }
+ 	/**
+	 * 
+	 *@throws Exception
+	 *				sets the name, race, color for subsequent players
+	 */
+ 	public void handleContinue() throws Exception {
+ 		this.player = MuleUI.getInstance().getPlayer(index);
+ 		this.setNameText();
+ 		this.player.setRace(raceId);
+ 		this.player.setPlayerColor(playerColor);
+ 		System.out.println(player.getPlayerName());
+ 		System.out.println(player.getPlayerRace());
+ 		System.out.println(player.getPlayerID());
+ 		System.out.println(player.getPlayerColor());
+ 		if (infoRound != 1) {
+ 			index++;
+ 			infoRound--;
+ 			this.nameText.clear();
+ 		} else {
+ 			MuleUI.getInstance().loadMap();
+ 		}
+ 	}
 
-     @FXML
-     public void setBuzziteRace() {
-         this.raceId = "buzzite";
-     }
+ 	/**
+    * setPlayerName is set to nameText
+    */
+ 	@FXML
+ 	public void setNameText() {
+ 		this.name = nameText.getText();
+ 		this.player.setPlayerName(this.name);
+ 	}
 
-     @FXML
-     public void setUgaiteRace() {
-         this.raceId = "ugaite";
-     }
+ 	/**
+    * raceId is set to human
+    */
+ 	@FXML
+ 	public void setHumanRace() {
+ 		this.raceId = "human";
+ 	}
 
-     @FXML
-     public void setBonzoidRace() {
-         this.raceId = "bonzoid";
-     }
+ 	/**
+    * raceId is set to flapper
+    */
+ 	@FXML
+ 	public void setFlapperRace() {
+ 		this.raceId = "flapper";
+ 	}
 
-     @FXML
-     public void setRedColor() {
-         this.playerColor = 0;
-         this.red.isDisabled();
-     }
+ 	/**
+    * raceId is set to buzzite
+    */
+ 	@FXML
+ 	public void setBuzziteRace() {
+ 		this.raceId = "buzzite";
+ 	}
 
-     @FXML
-     public void setBlueColor() {
-         this.playerColor = 1;
-         this.blue.isDisabled();
-     }
+ 	/**
+    * raceId is set to ugaite
+    */
+ 	@FXML
+ 	public void setUgaiteRace() {
+ 		this.raceId = "ugaite";
+ 	}
 
-     @FXML
-     public void setGreenColor() {
-         this.playerColor = 2;
-         this.green.isDisabled();
-     }
+ 	/**
+    * raceId is set to bonzoid
+    */
+ 	@FXML
+ 	public void setBonzoidRace() {
+ 		this.raceId = "bonzoid";
+ 	}
 
-     @FXML
-     public void setYellowColor() {
-         this.playerColor = 3;
-         this.yellow.isDisabled();
-     }
-     
-     public void initialize(URL url, ResourceBundle rb ) {
-    }
+ 	/**
+    * playerColor is set to red
+    */
+ 	@FXML
+ 	public void setRedColor() {
+ 		this.playerColor = 0;
+ 		this.red.isDisabled();
+ 	}
+
+ 	/**
+    * playerColor is set to blue
+    */
+ 	@FXML
+ 	public void setBlueColor() {
+ 		this.playerColor = 1;
+ 		this.blue.isDisabled();
+ 	}
+
+ 	/**
+    * playerColor is set to green
+    */
+ 	@FXML
+ 	public void setGreenColor() {
+ 		this.playerColor = 2;
+ 		this.green.isDisabled();
+ 	}
+
+ 	/**
+    * playerColor is set to yellow
+    */
+ 	@FXML
+ 	public void setYellowColor() {
+ 		this.playerColor = 3;
+ 		this.yellow.isDisabled();
+ 	}
+
+ 	/**
+	 * @param url, rb
+	 *            
+	 */
+ 	public void initialize(URL url, ResourceBundle rb ) {
+ 	}
  }
