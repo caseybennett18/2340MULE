@@ -2,7 +2,10 @@ package models.races;
 
 import models.Race;
 
-
+/**
+ * Represents Buzzite Race
+ *
+ */
 public class BuzziteRace extends Race {
 	
 	public BuzziteRace(int playerId) {
