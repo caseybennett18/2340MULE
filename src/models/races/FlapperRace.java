@@ -2,7 +2,10 @@ package models.races;
 
 import models.Race;
 
-
+/**
+ * Represents Flapper Race
+ *
+ */
 public class FlapperRace extends Race {
 	
 	public FlapperRace(int playerId) {

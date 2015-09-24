@@ -2,7 +2,10 @@ package models.races;
 
 import models.Race;
 
-
+/**
+ * Represents Bonzoid race
+ *
+ */
 public class BonzoidRace extends Race {
 	
 	public BonzoidRace(int playerId) {

@@ -3,7 +3,7 @@ package models.races;
 import models.Race;
 
 /**
- * Created by Admin on 9/23/15.
+ * represents UgaiteRace
  */
 public class UgaiteRace extends Race{
 

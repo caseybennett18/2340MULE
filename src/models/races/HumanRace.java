@@ -2,7 +2,10 @@ package models.races;
 
 import models.Race;
 
-
+/**
+ * represents Human Race
+ *
+ */
 public class HumanRace extends Race {
 	
 	public HumanRace(int playerId) {
