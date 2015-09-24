@@ -21,14 +21,18 @@ import javafx.scene.media.Media;
      private static MuleUI instance;
      private int numPlayers;
      private int difficulty; //beginner - 0, standard - 1, tournament - 2
+     public int playerTurn;
      
      private Player[] players;
+
+     public Player currentPlayer;
      
      public MuleUI() {
          instance = this;
          numPlayers = 1;
          difficulty = 0;
          players = new Player[numPlayers];
+         playerTurn = 0;
      }
      
      public int getnumPlayers() {
