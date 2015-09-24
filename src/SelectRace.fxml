@@ -13,7 +13,7 @@
             <Image url="@res/Blue-Background-Images-HD-Wallpaper-1080x607.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="50.0" layoutY="67.0" />
+      <TextField fx:id="nameText" layoutX="50.0" layoutY="67.0" />
       <Label layoutX="46.0" layoutY="14.0" prefHeight="33.0" prefWidth="191.0" text="Player Name" textFill="#dde818">
          <font>
             <Font name="System Bold Italic" size="31.0" />
@@ -30,12 +30,14 @@
          </font>
       </Label>
       <Button fx:id="continueButton" layoutX="472.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleContinue" text="Continue" />
-      <Button layoutX="50.0" layoutY="194.0" mnemonicParsing="false" text="Human" />
-      <Button layoutX="142.0" layoutY="194.0" mnemonicParsing="false" text="Flapper" />
-      <Button layoutX="235.0" layoutY="194.0" mnemonicParsing="false" text="Buzzite, Ugaite, or Bonzoid" />
-      <Button layoutX="50.0" layoutY="303.0" mnemonicParsing="false" text="Red" />
-      <Button layoutX="125.0" layoutY="303.0" mnemonicParsing="false" text="Blue" />
-      <Button layoutX="208.0" layoutY="303.0" mnemonicParsing="false" text="Green" />
-      <Button layoutX="300.0" layoutY="303.0" mnemonicParsing="false" text="Yellow" />
+      <Button fx:id="human" layoutX="50.0" layoutY="194.0" mnemonicParsing="false" text="Human" onAction="#setHumanRace"/>
+      <Button fx:id="flapper" layoutX="142.0" layoutY="194.0" mnemonicParsing="false" text="Flapper" onAction="#setFlapperRace"/>
+      <Button fx:id="buzzite" layoutX="235.0" layoutY="194.0" mnemonicParsing="false" text="Buzzite" onAction="#setBuzziteRace"/>
+       <Button fx:id="ugaite" layoutX="300.0" layoutY="194.0" mnemonicParsing="false" text="Ugaite" onAction="#setUgaiteRace"/>
+       <Button fx:id="bonzoid" layoutX="370.0" layoutY="194.0" mnemonicParsing="false" text="Bonzoid" onAction="#setBonzoidRace"/>
+       <Button fx:id="red" layoutX="50.0" layoutY="303.0" mnemonicParsing="false" text="Red" onAction="#setRedColor"/>
+      <Button fx:id="blue" layoutX="125.0" layoutY="303.0" mnemonicParsing="false" text="Blue" onAction="#setBlueColor"/>
+      <Button fx:id="green" layoutX="208.0" layoutY="303.0" mnemonicParsing="false" text="Green" onAction="#setGreenColor"/>
+      <Button fx:id="yellow" layoutX="300.0" layoutY="303.0" mnemonicParsing="false" text="Yellow" onAction="#setYellowColor"/>
    </children>
 </AnchorPane>

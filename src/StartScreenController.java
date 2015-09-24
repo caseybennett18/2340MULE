@@ -3,11 +3,7 @@
  import javafx.event.ActionEvent;
  import javafx.fxml.FXML;
  import javafx.fxml.Initializable;
- import javafx.scene.control.Label;
- import javafx.scene.*;
- import javafx.scene.control.MenuItem;
- import javafx.stage.Stage;
- import javafx.fxml.FXMLLoader;
+ import models.Player;
  import javafx.scene.control.Button;
  import java.io.IOException;
 
@@ -18,20 +14,21 @@
      Button startButton;
 
      @FXML
-     MenuItem beginnerButton;
+     Button beginnerButton;
      @FXML
-     MenuItem standardButton;
+     Button standardButton;
      @FXML
-     MenuItem tournamentButton;
+     Button tournamentButton;
      @FXML
-     MenuItem onePlayerButton;
+     Button onePlayerButton;
      @FXML
-     MenuItem twoPlayersButton;
+     Button twoPlayersButton;
      @FXML
-     MenuItem fourPlayersButton;
+     Button fourPlayersButton;
 
 
      private int numPlayers;
+     private int difficulty;
      
      @FXML
      private void handleStart(ActionEvent event) throws Exception {
@@ -46,21 +43,55 @@
 
      @FXML
      public void numPlayersOne() {
-         numPlayers = 1;
+         this.numPlayers = 1;
+
      }
 
      @FXML
      public void numPlayersTwo() {
-         numPlayers = 2;
+         this.numPlayers = 2;
+
      }
 
      @FXML
      public void numPlayersFour() {
-         numPlayers = 4;
+         this.numPlayers = 4;
+
      }
 
-     public void saveSettings() {
-         MuleUI.getInstance().setnumPlayers(numPlayers);
+     @FXML
+     public void setBeginnerButton() {
+         this.difficulty = 0;
+         System.out.println("button one");
+
+     }
+
+     @FXML
+     public void setStandardButton() {
+         this.difficulty = 1;
+     }
+
+     @FXML
+     public void setTournamentButton() {
+         this.difficulty = 2;
+     }
+
+     private void saveSettings() {
+         MuleUI.getInstance().setnumPlayers(this.numPlayers);
+         MuleUI.getInstance().setDifficulty(this.difficulty);
+         createPlayers();
+     }
+
+     private void createPlayers() {
+         for (int i = 0; i < this.numPlayers; i++) {
+             Player p = new Player(i);
+             MuleUI.getInstance().setPlayerArray(p, i);
+         }
+     }
+
+     public StartScreenController() {
+         this.numPlayers = 1;
+         this.difficulty = 0;
      }
 }   
   

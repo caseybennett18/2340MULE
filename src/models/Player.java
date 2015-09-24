@@ -2,7 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import models.races.BuzziteRace;
-//import models.races.UgaiteRace;
+import models.races.UgaiteRace;
 import models.races.BonzoidRace;
 import models.races.HumanRace;
 import models.races.FlapperRace;
@@ -23,11 +23,11 @@ public class Player {
 
 
 
-    public Player(int playerID, String playerName, int playerColor, String race) {
+    public Player(int playerID) {
         this.playerID = playerID;
-        this.playerName = playerName;
-        this.playerColor = playerColor;
-        this.race = createRace(race);
+        this.playerName = null;
+        this.playerColor = 0;
+        //this.race = createRace(race);
         this.time = 90;
         turnPassed = false;
  
@@ -36,14 +36,24 @@ public class Player {
     public String getPlayerName() {
         return playerName;
     }
+
+    public void setPlayerName(String name) {
+        playerName = name;
+    }
     
     public int getPlayerColor() {
         return playerColor;
+    }
+
+
+    public void setPlayerColor(int color) {
+        playerColor = color;
     }
     
     public int getPlayerID() {
         return playerID;
     }
+
     
     public Race getPlayerRace() {
         return race;
@@ -56,17 +66,36 @@ public class Player {
     public void setTurnPassed(boolean b) {
         turnPassed = b;
     }
+
+    public void setRace(String playerRace) {
+        switch (playerRace) {
+            case "human":
+               race = createRace("human");
+            case "buzzite":
+               race = createRace("buzzite");
+            case "ugaite":
+                race = createRace("ugaite");
+            case "bonzoid":
+                race = createRace("bonzoid");
+            case "flapper":
+                race = createRace("flapper");
+            default:
+                race = createRace("flapper");
+        }
+    }
     
-    protected Race createRace(String race) {
+    public Race createRace(String race) {
         switch (race) {
-            case "Human":
+            case "human":
                 return new HumanRace(playerID);
-            case "Buzzite":
+            case "buzzite":
                 return new BuzziteRace(playerID);
-            case "Ugaite":
-                //return new UgaiteRace(playerID);
-            case "Bonzoid":
+            case "ugaite":
+                 return new UgaiteRace(playerID);
+            case "bonzoid":
                 return new BonzoidRace(playerID);
+            case "flapper":
+                return new FlapperRace(playerID);
             default:
                 return new FlapperRace(playerID);
         }

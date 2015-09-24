@@ -51,6 +51,9 @@ import javafx.scene.media.Media;
      public Player[] getPlayerArray() {
          return players;
      }
+     public Player getPlayer(int index) {
+         return players[index];
+     }
      
      public void setPlayerArray(Player p, int index) {
          players[index] = p;
