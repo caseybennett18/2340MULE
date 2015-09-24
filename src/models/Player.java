@@ -6,8 +6,10 @@ import models.races.UgaiteRace;
 import models.races.BonzoidRace;
 import models.races.HumanRace;
 import models.races.FlapperRace;
+
 /**
- * Created by Admin on 9/22/15.
+ * Holds a Player's information
+ *
  */
 public class Player {
     
@@ -22,7 +24,11 @@ public class Player {
     private boolean turnPassed; 
 
 
-
+    /**
+    * @param playerID
+    * constructor for player
+    * sets playerID, default name and color is blank 
+    */
     public Player(int playerID) {
         this.playerID = playerID;
         this.playerName = null;
@@ -33,40 +39,71 @@ public class Player {
  
     }
     
+    /**
+    * @return playerName
+    */
     public String getPlayerName() {
         return playerName;
     }
 
+    /**
+    * @param name
+    *           sets playerName to name
+    */
     public void setPlayerName(String name) {
         playerName = name;
     }
     
+    /**
+    * @return playerColor
+    */
     public int getPlayerColor() {
         return playerColor;
     }
 
-
+    /**
+    * @param color
+    *           sets playerColor to color
+    */
     public void setPlayerColor(int color) {
         playerColor = color;
     }
     
+    /**
+    * @return playerID
+    */
     public int getPlayerID() {
         return playerID;
     }
 
-    
+    /**
+    * @return race
+    */
     public Race getPlayerRace() {
         return race;
     }
     
+    /**
+    * checks whether the player chose to pass or not
+    * @return turnPassed
+    */
     public boolean getTurnPassed() {
         return turnPassed;
     }
     
+    /**
+    * @param b
+    *         set turnPassed status
+    */
     public void setTurnPassed(boolean b) {
         turnPassed = b;
     }
 
+    //0 for human, 1 for buzzite, 2 for ugaite, 3 for bonzoid, 4 for flapper
+    /**
+    * @param playerRace
+    *         set playerRace equal to input
+    */
     public void setRace(String playerRace) {
         System.out.println(playerRace);
         switch (playerRace) {
@@ -85,6 +122,11 @@ public class Player {
         }
     }
     
+    //0 for human, 1 for buzzite, 2 for ugaite, 3 for bonzoid, 4 for flapper
+    /**
+    * @param playerRace
+    *         
+    */
     public Race createRace(String race) {
         switch (race) {
             case "human":
