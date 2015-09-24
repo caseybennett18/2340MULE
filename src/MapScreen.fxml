@@ -294,7 +294,7 @@
                   <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="4" GridPane.rowIndex="2" onAction="#handleTown"/>
                   <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="5" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="6" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="7" GridPane.rowIndex="2" />

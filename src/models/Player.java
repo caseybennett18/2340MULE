@@ -68,19 +68,20 @@ public class Player {
     }
 
     public void setRace(String playerRace) {
+        System.out.println(playerRace);
         switch (playerRace) {
             case "human":
-               race = createRace("human");
+               race = createRace(playerRace);
             case "buzzite":
-               race = createRace("buzzite");
+               race = createRace(playerRace);
             case "ugaite":
-                race = createRace("ugaite");
+                race = createRace(playerRace);
             case "bonzoid":
-                race = createRace("bonzoid");
+                race = createRace(playerRace);
             case "flapper":
-                race = createRace("flapper");
+                race = createRace(playerRace);
             default:
-                race = createRace("flapper");
+                race = createRace(playerRace);
         }
     }
     
@@ -97,7 +98,7 @@ public class Player {
             case "flapper":
                 return new FlapperRace(playerID);
             default:
-                return new FlapperRace(playerID);
+                return new HumanRace(playerID);
         }
     }
 

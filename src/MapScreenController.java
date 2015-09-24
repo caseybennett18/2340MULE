@@ -18,6 +18,12 @@
     
     public MapScreenController() {
     }
+
+
+     @FXML
+     public void handleTown() throws Exception {
+         MuleUI.getInstance().loadTown();
+     }
     
     
     @FXML
