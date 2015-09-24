@@ -57,16 +57,32 @@ public class Player {
     /**
     * @return playerColor
     */
-    public int getPlayerColor() {
-        return playerColor;
+    public String getPlayerColor() {
+        if (playerColor == 0) {
+            return "#FF0000";
+        } else if (playerColor == 1) {
+            return "#0000FF";
+        } else if (playerColor == 2) {
+            return "#00FF00";
+        } else {
+            return "#FFFF00";
+        }
     }
 
     /**
     * @param color
     *           sets playerColor to color
     */
-    public void setPlayerColor(int color) {
-        playerColor = color;
+    public void setPlayerColor(String color) {
+        if (color == "#FF0000") {
+            playerColor = 0;
+        } else if (color == "#0000FF") {
+            playerColor = 1;
+        } else if (color == "#00FF00") {
+            playerColor = 2;
+        } else {
+            playerColor = 3;
+        }
     }
     
     /**
@@ -124,7 +140,7 @@ public class Player {
     
     //0 for human, 1 for buzzite, 2 for ugaite, 3 for bonzoid, 4 for flapper
     /**
-    * @param playerRace
+    * @param
     *         
     */
     public Race createRace(String race) {

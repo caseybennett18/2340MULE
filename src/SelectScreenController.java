@@ -54,7 +54,7 @@ public class SelectScreenController implements Initializable {
 
  	private String name;
  	private String raceId;
- 	private int playerColor;
+ 	private String playerColor;
 
  	/**
 	 * constructor for SelectScreenController
@@ -142,7 +142,7 @@ public class SelectScreenController implements Initializable {
     */
  	@FXML
  	public void setRedColor() {
- 		this.playerColor = 0;
+ 		this.playerColor = "#FF0000";
  		this.red.isDisabled();
  	}
 
@@ -151,7 +151,7 @@ public class SelectScreenController implements Initializable {
     */
  	@FXML
  	public void setBlueColor() {
- 		this.playerColor = 1;
+ 		this.playerColor = "#0000FF";
  		this.blue.isDisabled();
  	}
 
@@ -160,7 +160,7 @@ public class SelectScreenController implements Initializable {
     */
  	@FXML
  	public void setGreenColor() {
- 		this.playerColor = 2;
+ 		this.playerColor = "#00FF00";
  		this.green.isDisabled();
  	}
 
@@ -169,7 +169,7 @@ public class SelectScreenController implements Initializable {
     */
  	@FXML
  	public void setYellowColor() {
- 		this.playerColor = 3;
+ 		this.playerColor = "#FFFF00";
  		this.yellow.isDisabled();
  	}
 

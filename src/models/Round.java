@@ -9,9 +9,9 @@ public class Round {
 
 
     private Player currentPlayer;
-    private int currentRound;
+    public int currentRound;
     private int playerIndex;
-    private int turnPhase;
+    public int turnPhase;
 
     private Player[] players;
 
