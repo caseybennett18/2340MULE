@@ -7,11 +7,16 @@ import models.Race;
  *
  */
 public class BonzoidRace extends Race {
+
+
 	
 	public BonzoidRace(int playerId) {
 		super(playerId);
+		money = 1000;
 	}
-	
+
+
+
 	@Override
 	public void applyRaceModifier() {
 		// TODO: Implement modifier
@@ -20,5 +25,10 @@ public class BonzoidRace extends Race {
 	@Override
 	public String toString() {
 		return "Bonzoid";
+	}
+
+	@Override
+	public int getMoney() {
+		return money;
 	}
 }

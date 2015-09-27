@@ -8,7 +8,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MapScreenController">
    <children>
-      <BorderPane prefHeight="104.0" prefWidth="610.0">
+      <BorderPane fx:id="borderpane" prefHeight="104.0" prefWidth="610.0">
          <top>
             <MenuBar BorderPane.alignment="CENTER">
               <menus>
@@ -329,7 +329,7 @@
             </AnchorPane>
          </center>
          <bottom>
-            <TextFlow prefHeight="118.0" prefWidth="610.0" BorderPane.alignment="CENTER" />
+            <TextFlow fx:id="textflow" prefHeight="118.0" prefWidth="610.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>

@@ -10,6 +10,7 @@ public class HumanRace extends Race {
 	
 	public HumanRace(int playerId) {
 		super(playerId);
+		money = 600;
 	}
 	
 	@Override
@@ -20,5 +21,10 @@ public class HumanRace extends Race {
 	@Override
 	public String toString() {
 		return "Human";
+	}
+
+	@Override
+	public int getMoney() {
+		return money;
 	}
 }

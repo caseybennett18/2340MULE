@@ -83,7 +83,6 @@ public class StartScreenController implements Initializable {
     @FXML
     public void setBeginnerButton() {
         this.difficulty = 0;
-        System.out.println("button one");
 
     }
 
@@ -119,6 +118,15 @@ public class StartScreenController implements Initializable {
     private void createPlayers() {
         for (int i = 0; i < this.numPlayers; i++) {
             Player p = new Player(i);
+            if (this.difficulty == 0) {
+                p.setFood(8);
+                p.setEnergy(4);
+                p.setOre(0);
+            } else {
+                p.setFood(4);
+                p.setEnergy(2);
+                p.setOre(0);
+            }
             MuleUI.getInstance().setPlayerArray(p, i);
         }
     }

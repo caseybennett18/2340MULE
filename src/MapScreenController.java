@@ -1,8 +1,12 @@
  import java.net.URL;
  import java.util.ResourceBundle;
 
+ import javafx.animation.AnimationTimer;
+ import javafx.animation.KeyFrame;
+ import javafx.animation.Timeline;
  import javafx.scene.Group;
  import javafx.scene.control.Label;
+ import javafx.scene.control.ProgressBar;
  import javafx.scene.effect.ColorAdjust;
  import javafx.scene.image.ImageView;
  import javafx.scene.input.MouseEvent;
@@ -10,14 +14,19 @@
  import javafx.event.*;
  import javafx.fxml.FXML;
  import javafx.fxml.Initializable;
+ import javafx.scene.layout.BorderPane;
  import javafx.scene.layout.GridPane;
  import javafx.scene.control.Button;
  import javafx.scene.layout.VBox;
 
  import javafx.scene.paint.Color;
  import javafx.scene.shape.Circle;
+ import javafx.scene.text.TextFlow;
+ import javafx.util.Duration;
  import models.Player;
  import models.Round;
+
+ import javax.swing.*;
 
 
  public class MapScreenController implements Initializable {
@@ -28,7 +37,19 @@
      @FXML
      AnchorPane anchorpane;
 
+     @FXML
+     TextFlow textflow;
+
+     @FXML
+     BorderPane borderpane;
+
      private ImageView iv;
+     private Timeline timeline;
+     private int timeSeconds;
+
+     private Label timerLabel;
+
+     private final static int STARTTIME = 30;
 
      private final static int TILE_WIDTH = 78;
      private final static int TILE_HEIGHT = 120;
@@ -39,6 +60,7 @@
     public MapScreenController() {
         this.players = MuleUI.getInstance().getPlayerArray();
         this.round = new Round(players);
+        this.timerLabel = new Label();
     }
 
 
@@ -81,7 +103,7 @@
          return iv;
      }
 
-     public void addPlayerDescriptions(VBox vbox) {
+     public void addPlayerDescriptions(TextFlow tf) {
          VBox vboxx = new VBox();
          Round round = new Round(players);
          Label playerTurnLabel = new Label("Click on Button to Start Land Selection Phase!");
@@ -90,16 +112,20 @@
          Button nextButton = new Button();
          nextButton.setText("Next Player's Turn");
          nextButton.setOnMouseClicked(new NextButtonPressedHandler());
+         nextButton.setOnMouseReleased(new TimerHandler());
          vboxx.getChildren().add(nextButton);
 
-         vbox.getChildren().add(vboxx);
+         tf.getChildren().add(vboxx);
      }
 
     private void generateScreen() {
         Group root = new Group();
+
         VBox vbox = new VBox(); //has another vbox with a label and a button
-        addPlayerDescriptions(vbox);
+        addPlayerDescriptions(textflow);
+        textflow.getChildren().addAll(timerLabel);
         root.getChildren().add(vbox);//root has one vbox
+
         anchorpane.getChildren().add(root);//has a group
     }
 
@@ -111,38 +137,68 @@
          public void handle(MouseEvent me) {
              clickedButton = (Button) me.getSource();
              if (!(clickedButton.isDisabled())) {
-
-                 if (round.turnPhase <= players.length - 1) {
-                     System.out.println(round.turnPhase);
-                     Group root = (Group) anchorpane.getChildren().get(1);
-                     VBox vbox = (VBox) root.getChildren().get(0);
-                     VBox vbox2 = (VBox) vbox.getChildren().get(0);
-                     Label pLabel = (Label) vbox2.getChildren().get(0);
-                     pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
-                     round.turnPhase++;
-                 } else {
-                     round.turnPhase = 0;
-                     Group root = (Group) anchorpane.getChildren().get(1);
-                     VBox vbox = (VBox) root.getChildren().get(0);
-                     VBox vbox2 = (VBox) vbox.getChildren().get(0);
-                     Label pLabel = (Label) vbox2.getChildren().get(0);
-                     pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
-                     round.turnPhase++;
-                 }
                  if (round.turnPhase == players.length) {
                      round.currentRound++;
+                     System.out.println("round.currentround");
+                     System.out.println(round.currentRound);
                  }
-
+                 if (round.turnPhase <= players.length - 1) {
+                     TextFlow root = (TextFlow) borderpane.getChildren().get(2);
+                     VBox vbox2 = (VBox) root.getChildren().get(0);
+                     Label pLabel = (Label) vbox2.getChildren().get(0);
+                     pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
+                     round.turnPhase++;
+                     System.out.println("round.turnphase");
+                     System.out.println(round.turnPhase);
+                 } else {
+                     round.turnPhase = 0;
+                     TextFlow root = (TextFlow) borderpane.getChildren().get(2);
+                     VBox vbox2 = (VBox) root.getChildren().get(0);
+                     Label pLabel = (Label) vbox2.getChildren().get(0);
+                     pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
+                     round.turnPhase++;
+                 }
                  if (round.currentRound > 1) {
-                     Group root = (Group) anchorpane.getChildren().get(1);
-                     VBox vbox = (VBox) root.getChildren().get(0);
-                     VBox vbox2 = (VBox) vbox.getChildren().get(0);
+                     TextFlow root = (TextFlow) borderpane.getChildren().get(2);
+                     VBox vbox2 = (VBox) root.getChildren().get(0);
                      Label pLabel = (Label) vbox2.getChildren().get(0);
                      pLabel.setText("Land Selection Phase is now over.");
                  }
+
              }
+
          }
      }
+
+     private class TimerHandler implements EventHandler<MouseEvent> {
+
+         public void handle(MouseEvent me) {
+             if (timeline != null) {
+                 timeline.stop();
+             }
+             timeSeconds = STARTTIME;
+
+             timerLabel.setText("Time remaining in turn - " + timeSeconds);
+             timeline = new Timeline();
+             timeline.setCycleCount(Timeline.INDEFINITE);
+             timeline.getKeyFrames().add(
+                     new KeyFrame(Duration.seconds(1),
+                     new EventHandler<ActionEvent>() {
+                         public void handle(ActionEvent event) {
+                             timeSeconds--;
+                             timerLabel.setText("Time remaining in turn - " + timeSeconds);
+                             if (timeSeconds <= 0) {
+                                 timeline.stop();
+                             }
+                         }
+
+                     }
+             ));
+             timeline.playFromStart();
+
+         }
+     }
+
 
     @FXML
     public void initialize(URL url, ResourceBundle rb ) {

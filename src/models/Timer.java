@@ -20,11 +20,10 @@ public class Timer {
      * Decrements the timer by one second and returns the amount of time left in the timer 
      * after the decrement.
      * 
-     * @return time
+     *
      */
-    public int decrementTimer() {
+    public void decrementTimer() {
         time--;
-        return time;
     }
 
     /**

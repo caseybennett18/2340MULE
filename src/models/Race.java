@@ -11,6 +11,8 @@ public class Race {
 	 * id of player who is the Race
 	 */
 	private int playerId;
+
+	protected static int money;
 	
 	/**
 	 * Creates a new race associated to a player through their playerId
@@ -32,6 +34,10 @@ public class Race {
 	 */
 	public String toString() {
 		return "DefaultRace";
+	}
+
+	public int getMoney() {
+		return money;
 	}
 	
 }

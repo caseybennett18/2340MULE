@@ -75,6 +75,7 @@ public class SelectScreenController implements Initializable {
  		this.setNameText();
  		this.player.setRace(raceId);
  		this.player.setPlayerColor(playerColor);
+
  		System.out.println(player.getPlayerName());
  		System.out.println(player.getPlayerRace());
  		System.out.println(player.getPlayerID());

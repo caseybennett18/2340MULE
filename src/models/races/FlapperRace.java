@@ -10,6 +10,7 @@ public class FlapperRace extends Race {
 	
 	public FlapperRace(int playerId) {
 		super(playerId);
+		money = 1600;
 	}
 	
 	@Override
@@ -20,5 +21,11 @@ public class FlapperRace extends Race {
 	@Override
 	public String toString() {
 		return "Flapper";
+	}
+
+
+	@Override
+	public int getMoney() {
+		return money;
 	}
 }

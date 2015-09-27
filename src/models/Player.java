@@ -21,7 +21,12 @@ public class Player {
     private String playerName;
     protected Race race;
     private int time;
-    private boolean turnPassed; 
+    private boolean turnPassed;
+
+    private int food;
+    private int energy;
+    private int ore;
+    private int money;
 
 
     /**
@@ -33,7 +38,6 @@ public class Player {
         this.playerID = playerID;
         this.playerName = null;
         this.playerColor = 0;
-        //this.race = createRace(race);
         this.time = 90;
         turnPassed = false;
  
@@ -158,6 +162,30 @@ public class Player {
             default:
                 return new HumanRace(playerID);
         }
+    }
+
+    public int getFood() {
+        return food;
+    }
+
+    public void setFood(int f) {
+        this.food = f;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(int e) {
+        this.energy = e;
+    }
+
+    public int getOre() {
+        return ore;
+    }
+
+    public void setOre(int o) {
+        this.ore = o;
     }
 
 }

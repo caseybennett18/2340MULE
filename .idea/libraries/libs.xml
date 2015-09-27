@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Milestone Assignments/M2/M2/build/libs/M2-0.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Milestone Assignments/M2/M2/build/libs/M2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
