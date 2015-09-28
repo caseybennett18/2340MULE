@@ -12,7 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.Player;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
  
  public class MuleUI extends Application {
@@ -70,6 +72,11 @@ import javafx.scene.media.Media;
      public void start(Stage primaryStage) throws Exception {
          
          try {
+             String source = MuleUI.class.getResource("/res/Atari M.U.L.E..mp3")
+                     .toString();
+             Media media = new Media(source);
+             MediaPlayer mediaPlayer = new MediaPlayer(media);
+             mediaPlayer.play();
              FXMLLoader loader = new FXMLLoader();
              loader.setLocation(MuleUI.class.getResource("./MainMenu.fxml"));
              Parent root = loader.load();
