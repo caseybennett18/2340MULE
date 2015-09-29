@@ -28,6 +28,10 @@ public class Player {
     private int ore;
     private int money;
 
+    private int score;
+
+    //private ArrayList<Integer> resources;   // 0-money 1-food 2-energy 3-Smithore 4-Crystite
+
 
     /**
     * @param playerID
@@ -188,4 +192,19 @@ public class Player {
         this.ore = o;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int amount) {
+        money = amount;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }

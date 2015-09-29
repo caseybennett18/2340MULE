@@ -14,7 +14,6 @@ public class GameController {
             MuleUI.getInstance().currentPlayer.setPlayerName(currentPlayer.getPlayerName());
             MuleUI.getInstance().currentPlayer.setRace(currentPlayer.getPlayerRace().toString());
             MuleUI.getInstance().currentPlayer.setPlayerColor(currentPlayer.getPlayerColor());
-
         }
     }
 }

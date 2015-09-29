@@ -164,7 +164,10 @@
                      Label pLabel = (Label) vbox2.getChildren().get(0);
                      pLabel.setText("Land Selection Phase is now over.");
                  }
-
+                 System.out.println("Money: " + players[round.turnPhase-1].getMoney());
+                 System.out.println("Food: " + players[round.turnPhase-1].getFood());
+                 System.out.println("Energy: " + players[round.turnPhase-1].getEnergy());
+                 System.out.println("Ore: " + players[round.turnPhase-1].getOre());
              }
 
          }
