@@ -1,0 +1,29 @@
+Use Case: Player visits Pub 
+
+Scope: M.U.L.E. Game
+
+Primary Actor: Player
+
+Stakeholders and Interests: 
+	1. Player: interested in visiting the Pub 
+	2. Other Game Players: interested in other players state in the game 
+
+Preconditions: 
+	1. A player must be selected/created
+	2. A player must select a race and color 
+	3. The player must enter the town in order to enter the Pub
+
+Postconditions:
+	1. Player earns a monetary bonus
+
+Main Success Scenario: 
+	1. Player requests new game initialization
+	2. Player starts game
+	3. Player enters town 
+	4. Player enters Pub
+
+Extensions: 
+	1. Enter Pub (step 4)
+		*alternate flow: leaves Pub
+	2. Player enters town (step 3)
+		*alternate flow: leaves town without entering Pub
