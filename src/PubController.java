@@ -66,6 +66,12 @@ public class PubController implements Initializable {
 
 
     @FXML
+    public void handleTown() throws Exception {
+        MuleUI.getInstance().loadTown();
+    }
+
+
+    @FXML
     public void initialize(URL url, ResourceBundle rb) {
 
     }
