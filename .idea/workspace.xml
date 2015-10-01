@@ -52,11 +52,13 @@
       <file leaf-file-name="MapScreenController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MapScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40029985">
-              <caret line="223" column="42" selection-start-line="223" selection-start-column="42" selection-end-line="223" selection-end-column="42" />
+            <state vertical-scroll-proportion="-2.035982">
+              <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
               <folding>
-                <element signature="e#10923#10924#0" expanded="true" />
-                <element signature="e#10955#10956#0" expanded="true" />
+                <element signature="e#8534#8535#0" expanded="true" />
+                <element signature="e#8574#8575#0" expanded="true" />
+                <element signature="e#9891#9892#0" expanded="true" />
+                <element signature="e#9923#9924#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -557,8 +559,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="186" column="42" selection-start-line="186" selection-start-column="42" selection-end-line="186" selection-end-column="42" />
           <folding>
-            <element signature="e#10923#10924#0" expanded="true" />
-            <element signature="e#10955#10956#0" expanded="true" />
+            <element signature="e#8534#8535#0" expanded="true" />
+            <element signature="e#8574#8575#0" expanded="true" />
+            <element signature="e#9891#9892#0" expanded="true" />
+            <element signature="e#9923#9924#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -646,8 +650,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#10923#10924#0" expanded="true" />
-            <element signature="e#10955#10956#0" expanded="true" />
+            <element signature="e#8534#8535#0" expanded="true" />
+            <element signature="e#8574#8575#0" expanded="true" />
+            <element signature="e#9891#9892#0" expanded="true" />
+            <element signature="e#9923#9924#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -861,11 +867,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MapScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40029985">
-          <caret line="223" column="42" selection-start-line="223" selection-start-column="42" selection-end-line="223" selection-end-column="42" />
+        <state vertical-scroll-proportion="-2.035982">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
           <folding>
-            <element signature="e#10923#10924#0" expanded="true" />
-            <element signature="e#10955#10956#0" expanded="true" />
+            <element signature="e#8534#8535#0" expanded="true" />
+            <element signature="e#8574#8575#0" expanded="true" />
+            <element signature="e#9891#9892#0" expanded="true" />
+            <element signature="e#9923#9924#0" expanded="true" />
           </folding>
         </state>
       </provider>
