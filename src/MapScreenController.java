@@ -221,7 +221,7 @@
                  timeline.stop();
              }
 
-             timer.setTime(30);
+             timer.setTime(timer.getTime());
              timerLabel.setText("Time remaining in turn - " + timer.getTime());
              timeline = new Timeline();
              timeline.setCycleCount(Timeline.INDEFINITE);
@@ -261,6 +261,36 @@
                          + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood());
                  vbox.getChildren().add(p);
              }
+         }
+     }
+
+     public void calculateTime(int roundPhase) {
+         boolean hasPartialShortage = false;
+         boolean hasTotalShortage = false;
+         if (0 <= roundPhase && roundPhase <= 4) {
+             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 3) {
+                 hasPartialShortage = true;
+             } else if (players[round.turnPhase].getFood() == 0) {
+                 hasTotalShortage = true;
+             }
+         } else if (5 <= roundPhase && roundPhase <= 8) {
+             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 4) {
+                 hasPartialShortage = true;
+             } else if (players[round.turnPhase].getFood() == 0) {
+                 hasTotalShortage = true;
+             }
+         } else {
+             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 5) {
+                 hasPartialShortage = true;
+             } else if (players[round.turnPhase].getFood() == 0) {
+                 hasTotalShortage = true;
+             }
+         }
+
+         if (hasPartialShortage) {
+             timer.setTime(30);
+         } else if (hasTotalShortage) {
+             timer.setTime(5);
          }
      }
 

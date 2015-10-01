@@ -46,7 +46,7 @@ public class Player {
         this.playerID = playerID;
         this.playerName = null;
         this.playerColor = 0;
-        this.time = 90;
+        this.time = 50;
         turnPassed = false;
         numProperties = 0;
     }
