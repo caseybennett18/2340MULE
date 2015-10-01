@@ -55,6 +55,7 @@
      private Player[] players;
      private Round round;
      private Button clickedButton;
+     protected boolean timeRanOut = false;
     
     public MapScreenController() {
         this.players = MuleUI.getInstance().getPlayerArray();
@@ -140,79 +141,87 @@
 
 
      private class NextButtonPressedHandler implements EventHandler<MouseEvent> {
-        private Player[] playersHere = MuleUI.getInstance().getPlayerArray();
-         private Round roundHere = new Round(playersHere);
+
+        //final TimerHandler timerHandler = new TimerHandler();
+        //private Player[] playersHere = MuleUI.getInstance().getPlayerArray();
+        //private Round roundHere = new Round(playersHere);
+
+        public void nextTurn() {
+            //going to next round
+            if (round.turnPhase == players.length) {
+                round.currentRound++;
+                for (Player p : players) {
+                    if (round.currentRound < 2) {
+                        p.setHasPicked(false);
+                    }
+                    p.updatePlayerScore();
+                }
+                MuleUI.getInstance().getPlayerOrder(players);
+                System.out.println("round.currentround");
+                System.out.println(round.currentRound);
+            }
+
+            //round is still happening
+            if (round.turnPhase <= players.length - 1) {
+                TextFlow root = (TextFlow) borderpane.getChildren().get(2);
+                VBox vbox2 = (VBox) root.getChildren().get(0);
+                Label pLabel = (Label) vbox2.getChildren().get(0);
+                pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
+                players[round.turnPhase].updatePlayerScore();
+                round.turnPhase++;
+                System.out.println("round.turnphase");
+                System.out.println(round.turnPhase);
+
+                //getting ready for next round
+            } else {
+                round.turnPhase = 0;
+                TextFlow root = (TextFlow) borderpane.getChildren().get(2);
+                VBox vbox2 = (VBox) root.getChildren().get(0);
+                Label pLabel = (Label) vbox2.getChildren().get(0);
+                pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
+                players[round.turnPhase].updatePlayerScore();
+                round.turnPhase++;
+            }
+
+            //
+            if (round.currentRound > 1) {
+                TextFlow root = (TextFlow) borderpane.getChildren().get(2);
+                VBox vbox2 = (VBox) root.getChildren().get(0);
+                Label pLabel = (Label) vbox2.getChildren().get(0);
+                pLabel.setText("Land Selection Phase is now over.");
+            }
+
+            System.out.println("Score: " + players[round.turnPhase-1].getScore());
+            System.out.println("Money: " + players[round.turnPhase-1].getMoney());
+            System.out.println("Food: " + players[round.turnPhase-1].getFood());
+            System.out.println("Energy: " + players[round.turnPhase-1].getEnergy());
+            System.out.println("Ore: " + players[round.turnPhase-1].getOre());
+        }
+
 
          public void handle(MouseEvent me) {
              clickedButton = (Button) me.getSource();
              if (!(clickedButton.isDisabled())) {
-
-                 //going to next round
-                 if (round.turnPhase == players.length) {
-                     round.currentRound++;
-                     for (Player p : players) {
-                         if (round.currentRound < 2) {
-                             p.setHasPicked(false);
-                         }
-                         p.updatePlayerScore();
-                     }
-                     MuleUI.getInstance().getPlayerOrder(players);
-                     System.out.println("round.currentround");
-                     System.out.println(round.currentRound);
-                 }
-
-                 //round is still happening
-                 if (round.turnPhase <= players.length - 1) {
-                     TextFlow root = (TextFlow) borderpane.getChildren().get(2);
-                     VBox vbox2 = (VBox) root.getChildren().get(0);
-                     Label pLabel = (Label) vbox2.getChildren().get(0);
-                     pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
-                     players[round.turnPhase].updatePlayerScore();
-                     round.turnPhase++;
-                     System.out.println("round.turnphase");
-                     System.out.println(round.turnPhase);
-
-                     //getting ready for next round
-                 } else {
-                     round.turnPhase = 0;
-                     TextFlow root = (TextFlow) borderpane.getChildren().get(2);
-                     VBox vbox2 = (VBox) root.getChildren().get(0);
-                     Label pLabel = (Label) vbox2.getChildren().get(0);
-                     pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
-                     players[round.turnPhase].updatePlayerScore();
-                     round.turnPhase++;
-                 }
-
-                 //
-                 if (round.currentRound > 1) {
-                     TextFlow root = (TextFlow) borderpane.getChildren().get(2);
-                     VBox vbox2 = (VBox) root.getChildren().get(0);
-                     Label pLabel = (Label) vbox2.getChildren().get(0);
-                     pLabel.setText("Land Selection Phase is now over.");
-                 }
-
-                 System.out.println("Score: " + players[round.turnPhase-1].getScore());
-                 System.out.println("Money: " + players[round.turnPhase-1].getMoney());
-                 System.out.println("Food: " + players[round.turnPhase-1].getFood());
-                 System.out.println("Energy: " + players[round.turnPhase-1].getEnergy());
-                 System.out.println("Ore: " + players[round.turnPhase-1].getOre());
+                     nextTurn();
              }
 
+             if (timeRanOut) {
+                 timer.setTime(10);
+                 timeRanOut = false;
+             }
          }
      }
 
      private class TimerHandler implements EventHandler<MouseEvent> {
 
-         public void handle(MouseEvent me) {
-             //clickedButton = (Button) me.getSource();
-             Button tempButton = new Button();
-             tempButton.setOnMouseClicked(new NextButtonPressedHandler());
+         final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
 
-             //System.out.println(clickedButton);
+         public void restartTimer() {
              if (timeline != null) {
                  timeline.stop();
              }
 
+             timer.setTime(30);
              timerLabel.setText("Time remaining in turn - " + timer.getTime());
              timeline = new Timeline();
              timeline.setCycleCount(Timeline.INDEFINITE);
@@ -224,6 +233,10 @@
                                      timerLabel.setText("Time remaining in turn - " + timer.getTime());
                                      if (timer.getTime() <= 0) {
                                          timeline.stop();
+                                         timeRanOut = true;
+                                         nextTurnHandler.nextTurn();
+                                         timer.setTime(31);
+                                         timeline.playFromStart();
                                      }
                                  }
 
@@ -231,6 +244,11 @@
                      ));
              timeline.playFromStart();
          }
+
+         public void handle(MouseEvent me) {
+             restartTimer();
+         }
+
      }
 
      private class PlayerDescriptionHandler implements EventHandler<MouseEvent> {
@@ -252,5 +270,4 @@
         generateScreen();
     }
 
-}   
-  
+}
