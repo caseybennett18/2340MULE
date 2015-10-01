@@ -83,32 +83,17 @@
         }
     }
 
-
-//     private class LandButtonClickedHandler implements EventHandler<MouseEvent> {
-//
-//         public void handle(MouseEvent me) {
-//             ImageView iv = getImageViewFromCoordinates(me.getX(), me.getY());
-//             System.out.println(iv);
-//             Circle c = new Circle();
-//             ///c.setCenterX(me.getSceneX());
-//             //c.setCenterY(me.getSceneY());
-//             c.setRadius(4);
-//             c.setStroke(Color.RED);
-//             ColorAdjust adjuster = new ColorAdjust();
-//             adjuster.setBrightness(0.6);
-//             iv.setEffect(adjuster);
-//
-//            //anchorpane.add(c, (int) me.getSceneX(), (int) me.getSceneY());
-//             //TODO create some sort of land marker for players
-//         }
-//     }
-
-     private ImageView getImageViewFromCoordinates(double x, double y) {
-         GridPane root = (GridPane) anchorpane.getChildren().get(0);
-         ImageView iv = (ImageView) root.getChildren().get(0);
-
-         return iv;
+     public VBox addPlayerAttributes() {
+         int i = 0;
+         VBox vbox = new VBox();
+         for (Player cp: players) {
+             Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
+                     + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood());
+             vbox.getChildren().add(p);
+         }
+         return vbox;
      }
+
 
      public void addPlayerDescriptions(TextFlow tf) {
 
@@ -118,12 +103,14 @@
 
          vboxx.getChildren().add(playerTurnLabel);
 
+
          Button nextButton = new Button();
          nextButton.setText("Next Player's Turn");
          nextButton.setOnMouseClicked(new NextButtonPressedHandler());
          nextButton.setOnMouseReleased(new TimerHandler());
          //nextButton.setOnMousePressed((new PlayerDescriptionHandler()));
          vboxx.getChildren().add(nextButton);
+         vboxx.getChildren().add(addPlayerAttributes());
 
          tf.getChildren().add(vboxx);
      }
@@ -142,9 +129,8 @@
 
      private class NextButtonPressedHandler implements EventHandler<MouseEvent> {
 
-        //final TimerHandler timerHandler = new TimerHandler();
-        //private Player[] playersHere = MuleUI.getInstance().getPlayerArray();
-        //private Round roundHere = new Round(playersHere);
+
+         String labelText;
 
         public void nextTurn() {
             //going to next round
@@ -163,10 +149,7 @@
 
             //round is still happening
             if (round.turnPhase <= players.length - 1) {
-                TextFlow root = (TextFlow) borderpane.getChildren().get(2);
-                VBox vbox2 = (VBox) root.getChildren().get(0);
-                Label pLabel = (Label) vbox2.getChildren().get(0);
-                pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
+                labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
                 players[round.turnPhase].updatePlayerScore();
                 round.turnPhase++;
                 System.out.println("round.turnphase");
@@ -175,21 +158,26 @@
                 //getting ready for next round
             } else {
                 round.turnPhase = 0;
-                TextFlow root = (TextFlow) borderpane.getChildren().get(2);
-                VBox vbox2 = (VBox) root.getChildren().get(0);
-                Label pLabel = (Label) vbox2.getChildren().get(0);
-                pLabel.setText("It is now " + players[round.turnPhase].getPlayerName() + "'s turn!");
+                labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
                 players[round.turnPhase].updatePlayerScore();
                 round.turnPhase++;
             }
 
             //
             if (round.currentRound > 1) {
-                TextFlow root = (TextFlow) borderpane.getChildren().get(2);
-                VBox vbox2 = (VBox) root.getChildren().get(0);
-                Label pLabel = (Label) vbox2.getChildren().get(0);
-                pLabel.setText("Land Selection Phase is now over.");
+                labelText = "Land Selection Phase is now over";
             }
+
+            TextFlow root = (TextFlow) borderpane.getChildren().get(2);
+            VBox vbox2 = (VBox) root.getChildren().get(0);
+            //root.getChildren().remove(1);
+
+            Label pLabel = (Label) vbox2.getChildren().get(0);
+            pLabel.setText(labelText);
+            vbox2.getChildren().remove(2);
+            vbox2.getChildren().add(addPlayerAttributes());
+
+
 
             System.out.println("Score: " + players[round.turnPhase-1].getScore());
             System.out.println("Money: " + players[round.turnPhase-1].getMoney());
@@ -197,6 +185,18 @@
             System.out.println("Energy: " + players[round.turnPhase-1].getEnergy());
             System.out.println("Ore: " + players[round.turnPhase-1].getOre());
         }
+
+
+         public VBox addPlayerAttributes() {
+             int i = 0;
+             VBox vbox = new VBox();
+             for (Player cp: players) {
+                 Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
+                         + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood());
+                 vbox.getChildren().add(p);
+             }
+             return vbox;
+         }
 
 
          public void handle(MouseEvent me) {
@@ -247,20 +247,6 @@
 
          public void handle(MouseEvent me) {
              restartTimer();
-         }
-
-     }
-
-     private class PlayerDescriptionHandler implements EventHandler<MouseEvent> {
-
-         public void handle(MouseEvent me) {
-             int i = 0;
-             VBox vbox = new VBox();
-             for (Player cp: players) {
-                 Label p = new Label("Player " + (i + 1) + ": " + cp.getPlayerName() + " | Score: "
-                         + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood());
-                 vbox.getChildren().add(p);
-             }
          }
      }
 
