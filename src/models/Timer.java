@@ -5,6 +5,7 @@ package models;
  */
 public class Timer {
 
+    private final static int STARTTIME = 30;
     private int time;
 
     /**
@@ -12,8 +13,8 @@ public class Timer {
      * 
      * @param seconds
      */
-    public Timer(int time) {
-        this.time = time;
+    public Timer() {
+        this.time = STARTTIME;
     }
 
     /**

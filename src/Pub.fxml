@@ -14,7 +14,7 @@
             <!-- <Image url=""" /> -->
          </image>
       </ImageView>
-      <Button fx:id="gambleButton" layoutX="259.0" layoutY="187.0" mnemonicParsing="false" text="Gamble?" />
+      <Button fx:id="gambleButton" onAction="#gamble" layoutX="259.0" layoutY="187.0" mnemonicParsing="false" text="Gamble?" />
       <Text fill="#e4e80b" layoutX="15.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Pub! ">
          <font>
             <Font name="AppleGothic Regular" size="31.0" />

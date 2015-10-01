@@ -60,7 +60,7 @@
          <bottom>
             <TextFlow prefHeight="127.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" text="Back to Map" />
+                  <Button onAction="#handleMap" text="Back to Map" />
                </children>
             </TextFlow>
          </bottom>

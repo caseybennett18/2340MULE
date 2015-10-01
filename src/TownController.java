@@ -12,4 +12,9 @@ public class TownController {
         MuleUI.getInstance().loadPub();
     }
 
+    @FXML
+    public void handleMap() throws Exception {
+        MuleUI.getInstance().loadMap();
+    }
+
 }

@@ -25,6 +25,7 @@
  import javafx.util.Duration;
  import models.Player;
  import models.Round;
+ import models.Timer;
 
  import javax.swing.*;
 
@@ -45,11 +46,9 @@
 
      private ImageView iv;
      private Timeline timeline;
-     private int timeSeconds;
+     private Timer timer;
 
      private Label timerLabel;
-
-     private final static int STARTTIME = 30;
 
      private final static int TILE_WIDTH = 78;
      private final static int TILE_HEIGHT = 120;
@@ -62,6 +61,7 @@
         MuleUI.getInstance().getPlayerOrder(players);
         this.round = new Round(players);
         this.timerLabel = new Label();
+        timer = new Timer();
     }
 
 
@@ -212,27 +212,24 @@
              if (timeline != null) {
                  timeline.stop();
              }
-             timeSeconds = STARTTIME;
 
-             timerLabel.setText("Time remaining in turn - " + timeSeconds);
+             timerLabel.setText("Time remaining in turn - " + timer.getTime());
              timeline = new Timeline();
              timeline.setCycleCount(Timeline.INDEFINITE);
              timeline.getKeyFrames().add(
                      new KeyFrame(Duration.seconds(1),
                              new EventHandler<ActionEvent>() {
                                  public void handle(ActionEvent event) {
-                                     timeSeconds--;
-                                     timerLabel.setText("Time remaining in turn - " + timeSeconds);
-                                     if (timeSeconds <= 0) {
+                                     timer.decrementTimer();
+                                     timerLabel.setText("Time remaining in turn - " + timer.getTime());
+                                     if (timer.getTime() <= 0) {
                                          timeline.stop();
-                                         tempButton.fire();
                                      }
                                  }
 
                              }
                      ));
              timeline.playFromStart();
-             tempButton.fire();
          }
      }
 
