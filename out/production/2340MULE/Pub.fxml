@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="754.0" layoutX="-153.0">
          <image>
-            <!-- <Image url=""" /> -->
+            <Image url="@res/milton-office-space-movie.jpg" />
          </image>
       </ImageView>
       <Button fx:id="gambleButton" onAction="#gamble" layoutX="259.0" layoutY="187.0" mnemonicParsing="false" text="Gamble?" />
