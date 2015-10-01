@@ -12,6 +12,7 @@ public class Gamble {
 
     public Gamble() {
         this.winnings = 0;
+        rand = new Random();
     }
 
     public int getWinnings() {
@@ -47,7 +48,7 @@ public class Gamble {
             timeBonus = 200;
         }
 
-        moneyBonus = rand.nextInt(timeBonus) * roundBonus;
+        moneyBonus = rand.nextInt(timeBonus) + roundBonus;
         if (moneyBonus > 250) {
             moneyBonus = 250;
         }

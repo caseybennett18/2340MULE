@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import models.Gamble;
+import models.Player;
 import models.Round;
 import models.Timer;
 
@@ -28,11 +29,17 @@ public class PubController implements Initializable {
         gamble = new Gamble();
         rand = new Random();
         timer = new Timer();
+        round = new Round(MuleUI.getInstance().getPlayerArray());
     }
 
     @FXML
     public void gamble() throws Exception {
-        gamble.calculateBonus(timer.getTime(), round.currentRound);
+        int winnings = gamble.calculateBonus(timer.getTime(), round.currentRound);
+        Player p = MuleUI.getInstance().getPlayerArray()[round.turnPhase];
+        System.out.println("Player Name: " + p.getPlayerName());
+        System.out.println("$$$ before = " + p.getMoney());
+        p.setMoney(p.getMoney() + winnings);
+        System.out.println("$$$ after = " + p.getMoney());
     }
 
     @FXML
