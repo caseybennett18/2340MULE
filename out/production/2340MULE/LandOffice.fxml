@@ -6,19 +6,52 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartScreenController">
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartScreenController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="754.0" layoutX="-153.0">
-         <image>
-            <Image url="@../../../../../Desktop/milton-office-space-movie.jpg" />
-         </image>
-      </ImageView>
-      <Button layoutX="259.0" layoutY="187.0" mnemonicParsing="false" onAction="#numPlayersOne" text="Buy Land?" />
-      <Text fill="#e4e80b" layoutX="15.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Land Office! ">
-         <font>
-            <Font name="AppleGothic Regular" size="31.0" />
-         </font>
-      </Text>
-      <Button layoutX="21.0" layoutY="352.0" mnemonicParsing="false" text="Go Back to Town" textAlignment="CENTER" />
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="343.0" fitWidth="596.0" layoutX="-5.0" layoutY="-4.0">
+                     <image>
+                        <Image url="@res/milton-office-space-movie.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="259.0" layoutY="187.0" mnemonicParsing="false" onAction="#numPlayersOne" text="Buy Land?" />
+                  <Text fill="#e4e80b" layoutX="15.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Land Office! ">
+                     <font>
+                        <Font name="AppleGothic Regular" size="31.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="21.0" layoutY="352.0" mnemonicParsing="false" text="Go Back to Town" textAlignment="CENTER" />
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <TextFlow prefHeight="175.0" prefWidth="584.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
    </children>
-</AnchorPane>
+</VBox>

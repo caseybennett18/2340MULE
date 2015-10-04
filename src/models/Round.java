@@ -30,6 +30,15 @@ public class Round {
         turnPhase++;
     }
 
+    public int getCurrentRound() {
+        return currentRound;
+    }
+
+    public int getNextRound() {
+        return currentRound++;
+    }
+
+
 
 
 
