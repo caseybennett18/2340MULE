@@ -27,6 +27,7 @@ public class Player {
     private int energy;
     private int ore;
     private int money;
+    private Mule mule;
 
     private int score;
 
@@ -45,6 +46,7 @@ public class Player {
     public Player(int playerID) {
         this.playerID = playerID;
         this.playerName = null;
+        this.mule = null;
         this.playerColor = 0;
         this.time = 50;
         turnPassed = false;
@@ -100,6 +102,14 @@ public class Player {
         } else {
             playerColor = 3;
         }
+    }
+
+    public Mule getMule() {
+        return mule;
+    }
+
+    public void setMule(Mule m) {
+        mule = m;
     }
     
     /**

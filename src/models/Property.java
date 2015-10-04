@@ -9,10 +9,12 @@ package models;
 public class Property {
     private int playerID;
     private Tile tile;
+    private boolean hasMule;
 
     public Property(Tile tile) {
         this.playerID = -1;
         this.tile = tile;
+        this.hasMule = false;
     }
 
     public int getPlayerID() {
@@ -21,6 +23,14 @@ public class Property {
 
     public void setPlayerID(int newID) {
         playerID = newID;
+    }
+
+    public boolean hasMule() {
+        return hasMule;
+    }
+
+    public void hasMule(boolean b) {
+        hasMule = b;
     }
 
     public Tile getTile() {

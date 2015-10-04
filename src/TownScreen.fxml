@@ -27,6 +27,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
+                        <ImageView fitHeight="200.0" fitWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@res/store.jpg" />
+                           </image>
+                        </ImageView>
                         <ImageView fitHeight="208.0" fitWidth="303.0" rotate="180.0">
                            <image>
                               <Image url="@res/Pub.png" />
@@ -42,15 +47,10 @@
                               <Image url="@res/AssayOffice.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="202.0" fitWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <image>
-                              <Image url="@res/EnergyBuilding.png" />
-                           </image>
-                        </ImageView>
                         <Button onAction="#handlePub" prefHeight="202.0" prefWidth="299.0" style="-fx-background-color: transparent;" />
-                        <Button mnemonicParsing="false" prefHeight="202.0" prefWidth="299.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#handleLandOffice" prefHeight="202.0" prefWidth="299.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" />
                         <Button mnemonicParsing="false" prefHeight="202.0" prefWidth="299.0" style="-fx-background-color: transparent;" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="202.0" prefWidth="299.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#handleStore" prefHeight="202.0" prefWidth="299.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

@@ -170,6 +170,24 @@ import javafx.scene.media.MediaPlayer;
              System.out.println("An error has occurred...");
          }
      }
+
+     public void loadLandOffice() throws Exception {
+         try {
+             replaceSceneContent("./LandOffice.fxml");
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.out.println("An error has occurred...");
+         }
+     }
+
+     public void loadStore() throws Exception {
+         try {
+             replaceSceneContent("./StoreScreen.fxml");
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.out.println("An error has occurred...");
+         }
+     }
  }
  
  

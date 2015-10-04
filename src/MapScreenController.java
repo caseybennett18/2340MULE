@@ -88,7 +88,8 @@
          VBox vbox = new VBox();
          for (Player cp: players) {
              Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
-                     + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood());
+                     + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
+                     + " | Energy: " + cp.getEnergy());
              vbox.getChildren().add(p);
          }
          return vbox;
