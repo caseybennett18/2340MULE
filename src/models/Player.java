@@ -30,6 +30,10 @@ public class Player {
 
     private int score;
 
+    //temporary fix
+    private int numProperties;
+    private boolean hasPicked;
+
     //private ArrayList<Integer> resources;   // 0-money 1-food 2-energy 3-Smithore 4-Crystite
 
 
@@ -42,9 +46,14 @@ public class Player {
         this.playerID = playerID;
         this.playerName = null;
         this.playerColor = 0;
-        this.time = 90;
+        this.time = 50;
         turnPassed = false;
- 
+        numProperties = 0;
+    }
+
+    //cost of food = cost of energy = cost of ore = $100
+    public void updatePlayerScore() {
+        score = money + (numProperties * 500) + ((food + energy + ore) * 100);
     }
     
     /**
@@ -206,5 +215,21 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getNumProperties() {
+        return numProperties;
+    }
+
+    public void incrementNumProperties() {
+        numProperties++;
+    }
+
+    public boolean hasPicked() {
+        return hasPicked;
+    }
+
+    public void setHasPicked(boolean b) {
+        hasPicked = b;
     }
 }

@@ -36,6 +36,27 @@ import javafx.scene.media.MediaPlayer;
          players = new Player[numPlayers];
          playerTurn = 0;
      }
+
+     public void getPlayerOrder(Player[] players) {
+         //Player[] newOrder = new Player[players.length];
+         int n = players.length;
+         int k;
+         for (int i = n; i >= 0; i--) {
+             for (int j = 0; j < n - 1; j++) {
+                 k = j + 1;
+                 if (players[j].getScore() > players[k].getScore()) {
+                     swapPlayers(j, k, players);
+                 }
+             }
+         }
+     }
+
+     private void swapPlayers(int j, int k, Player[] players) {
+         Player temp;
+         temp = players[j];
+         players[j] = players[k];
+         players[k] = temp;
+     }
      
      public int getnumPlayers() {
          return numPlayers;
@@ -131,7 +152,16 @@ import javafx.scene.media.MediaPlayer;
              System.out.println("An error has occurred...");
          }
      }
-     
+
+     public void loadPub() throws Exception  {
+         try {
+             replaceSceneContent("./Pub.fxml");
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.out.println("An error has occurred...");
+         }
+     }
+
      public void loadAuction() throws Exception {
          try {
              replaceSceneContent("./AuctionScreen.fxml");

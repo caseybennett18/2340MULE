@@ -6,19 +6,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PubController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="754.0" layoutX="-153.0">
          <image>
-            <Image url="http://navcentre.ca/files/tinymce/uploaded/nc-food-and-beverage-pub.jpg" />
+            <Image url="@res/milton-office-space-movie.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="259.0" layoutY="187.0" mnemonicParsing="false" onAction="#numPlayersOne" text="Gamble?" />
+      <Button fx:id="gambleButton" onAction="#gamble" layoutX="259.0" layoutY="187.0" mnemonicParsing="false" text="Gamble?" />
       <Text fill="#e4e80b" layoutX="15.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Pub! ">
          <font>
             <Font name="AppleGothic Regular" size="31.0" />
          </font>
       </Text>
-      <Button layoutX="21.0" layoutY="352.0" mnemonicParsing="false" text="Go Back to Town" textAlignment="CENTER" />
+      <Button layoutX="21.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleTown" text="Go Back to Town" textAlignment="CENTER" />
    </children>
 </AnchorPane>
