@@ -24,6 +24,10 @@ import javafx.scene.media.MediaPlayer;
      private int numPlayers;
      private int difficulty; //beginner - 0, standard - 1, tournament - 2
      public int playerTurn;
+     public boolean isLoaded = false;
+
+     public Scene mapScene;
+     public Parent pageMap = null;
      
      private Player[] players;
 
@@ -102,6 +106,7 @@ import javafx.scene.media.MediaPlayer;
              loader.setLocation(MuleUI.class.getResource("./MainMenu.fxml"));
              Parent root = loader.load();
              Scene scene = new Scene(root);
+
              stage = primaryStage;
              primaryStage.setScene(scene);
              primaryStage.setTitle("M.U.L.E on Atari");
@@ -136,8 +141,20 @@ import javafx.scene.media.MediaPlayer;
      }
      
      public void loadMap() throws Exception {
+
          try {
-             replaceSceneContent("./MapScreen.fxml");
+             if (!isLoaded) {
+                 pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("./MapScreen.fxml"),
+                         null, new JavaFXBuilderFactory());
+                 Scene scene = stage.getScene();
+                 scene.setRoot(pageMap);
+                 stage.sizeToScene();
+                 isLoaded = true;
+             } else {
+                 Scene scene = stage.getScene();
+                 scene.setRoot(pageMap);
+                 stage.sizeToScene();
+             }
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");
