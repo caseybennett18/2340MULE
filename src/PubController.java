@@ -40,6 +40,8 @@ public class PubController implements Initializable {
         System.out.println("$$$ before = " + p.getMoney());
         p.setMoney(p.getMoney() + winnings);
         System.out.println("$$$ after = " + p.getMoney());
+        MapScreenController.getInstance().nextTurn();
+        MuleUI.getInstance().loadMap();
     }
 
     @FXML

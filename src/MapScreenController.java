@@ -53,14 +53,18 @@
 
      private final static int TILE_WIDTH = 78;
      private final static int TILE_HEIGHT = 120;
+
+     private static MapScreenController instance;
      private Player[] players;
      private Round round;
      private Button clickedButton;
      protected boolean timeRanOut = false;
+     final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
 
      private boolean alreadyPicked = false;
     
     public MapScreenController() {
+        instance = this;
         this.players = MuleUI.getInstance().getPlayerArray();
         MuleUI.getInstance().getPlayerOrder(players);
         this.round = new Round(players);
@@ -68,6 +72,13 @@
         timer = new Timer();
     }
 
+     public static MapScreenController getInstance() {
+         return instance;
+     }
+
+     public void nextTurn() {
+         nextTurnHandler.nextTurn();
+     }
 
      @FXML
      public void handleTown() throws Exception {
@@ -129,7 +140,7 @@
          tf.getChildren().add(vboxx);
      }
 
-    private void generateScreen() {
+     private void generateScreen() {
         Group root = new Group();
 
         VBox vbox = new VBox(); //has another vbox with a label and a button
@@ -138,15 +149,14 @@
         root.getChildren().add(vbox);//root has one vbox
 
         anchorpane.getChildren().add(root);//has a group
-    }
-
+     }
 
      private class NextButtonPressedHandler implements EventHandler<MouseEvent> {
-
 
          String labelText;
 
         public void nextTurn() {
+            timer.setTime(31);
             if (!landSelectionPhaseOver) {
                 //going to next round
                 if (round.turnPhase == players.length) {
@@ -214,8 +224,6 @@
 
             }
 
-
-
             TextFlow root = (TextFlow) borderpane.getChildren().get(2);
             VBox vbox2 = (VBox) root.getChildren().get(0);
 
@@ -243,11 +251,11 @@
          public void handle(MouseEvent me) {
              clickedButton = (Button) me.getSource();
              if (!(clickedButton.isDisabled())) {
-                     nextTurn();
+                 nextTurn();
              }
 
              if (timeRanOut) {
-                 timer.setTime(10);
+                 timer.setTime(31);
                  timeRanOut = false;
              }
          }
