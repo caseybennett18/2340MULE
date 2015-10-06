@@ -5,7 +5,7 @@ package models;
  */
 public class Timer {
 
-    private final static int STARTTIME = 50;
+    private final static int STARTTIME = 30;
     private int time;
 
     /**
