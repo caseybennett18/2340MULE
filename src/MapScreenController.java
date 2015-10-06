@@ -57,6 +57,8 @@
      private Round round;
      private Button clickedButton;
      protected boolean timeRanOut = false;
+
+     private boolean alreadyPicked = false;
     
     public MapScreenController() {
         this.players = MuleUI.getInstance().getPlayerArray();
@@ -78,14 +80,21 @@
         if (!currentPlayer.hasPicked()) {
             clickedButton = (Button) event.getSource();
             clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
-            clickedButton.setDisable(true);
+            //clickedButton.setDisable(true);
             currentPlayer.setHasPicked(true);
             currentPlayer.incrementNumProperties();
         }
 
-
-
-
+        if (round.currentRound > 1 && clickedButton.getStyle().contains(currentPlayer.getPlayerColor()) && currentPlayer.getMule() != null) {
+            System.out.println(currentPlayer);
+            System.out.println(currentPlayer.getPlayerColor());
+            System.out.println(currentPlayer.getPlayerName());
+            System.out.println(round.turnPhase -1);
+            clickedButton = (Button) event.getSource();
+            clickedButton.setText("MULE");
+            clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+            currentPlayer.setMule(null);
+        }
     }
 
      public VBox addPlayerAttributes() {
@@ -114,7 +123,6 @@
          nextButton.setText("Next Player's Turn");
          nextButton.setOnMouseClicked(new NextButtonPressedHandler());
          nextButton.setOnMouseReleased(new TimerHandler());
-         //nextButton.setOnMousePressed((new PlayerDescriptionHandler()));
          vboxx.getChildren().add(nextButton);
          vboxx.getChildren().add(addPlayerAttributes());
 
@@ -171,11 +179,14 @@
                 if (round.currentRound > 1) {
                     labelText = "Land Selection Phase is now over";
                     landSelectionPhaseOver = true;
+                    round.turnPhase++;
                 }
             }
 
             else if (round.currentRound > 1 && landSelectionPhaseOver) {
                 System.out.println("out of land selection phase");
+                System.out.println(round.turnPhase);
+                System.out.println(players.length);
                 //calculates order for the players
                 if (round.turnPhase == players.length) {
                     round.currentRound++;
@@ -221,7 +232,8 @@
              VBox vbox = new VBox();
              for (Player cp: players) {
                  Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
-                         + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood());
+                         + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
+                         + " | Energy: " + cp.getEnergy());
                  vbox.getChildren().add(p);
              }
              return vbox;

@@ -85,13 +85,10 @@ public class StoreController {
                 }
                 break;
             case("buyFood"):
-                System.out.println("Buying Food");
                 if (p.getMoney() >= 30) {
                     p.setMoney(p.getMoney() - 30);
                     p.setFood(p.getFood() + 1);
                     store.decrementFoodAmount();
-                    System.out.println("Got some food.");
-
                 }
                 break;
             case("buyEnergy"):
