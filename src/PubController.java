@@ -35,7 +35,8 @@ public class PubController implements Initializable {
     @FXML
     public void gamble() throws Exception {
         int winnings = gamble.calculateBonus(timer.getTime(), round.currentRound);
-        Player p = MuleUI.getInstance().getPlayerArray()[round.turnPhase];
+        //Player p = MuleUI.getInstance().getPlayerArray()[round.turnPhase];
+        Player p = MapScreenController.getInstance().getCurrentPlayer();
         System.out.println("Player Name: " + p.getPlayerName());
         System.out.println("$$$ before = " + p.getMoney());
         p.setMoney(p.getMoney() + winnings);

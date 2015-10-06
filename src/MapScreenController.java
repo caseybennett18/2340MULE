@@ -80,6 +80,10 @@
          nextTurnHandler.nextTurn();
      }
 
+     public Player getCurrentPlayer() {
+         return players[round.turnPhase-1];
+     }
+
      @FXML
      public void handleTown() throws Exception {
          MuleUI.getInstance().loadTown();
