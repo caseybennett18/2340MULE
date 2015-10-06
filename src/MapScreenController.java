@@ -49,6 +49,7 @@
      private Timer timer;
 
      private Label timerLabel;
+     boolean landSelectionPhaseOver = false;
 
      private final static int TILE_WIDTH = 78;
      private final static int TILE_HEIGHT = 120;
@@ -81,6 +82,10 @@
             currentPlayer.setHasPicked(true);
             currentPlayer.incrementNumProperties();
         }
+
+
+
+
     }
 
      public VBox addPlayerAttributes() {
@@ -134,57 +139,80 @@
          String labelText;
 
         public void nextTurn() {
-            //going to next round
-            if (round.turnPhase == players.length) {
-                round.currentRound++;
-                for (Player p : players) {
-                    if (round.currentRound < 2) {
-                        p.setHasPicked(false);
+            if (!landSelectionPhaseOver) {
+                //going to next round
+                if (round.turnPhase == players.length) {
+                    round.currentRound++;
+                    for (Player p : players) {
+                        if (round.currentRound < 2) {
+                            p.setHasPicked(false);
+                        }
+                        p.updatePlayerScore();
                     }
-                    p.updatePlayerScore();
+                    MuleUI.getInstance().getPlayerOrder(players);
                 }
-                MuleUI.getInstance().getPlayerOrder(players);
-                System.out.println("round.currentround");
-                System.out.println(round.currentRound);
+
+                //round is still happening
+                if (round.turnPhase <= players.length - 1) {
+                    labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
+                    players[round.turnPhase].updatePlayerScore();
+                    round.turnPhase++;
+
+
+                    //getting ready for next round
+                } else {
+                    round.turnPhase = 0;
+                    labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
+                    players[round.turnPhase].updatePlayerScore();
+                    round.turnPhase++;
+                }
+
+                //
+                if (round.currentRound > 1) {
+                    labelText = "Land Selection Phase is now over";
+                    landSelectionPhaseOver = true;
+                }
             }
 
-            //round is still happening
-            if (round.turnPhase <= players.length - 1) {
-                labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
-                players[round.turnPhase].updatePlayerScore();
-                round.turnPhase++;
-                System.out.println("round.turnphase");
-                System.out.println(round.turnPhase);
+            else if (round.currentRound > 1 && landSelectionPhaseOver) {
+                System.out.println("out of land selection phase");
+                //calculates order for the players
+                if (round.turnPhase == players.length) {
+                    round.currentRound++;
+                    for (Player p : players) {
+                        p.setHasPicked(false);
+                        p.updatePlayerScore();
+                    }
+                    MuleUI.getInstance().getPlayerOrder(players);
+                }
+
+                //round is still happening
+                if (round.turnPhase <= players.length - 1) {
+                    labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
+                    players[round.turnPhase].updatePlayerScore();
+                    round.turnPhase++;
 
                 //getting ready for next round
-            } else {
-                round.turnPhase = 0;
-                labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
-                players[round.turnPhase].updatePlayerScore();
-                round.turnPhase++;
+                } else {
+                    round.turnPhase = 0;
+                    labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
+                    players[round.turnPhase].updatePlayerScore();
+                    round.turnPhase++;
+                }
+
+
             }
 
-            //
-            if (round.currentRound > 1) {
-                labelText = "Land Selection Phase is now over";
-            }
+
 
             TextFlow root = (TextFlow) borderpane.getChildren().get(2);
             VBox vbox2 = (VBox) root.getChildren().get(0);
-            //root.getChildren().remove(1);
 
             Label pLabel = (Label) vbox2.getChildren().get(0);
             pLabel.setText(labelText);
             vbox2.getChildren().remove(2);
             vbox2.getChildren().add(addPlayerAttributes());
 
-
-
-            System.out.println("Score: " + players[round.turnPhase-1].getScore());
-            System.out.println("Money: " + players[round.turnPhase-1].getMoney());
-            System.out.println("Food: " + players[round.turnPhase-1].getFood());
-            System.out.println("Energy: " + players[round.turnPhase-1].getEnergy());
-            System.out.println("Ore: " + players[round.turnPhase-1].getOre());
         }
 
 
