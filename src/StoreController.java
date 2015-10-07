@@ -58,7 +58,7 @@ public class StoreController {
 
     @FXML
     public void handleBuyAction(ActionEvent event) throws Exception {
-        Player p = players[round.turnPhase];
+        Player p = MapScreenController.getInstance().getCurrentPlayer();
         Button clickedButton = (Button) event.getSource();
         String id = clickedButton.getId();
         System.out.print(id);
@@ -67,6 +67,7 @@ public class StoreController {
                 if (p.getMoney() >= 125 && p.getMule() == null) {
                     p.setMule(new FoodMule(p.getPlayerID(), p));
                     p.setMoney(p.getMoney() - 125);
+                    System.out.println(p.getPlayerName() + " has a " + p.getMule().toString());
                     store.decrementMuleAmount();
                 }
                 break;

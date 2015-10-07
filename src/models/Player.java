@@ -1,6 +1,8 @@
 package models;
 
 import java.util.ArrayList;
+
+import javafx.scene.control.Button;
 import models.races.BuzziteRace;
 import models.races.UgaiteRace;
 import models.races.BonzoidRace;
@@ -33,6 +35,7 @@ public class Player {
 
     //temporary fix
     private int numProperties;
+    private ArrayList<Button> ownedLand;
     private boolean hasPicked;
 
     //private ArrayList<Integer> resources;   // 0-money 1-food 2-energy 3-Smithore 4-Crystite
@@ -51,6 +54,7 @@ public class Player {
         this.time = 50;
         turnPassed = false;
         numProperties = 0;
+        ownedLand = new ArrayList<>();
     }
 
     //cost of food = cost of energy = cost of ore = $100
@@ -233,6 +237,22 @@ public class Player {
 
     public void incrementNumProperties() {
         numProperties++;
+    }
+
+    public ArrayList<Button> getOwnedLand() {
+        return ownedLand;
+    }
+
+    public void addProperty(Button b) {
+        ownedLand.add(b);
+    }
+
+    public void removeProperty(Button b) {
+        ownedLand.remove(b);
+    }
+
+    public boolean ownsLand(Button b) {
+        return ownedLand.contains(b);
     }
 
     public boolean hasPicked() {

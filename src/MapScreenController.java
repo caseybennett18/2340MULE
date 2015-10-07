@@ -1,4 +1,5 @@
  import java.net.URL;
+ import java.util.ArrayList;
  import java.util.ResourceBundle;
 
  import javafx.animation.AnimationTimer;
@@ -58,6 +59,7 @@
      private Player[] players;
      private Round round;
      private Button clickedButton;
+     private ArrayList<Button> allOwnedLands;
      protected boolean timeRanOut = false;
      final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
 
@@ -70,6 +72,7 @@
         this.round = new Round(players);
         this.timerLabel = new Label();
         timer = new Timer();
+        allOwnedLands = new ArrayList<>();
     }
 
      public static MapScreenController getInstance() {
@@ -92,12 +95,52 @@
     @FXML
     private void handleBuyLand(ActionEvent event) {
         Player currentPlayer = players[round.turnPhase-1];
+        clickedButton = (Button) event.getSource();
+
+        //first 2 rounds players get 1 land for free each turn
+        //a player may install a MULE on a land he/she owns
+        if (round.currentRound < 2) {
+            if (!currentPlayer.hasPicked()) {
+                if (!allOwnedLands.contains(clickedButton)) {
+                    allOwnedLands.add(clickedButton);
+                    clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
+                    //clickedButton.setDisable(true);
+                    currentPlayer.setHasPicked(true);
+                    currentPlayer.incrementNumProperties();
+                    currentPlayer.addProperty(clickedButton);
+                }
+            } else if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
+                clickedButton.setText("MULE");
+                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+                currentPlayer.setMule(null);
+            }
+        }
+
+        //it is after round 2 and player purchased a land grant to claim more land
+        //a player may install a MULE on a land he/she owns
+        else if (round.currentRound > 1) {
+            //if (currentPlayer.hasLandGrant()) {
+            //    //TODO be able to pick a property
+            //}
+
+            if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
+                clickedButton.setText("MULE");
+                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+                currentPlayer.setMule(null);
+            }
+        }
+
+
+/*
         if (!currentPlayer.hasPicked()) {
             clickedButton = (Button) event.getSource();
-            clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
-            //clickedButton.setDisable(true);
-            currentPlayer.setHasPicked(true);
-            currentPlayer.incrementNumProperties();
+            if (!allOwnedLands.contains(clickedButton)) {
+                allOwnedLands.add(clickedButton);
+                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
+                //clickedButton.setDisable(true);
+                currentPlayer.setHasPicked(true);
+                currentPlayer.incrementNumProperties();
+            }
         }
 
         if (round.currentRound > 1 && clickedButton.getStyle().contains(currentPlayer.getPlayerColor()) && currentPlayer.getMule() != null) {
@@ -110,6 +153,7 @@
             clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
             currentPlayer.setMule(null);
         }
+        */
     }
 
      public VBox addPlayerAttributes() {
@@ -193,7 +237,7 @@
                 if (round.currentRound > 1) {
                     labelText = "Land Selection Phase is now over";
                     landSelectionPhaseOver = true;
-                    round.turnPhase++;
+                    round.turnPhase = 0;
                 }
             }
 
