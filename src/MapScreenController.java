@@ -98,7 +98,7 @@
         clickedButton = (Button) event.getSource();
 
         //first 2 rounds players get 1 land for free each turn
-        //a player may install a MULE on a land he/she owns
+        //a player may NOT install a MULE on a land he/she owns
         if (round.currentRound < 2) {
             if (!currentPlayer.hasPicked()) {
                 if (!allOwnedLands.contains(clickedButton)) {
@@ -109,11 +109,11 @@
                     currentPlayer.incrementNumProperties();
                     currentPlayer.addProperty(clickedButton);
                 }
-            } else if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
+            } /*else if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
                 clickedButton.setText("MULE");
                 clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
                 currentPlayer.setMule(null);
-            }
+            }*/
         }
 
         //it is after round 2 and player purchased a land grant to claim more land
@@ -126,6 +126,9 @@
             if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
                 clickedButton.setText("MULE");
                 clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+                currentPlayer.setMule(null);
+            } else if (currentPlayer.getMule() != null && !currentPlayer.ownsLand(clickedButton)) {
+                System.out.println("Player " + currentPlayer.getPlayerName().toString() + " lost a mule");
                 currentPlayer.setMule(null);
             }
         }
