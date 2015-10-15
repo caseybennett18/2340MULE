@@ -84,7 +84,19 @@
      }
 
      public Player getCurrentPlayer() {
-         return players[round.turnPhase-1];
+         if (round.turnPhase == 0) {
+             return players[round.turnPhase];
+         } else {
+             return players[round.turnPhase - 1];
+         }
+     }
+
+     public Round getCurrentRound() {
+         return round;
+     }
+
+     public ArrayList<Button> getAllOwnedLands() {
+         return allOwnedLands;
      }
 
      @FXML
@@ -106,7 +118,6 @@
                     clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
                     //clickedButton.setDisable(true);
                     currentPlayer.setHasPicked(true);
-                    currentPlayer.incrementNumProperties();
                     currentPlayer.addProperty(clickedButton);
                 }
             } /*else if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
@@ -119,9 +130,12 @@
         //it is after round 2 and player purchased a land grant to claim more land
         //a player may install a MULE on a land he/she owns
         else if (round.currentRound > 1) {
-            //if (currentPlayer.hasLandGrant()) {
-            //    //TODO be able to pick a property
-            //}
+            if (currentPlayer.hasLandGrant() && !allOwnedLands.contains(clickedButton)) {
+                allOwnedLands.add(clickedButton);
+                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
+                currentPlayer.addProperty(clickedButton);
+                currentPlayer.decrementNumLandGrants();
+            }
 
             if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
                 clickedButton.setText("MULE");
@@ -211,7 +225,7 @@
             if (!landSelectionPhaseOver) {
                 //going to next round
                 if (round.turnPhase == players.length) {
-                    round.currentRound++;
+                    round.nextRound();
                     for (Player p : players) {
                         if (round.currentRound < 2) {
                             p.setHasPicked(false);
@@ -246,11 +260,11 @@
 
             else if (round.currentRound > 1 && landSelectionPhaseOver) {
                 System.out.println("out of land selection phase");
-                System.out.println(round.turnPhase);
-                System.out.println(players.length);
+                System.out.println("TurnPhase: " + round.turnPhase);
+                System.out.println("Current Round " + round.currentRound);
                 //calculates order for the players
                 if (round.turnPhase == players.length) {
-                    round.currentRound++;
+                    round.nextRound();
                     for (Player p : players) {
                         p.setHasPicked(false);
                         p.updatePlayerScore();
@@ -271,8 +285,6 @@
                     players[round.turnPhase].updatePlayerScore();
                     round.turnPhase++;
                 }
-
-
             }
 
             TextFlow root = (TextFlow) borderpane.getChildren().get(2);

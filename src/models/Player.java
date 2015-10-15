@@ -34,7 +34,7 @@ public class Player {
     private int score;
 
     //temporary fix
-    private int numProperties;
+    private int numLandGrants;
     private ArrayList<Button> ownedLand;
     private boolean hasPicked;
 
@@ -53,13 +53,14 @@ public class Player {
         this.playerColor = 0;
         this.time = 50;
         turnPassed = false;
-        numProperties = 0;
+        numLandGrants = 0;
         ownedLand = new ArrayList<>();
     }
 
     //cost of food = cost of energy = cost of ore = $100
     public void updatePlayerScore() {
-        score = money + (numProperties * 500) + ((food + energy + ore) * 100);
+
+        score = money + (getNumProperties() * 500) + ((food + energy + ore) * 100);
     }
     
     /**
@@ -232,11 +233,23 @@ public class Player {
     }
 
     public int getNumProperties() {
-        return numProperties;
+        return ownedLand.size();
     }
 
-    public void incrementNumProperties() {
-        numProperties++;
+    public int getNumLandGrants() {
+        return numLandGrants;
+    }
+
+    public void incrementNumLandGrants() {
+        numLandGrants++;
+    }
+
+    public void decrementNumLandGrants() {
+        numLandGrants--;
+    }
+
+    public boolean hasLandGrant() {
+        return numLandGrants > 0;
     }
 
     public ArrayList<Button> getOwnedLand() {

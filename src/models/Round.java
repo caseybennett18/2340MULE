@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Admin on 9/24/15.
@@ -12,13 +13,17 @@ public class Round {
     public int currentRound;
     private int playerIndex;
     public int turnPhase;
+    private Random rand;
+    public int landPrice;
 
     private Player[] players;
 
     public Round(Player[] players) {
+        rand = new Random();
         this.currentRound = 0;
         this.currentPlayer = null;
         this.turnPhase = 0;
+        landPrice = 300;
     }
 
 
@@ -38,8 +43,16 @@ public class Round {
         return currentRound++;
     }
 
+    public void nextRound() {
+        currentRound++;
+        setLandPrice(300 + (currentRound * rand.nextInt(100)));
+    }
 
+    public void setLandPrice(int price) {
+        landPrice = price;
+    }
 
-
-
+    public int getLandPrice() {
+        return landPrice;
+    }
 }

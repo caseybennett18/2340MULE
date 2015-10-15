@@ -27,5 +27,4 @@ public class TownController {
     public void handleMap() throws Exception {
         MuleUI.getInstance().loadMap();
     }
-
 }
