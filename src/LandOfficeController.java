@@ -35,8 +35,6 @@ public class LandOfficeController {
             p.setMoney(p.getMoney() - landPrice);
             System.out.println("Player " + p.getPlayerName() + " has " + p.getNumLandGrants() + " land grants");
             System.out.println("Land Price: " + landPrice);
-        } else {
-            System.out.println("Not enough $. Land costs " + landPrice);
         }
     }
 
