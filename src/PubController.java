@@ -41,6 +41,7 @@ public class PubController implements Initializable {
         p.setMoney(p.getMoney() + winnings);
         System.out.println("$$$ after = " + p.getMoney());
         MapScreenController.getInstance().nextTurn();
+        p.updatePlayerScore();
         MuleUI.getInstance().loadMap();
     }
 

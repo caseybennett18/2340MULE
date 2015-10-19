@@ -33,6 +33,7 @@ public class LandOfficeController {
         if (p.getMoney() >= landPrice && numLandAvailable > 0) {
             p.incrementNumLandGrants();
             p.setMoney(p.getMoney() - landPrice);
+            p.updatePlayerScore();
             System.out.println("Player " + p.getPlayerName() + " has " + p.getNumLandGrants() + " land grants");
             System.out.println("Land Price: " + landPrice);
         }

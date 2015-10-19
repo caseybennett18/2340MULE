@@ -74,6 +74,7 @@
         this.timerLabel = new Label();
         timer = new Timer();
         allOwnedLands = new ArrayList<>();
+        updatePlayersScores(players);
     }
 
      public static MapScreenController getInstance() {
@@ -104,6 +105,11 @@
          return allOwnedLands;
      }
 
+     private void updatePlayersScores(Player[] players) {
+         for (Player p: players) {
+             p.updatePlayerScore();
+         }
+     }
 
      @FXML
      public void handleTown() throws Exception {
@@ -224,7 +230,7 @@
                 //round is still happening
                 if (round.turnPhase <= players.length - 1) {
                     labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
-                    players[round.turnPhase].updatePlayerScore();
+                    updatePlayersScores(players);
                     round.turnPhase++;
 
 
@@ -232,7 +238,7 @@
                 } else {
                     round.turnPhase = 0;
                     labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
-                    players[round.turnPhase].updatePlayerScore();
+                    updatePlayersScores(players);
                     round.turnPhase++;
                 }
 
@@ -261,14 +267,14 @@
                 //round is still happening
                 if (round.turnPhase <= players.length - 1) {
                     labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
-                    players[round.turnPhase].updatePlayerScore();
+                    updatePlayersScores(players);
                     round.turnPhase++;
 
                 //getting ready for next round
                 } else {
                     round.turnPhase = 0;
                     labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
-                    players[round.turnPhase].updatePlayerScore();
+                    updatePlayersScores(players);
                     round.turnPhase++;
 
                     //iterate through each players owned mules and call produce
