@@ -28,7 +28,7 @@ public class PubController implements Initializable {
     public PubController() {
         gamble = new Gamble();
         rand = new Random();
-        timer = new Timer();
+        timer = MapScreenController.getInstance().getTimer();
         round = MapScreenController.getInstance().getCurrentRound();
     }
 

@@ -65,7 +65,7 @@ public class StoreController {
         switch(id) {
             case("buyFoodMule"):
                 if (p.getMoney() >= 125 && p.getMule() == null) {
-                    p.setMule(new FoodMule(p.getPlayerID(), p));
+                    p.setMule(new FoodMule(p.getPlayerID(), null, p));
                     p.setMoney(p.getMoney() - 125);
                     System.out.println(p.getPlayerName() + " has a " + p.getMule().toString());
                     store.decrementMuleAmount();
@@ -73,14 +73,14 @@ public class StoreController {
                 break;
             case("buyEnergyMule"):
                 if (p.getMoney() >= 150 && p.getMule() == null) {
-                    p.setMule(new EnergyMule(p.getPlayerID(), p));
+                    p.setMule(new EnergyMule(p.getPlayerID(), null, p));
                     p.setMoney(p.getMoney() - 150);
                     store.decrementMuleAmount();
                 }
                 break;
             case("buyOreMule"):
                 if (p.getMoney() >= 175 && p.getMule() == null) {
-                    p.setMule(new OreMule(p.getPlayerID(), p));
+                    p.setMule(new OreMule(p.getPlayerID(), null, p));
                     p.setMoney(p.getMoney() - 175);
                     store.decrementMuleAmount();
                 }

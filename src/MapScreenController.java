@@ -24,6 +24,7 @@
  import javafx.scene.shape.Circle;
  import javafx.scene.text.TextFlow;
  import javafx.util.Duration;
+ import models.Mule;
  import models.Player;
  import models.Round;
  import models.Timer;
@@ -95,9 +96,14 @@
          return round;
      }
 
+     public Timer getTimer() {
+         return timer;
+     }
+
      public ArrayList<Button> getAllOwnedLands() {
          return allOwnedLands;
      }
+
 
      @FXML
      public void handleTown() throws Exception {
@@ -140,37 +146,16 @@
             if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
                 clickedButton.setText("MULE");
                 clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+                String buttonId = clickedButton.getId();
+                currentPlayer.getMule().setButtonId(buttonId);
+                currentPlayer.addToOwnedMules(currentPlayer.getMule());
+                System.out.println(currentPlayer.getMule().getButtonId());
                 currentPlayer.setMule(null);
             } else if (currentPlayer.getMule() != null && !currentPlayer.ownsLand(clickedButton)) {
                 System.out.println("Player " + currentPlayer.getPlayerName().toString() + " lost a mule");
                 currentPlayer.setMule(null);
             }
         }
-
-
-/*
-        if (!currentPlayer.hasPicked()) {
-            clickedButton = (Button) event.getSource();
-            if (!allOwnedLands.contains(clickedButton)) {
-                allOwnedLands.add(clickedButton);
-                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
-                //clickedButton.setDisable(true);
-                currentPlayer.setHasPicked(true);
-                currentPlayer.incrementNumProperties();
-            }
-        }
-
-        if (round.currentRound > 1 && clickedButton.getStyle().contains(currentPlayer.getPlayerColor()) && currentPlayer.getMule() != null) {
-            System.out.println(currentPlayer);
-            System.out.println(currentPlayer.getPlayerColor());
-            System.out.println(currentPlayer.getPlayerName());
-            System.out.println(round.turnPhase -1);
-            clickedButton = (Button) event.getSource();
-            clickedButton.setText("MULE");
-            clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
-            currentPlayer.setMule(null);
-        }
-        */
     }
 
      public VBox addPlayerAttributes() {
@@ -219,6 +204,7 @@
      private class NextButtonPressedHandler implements EventHandler<MouseEvent> {
 
          String labelText;
+
 
         public void nextTurn() {
             timer.setTime(31);
@@ -284,6 +270,19 @@
                     labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
                     players[round.turnPhase].updatePlayerScore();
                     round.turnPhase++;
+
+                    //iterate through each players owned mules and call produce
+                    for (Player player: players) {
+
+                        for (Mule mule : player.getOwnedMules()) {
+                            System.out.println(mule.getButtonId());
+                            if (player.getEnergy() >= player.getOwnedMules().size()) {
+                                mule.produce(player);
+                                player.setEnergy(player.getEnergy() - 1);
+                            }
+
+                        }
+                    }
                 }
             }
 
@@ -322,6 +321,7 @@
                  timeRanOut = false;
              }
          }
+
      }
 
      private class TimerHandler implements EventHandler<MouseEvent> {
@@ -391,6 +391,10 @@
              timer.setTime(5);
          }
      }
+
+
+
+
 
 
     @FXML

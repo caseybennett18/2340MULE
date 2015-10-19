@@ -38,6 +38,8 @@ public class Player {
     private ArrayList<Button> ownedLand;
     private boolean hasPicked;
 
+    private ArrayList<Mule> ownedMules;
+
     //private ArrayList<Integer> resources;   // 0-money 1-food 2-energy 3-Smithore 4-Crystite
 
 
@@ -55,6 +57,7 @@ public class Player {
         turnPassed = false;
         numLandGrants = 0;
         ownedLand = new ArrayList<>();
+        ownedMules = new ArrayList<>();
     }
 
     //cost of food = cost of energy = cost of ore = $100
@@ -190,6 +193,18 @@ public class Player {
             default:
                 return new HumanRace(playerID);
         }
+    }
+
+    public void setOwnedMules(ArrayList<Mule> mules) {
+        ownedMules = mules;
+    }
+
+    public ArrayList<Mule> getOwnedMules() {
+        return ownedMules;
+    }
+
+    public void addToOwnedMules(Mule mule) {
+        ownedMules.add(mule);
     }
 
     public int getFood() {
