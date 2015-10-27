@@ -26,6 +26,14 @@ public class Round {
         landPrice = 300;
     }
 
+    public Round() {
+        rand = new Random();
+        this.currentRound = 0;
+        this.currentPlayer = null;
+        this.turnPhase = 0;
+        landPrice = 300;
+    }
+
 
     public void nextPlayer() {
 

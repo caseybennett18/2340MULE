@@ -1,15 +1,12 @@
- import java.net.URL;
+import java.net.URL;
  import java.util.ArrayList;
  import java.util.ResourceBundle;
 
- import javafx.animation.AnimationTimer;
- import javafx.animation.KeyFrame;
+import javafx.animation.KeyFrame;
  import javafx.animation.Timeline;
  import javafx.scene.Group;
  import javafx.scene.control.Label;
- import javafx.scene.control.ProgressBar;
- import javafx.scene.effect.ColorAdjust;
- import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageView;
  import javafx.scene.input.MouseEvent;
  import javafx.scene.layout.AnchorPane;
  import javafx.event.*;
@@ -20,19 +17,15 @@
  import javafx.scene.control.Button;
  import javafx.scene.layout.VBox;
 
- import javafx.scene.paint.Color;
- import javafx.scene.shape.Circle;
- import javafx.scene.text.TextFlow;
+import javafx.scene.text.TextFlow;
  import javafx.util.Duration;
  import models.Mule;
  import models.Player;
  import models.Round;
  import models.Timer;
 
- import javax.swing.*;
 
-
- public class MapScreenController implements Initializable {
+public class MapScreenController implements Initializable {
 
     @FXML
     GridPane gridpane;

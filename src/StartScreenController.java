@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import models.Player;
 import javafx.scene.control.Button;
-import java.io.IOException;
 
 /**
 * Controller for StartScreenController view

@@ -1,5 +1,4 @@
 import javafx.fxml.FXML;
-import models.Mule;
 
 /**
  * Created by clint on 9/30/15.
