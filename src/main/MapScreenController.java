@@ -39,6 +39,9 @@ public class MapScreenController implements Initializable {
      @FXML
      BorderPane borderpane;
 
+
+
+
      private ImageView iv;
      private Timeline timeline;
      private Timer timer;
@@ -395,6 +398,11 @@ public class MapScreenController implements Initializable {
          }
      }
 
+    @FXML
+    private void handleSave(ActionEvent e) throws Exception {
+        ModelFacade model = new ModelFacade();
+        model.getInstance().saveModelJson();
+    }
 
 
 

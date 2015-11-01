@@ -140,13 +140,13 @@ import javafx.scene.media.MediaPlayer;
              if (!isLoaded) {
                  pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/MapScreen.fxml"),
                          null, new JavaFXBuilderFactory());
-                 Scene scene = stage.getScene();
-                 scene.setRoot(pageMap);
+                 mapScene = stage.getScene();
+                 mapScene.setRoot(pageMap);
                  stage.sizeToScene();
                  isLoaded = true;
              } else {
-                 Scene scene = stage.getScene();
-                 scene.setRoot(pageMap);
+                 mapScene = stage.getScene();
+                 mapScene.setRoot(pageMap);
                  stage.sizeToScene();
              }
          } catch (Exception e) {
@@ -154,7 +154,13 @@ import javafx.scene.media.MediaPlayer;
              System.out.println("An error has occurred...");
          }
      }
-     
+
+     public Scene getMapScene() throws Exception {
+         loadMap();
+         return mapScene;
+     }
+
+
      public void loadTown() throws Exception {
          try {
              replaceSceneContent("/main/TownScreen.fxml");

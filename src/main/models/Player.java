@@ -1,5 +1,6 @@
 package main.models;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javafx.scene.control.Button;
@@ -289,5 +290,11 @@ public class Player {
 
     public void setHasPicked(boolean b) {
         hasPicked = b;
+    }
+
+
+
+    public void saveTo(PrintWriter out) {
+        out.println(playerName + "\t" + playerColor + "\t" + playerID + "\t" + race + "\t" + food + "\t" + energy + "\t" + money + "\t" + ore + "\t" + score + "\t" + ownedLand.toString() + "\t" + ownedMules.toString());
     }
 }
