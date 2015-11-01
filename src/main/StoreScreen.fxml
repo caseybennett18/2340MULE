@@ -11,7 +11,7 @@
       minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.StoreController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
             <AnchorPane prefHeight="280.0" prefWidth="597.0" BorderPane.alignment="CENTER">
                <children>
