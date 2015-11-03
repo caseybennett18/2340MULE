@@ -45,4 +45,9 @@ public class Tile {
     public Property getProperty() {
         return property;
     }
+
+//    public double[][] getTileLocation(int x, int y) {
+//        double[][] tiles =
+//    }
+
 }

@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import main.models.ModelFacade;
+import main.models.Mule;
 import main.models.Player;
 import javafx.scene.control.Button;
 
@@ -43,6 +45,14 @@ public class StartScreenController implements Initializable {
     private void handleStart(ActionEvent event) throws Exception {
         this.saveSettings();
         MuleUI.getInstance().loadSelect();
+    }
+
+
+    @FXML
+    private void loadGame(ActionEvent e) throws Exception {
+        ModelFacade model = new ModelFacade();
+        model.getInstance().loadModelText();
+        MuleUI.getInstance().loadMap();
     }
 
     /**

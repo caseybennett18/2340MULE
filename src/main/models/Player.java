@@ -97,6 +97,20 @@ public class Player {
         }
     }
 
+
+
+    public String getPlayerColor(int color) {
+        if (color == 0) {
+            return "#FF0000";
+        } else if (color == 1) {
+            return "#0000FF";
+        } else if (color == 2) {
+            return "#00FF00";
+        } else {
+            return "#FFFF00";
+        }
+    }
+
     /**
     * @param color
     *           sets playerColor to color
@@ -295,6 +309,6 @@ public class Player {
 
 
     public void saveTo(PrintWriter out) {
-        out.println(playerName + "\t" + playerColor + "\t" + playerID + "\t" + race + "\t" + food + "\t" + energy + "\t" + money + "\t" + ore + "\t" + score + "\t" + ownedLand.toString() + "\t" + ownedMules.toString());
+        out.println(playerName + "\t" + playerColor + "\t" + playerID + "\t" + race + "\t" + food + "\t" + energy + "\t" + money + "\t" + ore + "\t" + score + "\t" + getOwnedLand() + "\t" + ownedMules.toString());
     }
 }

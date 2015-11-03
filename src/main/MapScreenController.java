@@ -4,6 +4,7 @@ import java.net.URL;
  import java.util.ArrayList;
  import java.util.ResourceBundle;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.animation.KeyFrame;
  import javafx.animation.Timeline;
  import javafx.scene.Group;
@@ -70,6 +71,7 @@ public class MapScreenController implements Initializable {
         this.timerLabel = new Label();
         timer = new Timer();
         allOwnedLands = new ArrayList<>();
+        System.out.println(players);
         updatePlayersScores(players);
     }
 
@@ -124,15 +126,12 @@ public class MapScreenController implements Initializable {
                 if (!allOwnedLands.contains(clickedButton)) {
                     allOwnedLands.add(clickedButton);
                     clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
-                    //clickedButton.setDisable(true);
                     currentPlayer.setHasPicked(true);
+                    System.out.println("Buttonx: " + clickedButton.getLayoutX());
+                    System.out.println("Buttony: " + clickedButton.getLayoutY());
                     currentPlayer.addProperty(clickedButton);
                 }
-            } /*else if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
-                clickedButton.setText("MULE");
-                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
-                currentPlayer.setMule(null);
-            }*/
+            }
         }
 
         //it is after round 2 and player purchased a land grant to claim more land
@@ -142,6 +141,8 @@ public class MapScreenController implements Initializable {
                 allOwnedLands.add(clickedButton);
                 clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
                 currentPlayer.addProperty(clickedButton);
+                System.out.println("Buttonx: " + clickedButton.getLayoutX());
+                System.out.println("Buttony: " + clickedButton.getLayoutY());
                 currentPlayer.decrementNumLandGrants();
             }
 
@@ -151,7 +152,6 @@ public class MapScreenController implements Initializable {
                 String buttonId = clickedButton.getId();
                 currentPlayer.getMule().setButtonId(buttonId);
                 currentPlayer.addToOwnedMules(currentPlayer.getMule());
-                System.out.println(currentPlayer.getMule().getButtonId());
                 currentPlayer.setMule(null);
             } else if (currentPlayer.getMule() != null && !currentPlayer.ownsLand(clickedButton)) {
                 System.out.println("Player " + currentPlayer.getPlayerName().toString() + " lost a mule");
@@ -175,12 +175,17 @@ public class MapScreenController implements Initializable {
 
      public void addPlayerDescriptions(TextFlow tf) {
 
+         System.out.println("Round: " + round.getCurrentRound());
          VBox vboxx = new VBox();
-         Round round = new Round(players);
-         Label playerTurnLabel = new Label("Click on Button to Start Land Selection Phase!");
-
-         vboxx.getChildren().add(playerTurnLabel);
-
+         //Round round = new Round(players);
+         if (round.currentRound == 0) {
+             System.out.println(round.getCurrentRound());
+             Label playerTurnLabel = new Label("Click on Button to Start Land Selection Phase!");
+             vboxx.getChildren().add(playerTurnLabel);
+         } else {
+             Label playerTurnLabel = new Label("Click on Button to Continue Loaded Game!");
+             vboxx.getChildren().add(playerTurnLabel);
+         }
 
          Button nextButton = new Button();
          nextButton.setText("Next Player's Turn");
@@ -194,6 +199,16 @@ public class MapScreenController implements Initializable {
 
      private void generateScreen() {
         Group root = new Group();
+
+         if (ModelFacade.getInstance() != null) {
+             if (ModelFacade.getInstance().getLoaded()) {
+                 round.currentRound = ModelFacade.getInstance().getRoundFromData();
+                 System.out.println("Round load: " + round.currentRound);
+                 if (round.currentRound > 1) {
+                     landSelectionPhaseOver = true;
+                 }
+             }
+         }
 
         VBox vbox = new VBox(); //has another vbox with a label and a button
         addPlayerDescriptions(textflow);
@@ -401,7 +416,7 @@ public class MapScreenController implements Initializable {
     @FXML
     private void handleSave(ActionEvent e) throws Exception {
         ModelFacade model = new ModelFacade();
-        model.getInstance().saveModelJson();
+        model.getInstance().saveModelText();
     }
 
 

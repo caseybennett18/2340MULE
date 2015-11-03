@@ -278,7 +278,7 @@
                               <Image url="@res/Town.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="plain" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" />
+                        <Button fx:id="plain"  mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" />
                         <Button fx:id="plain" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="1" />
                         <Button fx:id="1mountain" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="2" />
                         <Button fx:id="plain" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="3" />

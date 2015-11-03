@@ -50,7 +50,7 @@
       </Text>
       <ImageView fitHeight="138.0" fitWidth="200.0" layoutX="200.0" layoutY="153.0">
          <image>
-            <Image url="@../../../../../../Desktop/M.U.L.E..png" />
+            <Image url="@res/planet-m.u.l.e.-1.jpg" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="25.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty?">
@@ -58,7 +58,7 @@
             <Font name="Andale Mono" size="20.0" />
          </font>
       </Text>
-      <Button layoutX="251.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Load Game">
+      <Button layoutX="251.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Load Game" onAction="#loadGame">
          <font>
             <Font name="Andale Mono" size="13.0" />
          </font>

@@ -46,6 +46,8 @@ public class Round {
         return currentRound;
     }
 
+    public void setCurrentRound(int round) {currentRound = round;}
+
     public Player getCurrentPlayer() {
         if (turnPhase == 0 ) {
             return players[turnPhase];
