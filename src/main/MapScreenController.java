@@ -467,15 +467,13 @@ public class MapScreenController implements Initializable {
             ObservableList<Node> buttons = gridpane.getChildren();
             System.out.println(buttons);
             for (Node node: buttons) {
-                String id = node.getId();
-                System.out.println(node.getId());
-                if (node.getId() != null && node.getId().compareTo("plain") == 0) {
+                if (node.getId() != null && (node.getId().compareTo("plain") == 0
+                        || node.getId().compareTo("2mountain") == 0 || node.getId().compareTo("river") == 0
+                        || node.getId().compareTo("3mountain") == 0 || node.getId().compareTo("1mountain") == 0)) {
                     Button b = (Button) node;
-                    System.out.print(b.getLayoutX() +  " y " + b.getLayoutY());
-//                    System.out.println("Row Index: " + gridpane.getRowIndex(b) + " Column Index: " + gridpane.getColumnIndex(b));
-//                    if (gridpane.getRowIndex(b) == y && gridpane.getColumnIndex(b) == x) {
-//                        node.setStyle("-fx-border-color:" + color + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
-//                    }
+                    if ((int) b.getLayoutX() == x && (int) b.getLayoutY() == y) {
+                        node.setStyle("-fx-border-color:" + color + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+                    }
                 }
             }
         } catch (Exception e) {
