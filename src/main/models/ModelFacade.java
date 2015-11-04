@@ -54,7 +54,9 @@ public class ModelFacade {
             e.printStackTrace();
         }
         try (PrintWriter out = new PrintWriter(new File("map.text"))) {
-            MapScreenController.getInstance().getTile().saveColorMatrix(out);
+            String[][] colorMatrix = MapScreenController.getInstance().getTile().getColorMatrix();
+            MapScreenController.getInstance().getTile().saveColorMatrix(out,colorMatrix);
+            //saveColorMatrix(out);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -60,7 +60,7 @@ public class MapScreenController implements Initializable {
      private Label timerLabel;
      boolean landSelectionPhaseOver = false;
 
-    private Tile tile;
+     private static Tile tile;
 
      private final static int TILE_WIDTH = 78;
      private final static int TILE_HEIGHT = 120;
