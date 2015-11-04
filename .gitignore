@@ -1,2 +1,3 @@
 *.class
 /out/production/2340MULE/main/*
+*.txt
