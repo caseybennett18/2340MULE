@@ -475,7 +475,8 @@ public class MapScreenController implements Initializable {
                         || node.getId().compareTo("3mountain") == 0 || node.getId().compareTo("1mountain") == 0)) {
                     Button b = (Button) node;
                     if ((int) b.getLayoutX() == x && (int) b.getLayoutY() == y) {
-                        node.setStyle("-fx-border-color:" + color + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+                        node.setStyle("-fx-border-color:" + color + "; -fx-background-color: transparent; " +
+                                "-fx-border-width: 6px; -fx-text-fill: black;");
                     }
                 }
             }
