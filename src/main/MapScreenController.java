@@ -216,10 +216,13 @@ public class MapScreenController implements Initializable {
 
          if (ModelFacade.getInstance() != null) {
              try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
-                 for (int i = 0; i <3; i++) {
+
+                 for (int i = 0; i < 45; i++) {
                      String line = br.readLine();
-                     String[] tokens = line.split("\t");
-                     getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
+                     if (line != null){
+                         String[] tokens = line.split("\t");
+                         getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
+                     }
                  }
 
              } catch (FileNotFoundException ex) {
