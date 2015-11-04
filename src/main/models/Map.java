@@ -20,18 +20,18 @@ public class Map {
             {TileType.PLAIN, TileType.PLAIN, TileType.MOUNTAIN_2, TileType.PLAIN, TileType.RIVER, TileType.PLAIN, TileType.PLAIN, TileType.PLAIN, TileType.MOUNTAIN_2}
     };
 
-    public Map() {
-        tiles = createDefaultMap();
-    }
+//    public Map() {
+//        tiles = createDefaultMap();
+//    }
 
-    public Tile[][] createDefaultMap() {
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < 9; col++) {
-                tiles[row][col] = new Tile(defaultMap[row][col], row, col);
-            }
-        }
-        return tiles;
-    }
+//    public Tile[][] createDefaultMap() {
+//        for (int row = 0; row < 5; row++) {
+//            for (int col = 0; col < 9; col++) {
+//                tiles[row][col] = new Tile(defaultMap[row][col], row, col);
+//            }
+//        }
+//        return tiles;
+//    }
 
     public Tile getTile(int x, int y) {
         return tiles[x][y];

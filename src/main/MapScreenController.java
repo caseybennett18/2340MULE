@@ -1,14 +1,24 @@
 package main;
 
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.net.URL;
  import java.util.ArrayList;
  import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.animation.KeyFrame;
  import javafx.animation.Timeline;
- import javafx.scene.Group;
- import javafx.scene.control.Label;
+import javafx.collections.ObservableList;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
  import javafx.scene.input.MouseEvent;
  import javafx.scene.layout.AnchorPane;
@@ -50,6 +60,8 @@ public class MapScreenController implements Initializable {
      private Label timerLabel;
      boolean landSelectionPhaseOver = false;
 
+    private Tile tile;
+
      private final static int TILE_WIDTH = 78;
      private final static int TILE_HEIGHT = 120;
 
@@ -68,6 +80,7 @@ public class MapScreenController implements Initializable {
         this.players = MuleUI.getInstance().getPlayerArray();
         MuleUI.getInstance().getPlayerOrder(players);
         this.round = new Round(players);
+        tile = new Tile();
         this.timerLabel = new Label();
         timer = new Timer();
         allOwnedLands = new ArrayList<>();
@@ -127,9 +140,8 @@ public class MapScreenController implements Initializable {
                     allOwnedLands.add(clickedButton);
                     clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
                     currentPlayer.setHasPicked(true);
-                    System.out.println("Buttonx: " + clickedButton.getLayoutX());
-                    System.out.println("Buttony: " + clickedButton.getLayoutY());
                     currentPlayer.addProperty(clickedButton);
+                    tile.setTileLocationColor(clickedButton.getLayoutX(), clickedButton.getLayoutY(), currentPlayer.getPlayerColor());
                 }
             }
         }
@@ -141,8 +153,8 @@ public class MapScreenController implements Initializable {
                 allOwnedLands.add(clickedButton);
                 clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
                 currentPlayer.addProperty(clickedButton);
-                System.out.println("Buttonx: " + clickedButton.getLayoutX());
-                System.out.println("Buttony: " + clickedButton.getLayoutY());
+                tile.setTileLocationColor(clickedButton.getLayoutX(), clickedButton.getLayoutY(), currentPlayer.getPlayerColor());
+                System.out.print(tile.getColorMatrix()[0][0]);
                 currentPlayer.decrementNumLandGrants();
             }
 
@@ -197,10 +209,22 @@ public class MapScreenController implements Initializable {
          tf.getChildren().add(vboxx);
      }
 
-     private void generateScreen() {
+     private void generateScreen() throws Exception {
         Group root = new Group();
 
+
+
          if (ModelFacade.getInstance() != null) {
+             try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
+                 for (int i = 0; i <3; i++) {
+                     String line = br.readLine();
+                     String[] tokens = line.split("\t");
+                     getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
+                 }
+
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+             }
              if (ModelFacade.getInstance().getLoaded()) {
                  round.currentRound = ModelFacade.getInstance().getRoundFromData();
                  System.out.println("Round load: " + round.currentRound);
@@ -266,6 +290,7 @@ public class MapScreenController implements Initializable {
                 System.out.println("out of land selection phase");
                 System.out.println("TurnPhase: " + round.turnPhase);
                 System.out.println("Current Round " + round.currentRound);
+
                 //calculates order for the players
                 if (round.turnPhase == players.length) {
                     round.nextRound();
@@ -425,7 +450,37 @@ public class MapScreenController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle rb ) {
-        generateScreen();
+        try {
+            generateScreen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public Tile getTile() {
+        return tile;
+    }
+
+    public void getButtons(int x, int y, String color) throws Exception {
+        try{
+            ObservableList<Node> buttons = gridpane.getChildren();
+            System.out.println(buttons);
+            for (Node node: buttons) {
+                String id = node.getId();
+                System.out.println(node.getId());
+                if (node.getId() != null && node.getId().compareTo("plain") == 0) {
+                    Button b = (Button) node;
+                    System.out.print(b.getLayoutX() +  " y " + b.getLayoutY());
+//                    System.out.println("Row Index: " + gridpane.getRowIndex(b) + " Column Index: " + gridpane.getColumnIndex(b));
+//                    if (gridpane.getRowIndex(b) == y && gridpane.getColumnIndex(b) == x) {
+//                        node.setStyle("-fx-border-color:" + color + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+//                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

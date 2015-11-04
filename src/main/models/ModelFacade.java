@@ -53,10 +53,15 @@ public class ModelFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try (PrintWriter out = new PrintWriter(new File("map.text"))) {
+            MapScreenController.getInstance().getTile().saveColorMatrix(out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public void loadModelText() {
+    public void loadModelText() throws Exception {
         loaded = true;
         try {
             try (BufferedReader br = new BufferedReader(new FileReader("data.text"))) {
@@ -84,24 +89,22 @@ public class ModelFacade {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
             }
+//            try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
+//                MapScreenController ms = new MapScreenController();
+//                for (int i = 0; i <3; i++) {
+//                    String line = br.readLine();
+//                    String[] tokens = line.split("\t");
+//                    ms.getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
+//                }
+//
+//            } catch (FileNotFoundException ex) {
+//                Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         } catch (IOException ex) {
             Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-
-//    public void saveModelJson() throws Exception {
-//        try {
-//            try (PrintWriter out = new PrintWriter(new File("data.json"))) {
-//                Gson gs = new Gson();
-//                Type type = new TypeToken<List<Player>>(){}.getType();
-//                String gson = gs.toJson(players);
-//                out.println(gson);
-//            }
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
 
 
     private void generatePlayers() {
