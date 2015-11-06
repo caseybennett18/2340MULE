@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
  */
 public class LandOfficeController {
 
-    private Round round;
+    private final Round round;
 
     @FXML
     Button buyLandGrantButton;
@@ -24,7 +24,7 @@ public class LandOfficeController {
     }
 
     @FXML
-    public void buyLandGrant() throws Exception {
+    public void buyLandGrant() {
         Player p = MapScreenController.getInstance().getCurrentPlayer();
         int landPrice = round.getLandPrice();
         ArrayList<Button> allOwnedLand = MapScreenController.getInstance().getAllOwnedLands();
@@ -38,10 +38,12 @@ public class LandOfficeController {
         }
     }
 
-    @FXML
-    public void handleLandOffice() throws Exception {
-        MuleUI.getInstance().loadLandOffice();
-    }
+// --Commented out by Inspection START (11/5/2015 9:25 PM):
+//    @FXML
+//    public void handleLandOffice() throws Exception {
+//        MuleUI.getInstance().loadLandOffice();
+//    }
+// --Commented out by Inspection STOP (11/5/2015 9:25 PM)
 
 
     @FXML
@@ -50,7 +52,9 @@ public class LandOfficeController {
     }
 
 
-    @FXML
-    public void initialize(URL url, ResourceBundle rb) {
-    }
+// --Commented out by Inspection START (11/5/2015 9:25 PM):
+//    @FXML
+//    public void initialize(URL url, ResourceBundle rb) {
+//    }
+// --Commented out by Inspection STOP (11/5/2015 9:25 PM)
 }

@@ -37,27 +37,24 @@ public class StoreController {
     @FXML
     Button sellMule;
 
-    private Player[] players;
-    private Round round;
-    private Timer timer;
-    private Store store;
+    private final Store store;
 
 
 
     public StoreController() {
-        this.players = MuleUI.getInstance().getPlayerArray();
-        this.round = new Round(MuleUI.getInstance().getPlayerArray());
-        this.timer = new Timer();
+        Player[] players = MuleUI.getInstance().getPlayerArray();
+        Round round = new Round(MuleUI.getInstance().getPlayerArray());
+        Timer timer = new Timer();
         this.store = new Store(MuleUI.getInstance().getDifficulty());
     }
 
     @FXML
-    public void handleTown() throws Exception {
+    public void handleTown() {
         MuleUI.getInstance().loadTown();
     }
 
     @FXML
-    public void handleBuyAction(ActionEvent event) throws Exception {
+    public void handleBuyAction(ActionEvent event) {
         Player p = MapScreenController.getInstance().getCurrentPlayer();
         Button clickedButton = (Button) event.getSource();
         String id = clickedButton.getId();

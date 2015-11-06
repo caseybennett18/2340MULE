@@ -10,8 +10,6 @@ import main.models.Round;
  */
 public class FlyingCatBugsEvent extends Event {
 
-    private Player p;
-
     @Override
     public boolean badEvent() {
         return true;
@@ -19,7 +17,7 @@ public class FlyingCatBugsEvent extends Event {
 
     @Override
     public String performEvent() {
-        p = MapScreenController.getInstance().getCurrentPlayer();
+        Player p = MapScreenController.getInstance().getCurrentPlayer();
         int change = 4 * getRound();
 
         //makes sure a players $ cannot go below 0
