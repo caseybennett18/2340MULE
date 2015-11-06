@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created by clint on 10/14/15.
+ * LandOfficeController Class: FXML controller for Land Office where you can buy land.
  */
 public class LandOfficeController {
 
@@ -23,6 +24,11 @@ public class LandOfficeController {
         round = MapScreenController.getInstance().getCurrentRound();
     }
 
+    /**
+     * buyLandGrant method: gets the current player, the land price, available land, and if you have money, you can purchase land.
+     * Throws Exception
+     * Return Type: Void
+     */
     @FXML
     public void buyLandGrant() throws Exception {
         Player p = MapScreenController.getInstance().getCurrentPlayer();
@@ -38,18 +44,31 @@ public class LandOfficeController {
         }
     }
 
+    /**
+     * handleLandOffice method: loads the land office.
+     * Throws Exception
+     * Return Type: Void
+     */
     @FXML
     public void handleLandOffice() throws Exception {
         MuleUI.getInstance().loadLandOffice();
     }
 
-
+    /**
+     * handleLandOffice method: loads the land office.
+     * Throws Exception
+     * Return Type: Void
+     */
     @FXML
     public void handleTown() throws Exception {
         MuleUI.getInstance().loadTown();
     }
 
-
+    /**
+     * initialize Method
+     * Param: URL url and ResourceBundle rb
+     * Return Type: Void
+     */
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
     }

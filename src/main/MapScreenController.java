@@ -24,6 +24,9 @@ import javafx.scene.text.TextFlow;
 import main.models.*;
 import main.models.Event;
 
+/**
+ * MapScreenController Class: Controls all of the map screen attributes, handles buying land, and keeps track of players turn/inventory via a Timer/TimerHandler.
+ */
 
 public class MapScreenController implements Initializable {
 
@@ -70,14 +73,28 @@ public class MapScreenController implements Initializable {
         updatePlayersScores(players);
     }
 
+
+    /**
+     * MapScreenController Class: Controls all of the map screen attributes, handles buying land, and keeps track of players turn/inventory via a Timer/TimerHandler.
+     */
      public static MapScreenController getInstance() {
          return instance;
      }
 
+    /**
+     * nextTurn method: gets the next turn via the nextTurnHandler
+     * Param: none
+     * Return Type: void
+     */
      public void nextTurn() {
          nextTurnHandler.nextTurn();
      }
 
+    /**
+     * getCurrentPlayer method: getter for current player.
+     * Param: none
+     * Return Type: Player
+     */
      public Player getCurrentPlayer() {
          if (round.turnPhase == 0) {
              return players[round.turnPhase];
@@ -86,29 +103,59 @@ public class MapScreenController implements Initializable {
          }
      }
 
+    /**
+     * getCurrentRound method: getter for current round.
+     * Param: none
+     * Return Type: Round
+     */
      public Round getCurrentRound() {
          return round;
      }
 
+    /**
+     * getTimer method: return the timer.
+     * Param: none
+     * Return Type: Timer
+     */
      public Timer getTimer() {
          return timer;
      }
 
+    /**
+     * getAllOwnedLands method: getter for all owned lands.
+     * Param: none
+     * Return Type: ArrayList<Button>
+     */
      public ArrayList<Button> getAllOwnedLands() {
          return allOwnedLands;
      }
 
+    /**
+     * updatePlayerScores method: updates the player's score.
+     * Param: none
+     * Return Type: Void
+     */
      private void updatePlayersScores(Player[] players) {
          for (Player p: players) {
              p.updatePlayerScore();
          }
      }
 
+    /**
+     * handleTown method: loads the town.
+     * Param: none
+     * Return Type: Void
+     */
      @FXML
      public void handleTown() throws Exception {
          MuleUI.getInstance().loadTown();
      }
-    
+
+    /**
+     * handleBuyLand method: handles buying land based on game round and mule ownership.
+     * Param: ActionEvent event
+     * Return Type: Void
+     */
     @FXML
     private void handleBuyLand(ActionEvent event) {
         Player currentPlayer = players[round.turnPhase-1];
@@ -157,6 +204,11 @@ public class MapScreenController implements Initializable {
         }
     }
 
+    /**
+     * handlePlayerAttribures method: handles buying land based on game round and mule ownership.
+     * Param: ActionEvent event
+     * Return Type: Void
+     */
      public VBox addPlayerAttributes() {
          int i = 0;
          VBox vbox = new VBox();
@@ -169,7 +221,11 @@ public class MapScreenController implements Initializable {
          return vbox;
      }
 
-
+    /**
+     * addPlayerDescriptions method: Adds player turns and land selection phases.
+     * Param: TextFlow tf
+     * Return Type: Void
+     */
      public void addPlayerDescriptions(TextFlow tf) {
 
          VBox vboxx = new VBox();
@@ -189,6 +245,11 @@ public class MapScreenController implements Initializable {
          tf.getChildren().add(vboxx);
      }
 
+    /**
+     * generateScreen method: generates the screen.
+     * Param: None
+     * Return Type: Void
+     */
      private void generateScreen() {
         Group root = new Group();
 
@@ -200,11 +261,19 @@ public class MapScreenController implements Initializable {
         anchorpane.getChildren().add(root);//has a group
      }
 
+    /**
+     * NextButtonPressedHandler class: creates timer for next turn dependent on if in land selection phase or not with player attributes.
+     * Implements EventHandler<MouseEvent>
+     */
      private class NextButtonPressedHandler implements EventHandler<MouseEvent> {
 
          String labelText;
 
-
+        /**
+         * nextTurn method: determines who's turn it is and regulates mule production for land.
+         * Param: none
+         * Return Value: void
+         */
         public void nextTurn() {
             timer.setTime(31);
             if (!landSelectionPhaseOver) {
@@ -243,6 +312,7 @@ public class MapScreenController implements Initializable {
                 }
             }
 
+            //after land selection phase is
             else if (round.currentRound > 1 && landSelectionPhaseOver) {
 
                 System.out.println("out of land selection phase");
@@ -299,7 +369,11 @@ public class MapScreenController implements Initializable {
 
         }
 
-
+        /**
+         * addPlayerAttributes method: adds player's attributes to screen.
+         * Param: none
+         * Return Value: VBox
+         */
          public VBox addPlayerAttributes() {
              int i = 0;
              VBox vbox = new VBox();
@@ -312,7 +386,11 @@ public class MapScreenController implements Initializable {
              return vbox;
          }
 
-
+        /**
+         * handle method: handles button events.
+         * Param: MouseEvent me
+         * Return Value: void
+         */
          public void handle(MouseEvent me) {
              clickedButton = (Button) me.getSource();
              if (!(clickedButton.isDisabled())) {
@@ -327,10 +405,19 @@ public class MapScreenController implements Initializable {
 
      }
 
+    /**
+     * TimerHandler private class: handles button events.
+     * Implements EventHandler<MouseEvent>
+     */
      private class TimerHandler implements EventHandler<MouseEvent> {
 
          final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
 
+        /**
+         * restartTimer method:
+         * Param: none
+         * Return Value: void
+         */
          public void restartTimer() {
              if (timeline != null) {
                  timeline.stop();
@@ -360,11 +447,21 @@ public class MapScreenController implements Initializable {
              timeline.playFromStart();
          }
 
+        /**
+         * handle method: handles Timer restart.
+         * Param: MouseEvent me
+         * Return Value: void
+         */
          public void handle(MouseEvent me) {
              restartTimer();
          }
      }
 
+    /**
+     * calculateTime method: calculates time for each player based off of round phases.
+     * Param: int roundPhase
+     * Return Value: void
+     */
      public void calculateTime(int roundPhase) {
          boolean hasPartialShortage = false;
          boolean hasTotalShortage = false;
@@ -395,11 +492,11 @@ public class MapScreenController implements Initializable {
          }
      }
 
-
-
-
-
-
+    /**
+     * initialize method: generates screen for Map.
+     * Param: URL url, ResourceBundle rb
+     * Return Value: void.
+     */
     @FXML
     public void initialize(URL url, ResourceBundle rb ) {
         generateScreen();
