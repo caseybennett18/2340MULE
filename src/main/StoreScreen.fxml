@@ -6,30 +6,57 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.StoreController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="379.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.StoreController">
    <children>
        <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
             <AnchorPane prefHeight="280.0" prefWidth="597.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="366.0" fitWidth="618.0" layoutX="-10.0" layoutY="1.0">
+                  <ImageView fitHeight="321.0" fitWidth="605.0" layoutX="-6.0">
                      <image>
-                        <Image url="@res/store_background.jpg" />
+                        <Image url="@res/farmacia_editada.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="buyFoodMule" onAction="#handleBuyAction" layoutX="45.0" layoutY="184.0" mnemonicParsing="false" text="Buy Food Mule" />
-                  <Button fx:id="buyEnergyMule" onAction="#handleBuyAction" layoutX="45.0" layoutY="243.0" mnemonicParsing="false" text="Buy Energy Mule" />
-                  <Button fx:id="buyOreMule" onAction="#handleBuyAction" layoutX="45.0" layoutY="298.0" mnemonicParsing="false" text="Buy Ore Mule" />
-                  <Button fx:id="buyFood" onAction="#handleBuyAction" layoutX="45.0" layoutY="25.0" mnemonicParsing="false" text="Buy Food" />
-                  <Button fx:id="buyEnergy" onAction="#handleBuyAction" layoutX="45.0" layoutY="80.0" mnemonicParsing="false" text="Buy Energy" />
-                  <Button fx:id="buyOre" onAction="#handleBuyAction" layoutX="45.0" layoutY="129.0" mnemonicParsing="false" text="Buy Ore" />
-                  <Button fx:id="sellFood" onAction="#handleBuyAction" layoutX="460.0" layoutY="25.0" mnemonicParsing="false" text="Sell Food" />
-                  <Button fx:id="sellEnergy" onAction="#handleBuyAction" layoutX="460.0" layoutY="80.0" mnemonicParsing="false" text="Sell Energy" />
-                  <Button fx:id="sellOre" onAction="#handleBuyAction" layoutX="460.0" layoutY="137.0" mnemonicParsing="false" text="Sell Ore" />
-                  <Button fx:id="sellMule" onAction="#handleBuyAction" layoutX="461.0" layoutY="237.0" mnemonicParsing="false" text="Sell Mule" />
+                  <Button fx:id="buyFoodMule" layoutX="15.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="26.0" prefWidth="137.0" text="Buy Food Mule">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="buyEnergyMule" layoutX="15.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="26.0" prefWidth="137.0" text="Buy Energy Mule">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="buyOreMule" layoutX="16.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="26.0" prefWidth="135.0" text="Buy Ore Mule">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="buyFood" layoutX="22.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="25.0" prefWidth="125.0" text="Buy Food">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="buyEnergy" layoutX="21.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="25.0" prefWidth="126.0" text="Buy Energy">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="buyOre" layoutX="21.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="25.0" prefWidth="126.0" text="Buy Ore">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="sellFood" layoutX="454.0" layoutY="152.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="25.0" prefWidth="102.0" text="Sell Food">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="sellEnergy" layoutX="454.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleBuyAction" text="Sell Energy">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="sellOre" layoutX="453.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="26.0" prefWidth="104.0" text="Sell Ore">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="sellMule" layoutX="454.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="26.0" prefWidth="103.0" text="Sell Mule">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </center>
@@ -55,9 +82,13 @@
             </MenuBar>
          </top>
          <bottom>
-            <TextFlow prefHeight="94.0" prefWidth="596.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+            <TextFlow prefHeight="20.0" prefWidth="605.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
                <children>
-                  <Button onAction="#handleTown" mnemonicParsing="false" text="Back to Town" />
+                  <Button mnemonicParsing="false" onAction="#handleTown" text="Back to Town">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </TextFlow>
          </bottom>
