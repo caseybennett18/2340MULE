@@ -48,17 +48,12 @@
             <Font name="Andale Mono" size="20.0" />
          </font>
       </Text>
-      <ImageView fitHeight="138.0" fitWidth="200.0" layoutX="200.0" layoutY="153.0">
-         <image>
-            <Image url="@res/planet-m.u.l.e.-1.jpg" />
-         </image>
-      </ImageView>
       <Text fill="WHITE" layoutX="25.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty?">
          <font>
             <Font name="Andale Mono" size="20.0" />
          </font>
       </Text>
-      <Button layoutX="251.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Load Game" onAction="#loadGame">
+      <Button layoutX="251.0" layoutY="354.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="25.0" prefWidth="97.0" text="Load Game">
          <font>
             <Font name="Andale Mono" size="13.0" />
          </font>
@@ -68,5 +63,10 @@
             <Font name="Andale Mono" size="13.0" />
          </font>
       </Button>
+      <ImageView fitHeight="138.0" fitWidth="200.0" layoutX="200.0" layoutY="136.0">
+         <image>
+            <Image url="@res/M.U.L.E..png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
