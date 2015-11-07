@@ -1,26 +1,33 @@
 package main;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.net.URL;
- import java.util.ArrayList;
- import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.animation.KeyFrame;
- import javafx.animation.Timeline;
- import javafx.scene.Group;
- import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
- import javafx.scene.input.MouseEvent;
- import javafx.scene.layout.AnchorPane;
- import javafx.event.*;
- import javafx.fxml.FXML;
- import javafx.fxml.Initializable;
- import javafx.scene.layout.BorderPane;
- import javafx.scene.layout.GridPane;
- import javafx.scene.control.Button;
- import javafx.scene.layout.VBox;
+import javafx.animation.Timeline;
+import javafx.collections.ObservableList;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.event.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
 import javafx.scene.text.TextFlow;
- import javafx.util.Duration;
+import javafx.util.Duration;
 import main.models.*;
 import main.models.Event;
 
@@ -42,34 +49,36 @@ public class MapScreenController implements Initializable {
      @FXML
      BorderPane borderpane;
 
-     private ImageView iv;
-     private Timeline timeline;
-     private Timer timer;
 
-     private Label timerLabel;
-     boolean landSelectionPhaseOver = false;
+    private Timeline timeline;
+     private final Timer timer;
 
-     private final static int TILE_WIDTH = 78;
-     private final static int TILE_HEIGHT = 120;
+     private final Label timerLabel;
+     private boolean landSelectionPhaseOver = false;
+
+     private static Tile tile;
+
+     // --Commented out by Inspection (11/5/2015 8:46 PM):private final static int TILE_WIDTH = 78;
+     // --Commented out by Inspection (11/5/2015 8:54 PM):private final static int TILE_HEIGHT = 120;
 
      private static MapScreenController instance;
-     private Player[] players;
-     private Round round;
+     private final Player[] players;
+     private final Round round;
      private Button clickedButton;
-     private ArrayList<Button> allOwnedLands;
-     protected boolean timeRanOut = false;
-     final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
+     private final ArrayList<Button> allOwnedLands;
+     private boolean timeRanOut = false;
+     private final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
 
-     private boolean alreadyPicked = false;
-    
     public MapScreenController() {
         instance = this;
         this.players = MuleUI.getInstance().getPlayerArray();
         MuleUI.getInstance().getPlayerOrder(players);
         this.round = new Round(players);
+        tile = new Tile();
         this.timerLabel = new Label();
         timer = new Timer();
         allOwnedLands = new ArrayList<>();
+        System.out.println(Arrays.toString(players));
         updatePlayersScores(players);
     }
 
@@ -150,6 +159,7 @@ public class MapScreenController implements Initializable {
      public void handleTown() throws Exception {
          MuleUI.getInstance().loadTown();
      }
+<<<<<<< HEAD
 
     /**
      * handleBuyLand method: handles buying land based on game round and mule ownership.
@@ -211,6 +221,58 @@ public class MapScreenController implements Initializable {
      */
      public VBox addPlayerAttributes() {
          int i = 0;
+=======
+    
+// --Commented out by Inspection START (11/5/2015 9:22 PM):
+//    @FXML
+//    private void handleBuyLand(ActionEvent event) {
+//        Player currentPlayer = players[round.turnPhase-1];
+//        clickedButton = (Button) event.getSource();
+//
+//        //first 2 rounds players get 1 land for free each turn
+//        //a player may NOT install a MULE on a land he/she owns
+//        if (round.currentRound < 2) {
+//            if (!currentPlayer.hasPicked()) {
+//                if (!allOwnedLands.contains(clickedButton)) {
+//                    allOwnedLands.add(clickedButton);
+//                    clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
+//                    currentPlayer.setHasPicked(true);
+//                    currentPlayer.addProperty(clickedButton);
+//                    tile.setTileLocationColor(clickedButton.getLayoutX(), clickedButton.getLayoutY(), currentPlayer.getPlayerColor());
+//                }
+//            }
+//        }
+//
+//        //it is after round 2 and player purchased a land grant to claim more land
+//        //a player may install a MULE on a land he/she owns
+//        else if (round.currentRound > 1) {
+//            if (currentPlayer.hasLandGrant() && !allOwnedLands.contains(clickedButton)) {
+//                allOwnedLands.add(clickedButton);
+//                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
+//                currentPlayer.addProperty(clickedButton);
+//                tile.setTileLocationColor(clickedButton.getLayoutX(), clickedButton.getLayoutY(), currentPlayer.getPlayerColor());
+//                System.out.print(tile.getColorMatrix()[0][0]);
+//                currentPlayer.decrementNumLandGrants();
+//            }
+//
+//            if (currentPlayer.getMule() != null && currentPlayer.ownsLand(clickedButton)) {
+//                clickedButton.setText("MULE");
+//                clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px; -fx-text-fill: black;");
+//                String buttonId = clickedButton.getId();
+//                currentPlayer.getMule().setButtonId(buttonId);
+//                currentPlayer.addToOwnedMules(currentPlayer.getMule());
+//                currentPlayer.setMule(null);
+//            } else if (currentPlayer.getMule() != null && !currentPlayer.ownsLand(clickedButton)) {
+//                System.out.println("Player " + currentPlayer.getPlayerName() + " lost a mule");
+//                currentPlayer.setMule(null);
+//            }
+//        }
+//    }
+// --Commented out by Inspection STOP (11/5/2015 9:22 PM)
+
+     private VBox addPlayerAttributes() {
+         //int i = 0;
+>>>>>>> 72c3bb9b2af841c899658bdd0974b40d4228b9dd
          VBox vbox = new VBox();
          for (Player cp: players) {
              Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
@@ -221,19 +283,29 @@ public class MapScreenController implements Initializable {
          return vbox;
      }
 
+<<<<<<< HEAD
     /**
      * addPlayerDescriptions method: Adds player turns and land selection phases.
      * Param: TextFlow tf
      * Return Type: Void
      */
      public void addPlayerDescriptions(TextFlow tf) {
+=======
 
+     private void addPlayerDescriptions(TextFlow tf) {
+>>>>>>> 72c3bb9b2af841c899658bdd0974b40d4228b9dd
+
+         System.out.println("Round: " + round.getCurrentRound());
          VBox vboxx = new VBox();
-         Round round = new Round(players);
-         Label playerTurnLabel = new Label("Click on Button to Start Land Selection Phase!");
-
-         vboxx.getChildren().add(playerTurnLabel);
-
+         //Round round = new Round(players);
+         if (round.currentRound == 0) {
+             System.out.println(round.getCurrentRound());
+             Label playerTurnLabel = new Label("Click on Button to Start Land Selection Phase!");
+             vboxx.getChildren().add(playerTurnLabel);
+         } else {
+             Label playerTurnLabel = new Label("Click on Button to Continue Loaded Game!");
+             vboxx.getChildren().add(playerTurnLabel);
+         }
 
          Button nextButton = new Button();
          nextButton.setText("Next Player's Turn");
@@ -245,13 +317,42 @@ public class MapScreenController implements Initializable {
          tf.getChildren().add(vboxx);
      }
 
+<<<<<<< HEAD
     /**
      * generateScreen method: generates the screen.
      * Param: None
      * Return Type: Void
      */
      private void generateScreen() {
+=======
+     private void generateScreen() throws Exception {
+>>>>>>> 72c3bb9b2af841c899658bdd0974b40d4228b9dd
         Group root = new Group();
+
+
+
+         if (ModelFacade.getInstance() != null) {
+             try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
+
+                 for (int i = 0; i < 45; i++) {
+                     String line = br.readLine();
+                     if (line != null){
+                         String[] tokens = line.split("\t");
+                         getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
+                     }
+                 }
+
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             if (ModelFacade.getInstance().getLoaded()) {
+                 round.currentRound = ModelFacade.getInstance().getRoundFromData();
+                 System.out.println("Round load: " + round.currentRound);
+                 if (round.currentRound > 1) {
+                     landSelectionPhaseOver = true;
+                 }
+             }
+         }
 
         VBox vbox = new VBox(); //has another vbox with a label and a button
         addPlayerDescriptions(textflow);
@@ -312,12 +413,17 @@ public class MapScreenController implements Initializable {
                 }
             }
 
+<<<<<<< HEAD
             //after land selection phase is
             else if (round.currentRound > 1 && landSelectionPhaseOver) {
+=======
+            else if (round.currentRound > 1) {
+>>>>>>> 72c3bb9b2af841c899658bdd0974b40d4228b9dd
 
                 System.out.println("out of land selection phase");
                 System.out.println("TurnPhase: " + round.turnPhase);
                 System.out.println("Current Round " + round.currentRound);
+
                 //calculates order for the players
                 if (round.turnPhase == players.length) {
                     round.nextRound();
@@ -375,7 +481,7 @@ public class MapScreenController implements Initializable {
          * Return Value: VBox
          */
          public VBox addPlayerAttributes() {
-             int i = 0;
+             //int i = 0;
              VBox vbox = new VBox();
              for (Player cp: players) {
                  Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
@@ -429,19 +535,16 @@ public class MapScreenController implements Initializable {
              timeline.setCycleCount(Timeline.INDEFINITE);
              timeline.getKeyFrames().add(
                      new KeyFrame(Duration.seconds(1),
-                             new EventHandler<ActionEvent>() {
-                                 public void handle(ActionEvent event) {
-                                     timer.decrementTimer();
-                                     timerLabel.setText("Time remaining in turn - " + timer.getTime());
-                                     if (timer.getTime() <= 0) {
-                                         timeline.stop();
-                                         timeRanOut = true;
-                                         nextTurnHandler.nextTurn();
-                                         timer.setTime(31);
-                                         timeline.playFromStart();
-                                     }
+                             event -> {
+                                 timer.decrementTimer();
+                                 timerLabel.setText("Time remaining in turn - " + timer.getTime());
+                                 if (timer.getTime() <= 0) {
+                                     timeline.stop();
+                                     timeRanOut = true;
+                                     nextTurnHandler.nextTurn();
+                                     timer.setTime(31);
+                                     timeline.playFromStart();
                                  }
-
                              }
                      ));
              timeline.playFromStart();
@@ -457,6 +560,7 @@ public class MapScreenController implements Initializable {
          }
      }
 
+<<<<<<< HEAD
     /**
      * calculateTime method: calculates time for each player based off of round phases.
      * Param: int roundPhase
@@ -497,9 +601,81 @@ public class MapScreenController implements Initializable {
      * Param: URL url, ResourceBundle rb
      * Return Value: void.
      */
+=======
+// --Commented out by Inspection START (11/5/2015 9:21 PM):
+//     public void calculateTime(int roundPhase) {
+//         boolean hasPartialShortage = false;
+//         boolean hasTotalShortage = false;
+//         if (0 <= roundPhase && roundPhase <= 4) {
+//             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 3) {
+//                 hasPartialShortage = true;
+//             } else if (players[round.turnPhase].getFood() == 0) {
+//                 hasTotalShortage = true;
+//             }
+//         } else if (5 <= roundPhase && roundPhase <= 8) {
+//             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 4) {
+//                 hasPartialShortage = true;
+//             } else if (players[round.turnPhase].getFood() == 0) {
+//                 hasTotalShortage = true;
+//             }
+//         } else {
+//             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 5) {
+//                 hasPartialShortage = true;
+//             } else if (players[round.turnPhase].getFood() == 0) {
+//                 hasTotalShortage = true;
+//             }
+//         }
+//
+//         if (hasPartialShortage) {
+//             timer.setTime(30);
+//         } else if (hasTotalShortage) {
+//             timer.setTime(5);
+//         }
+//     }
+// --Commented out by Inspection STOP (11/5/2015 9:21 PM)
+
+// --Commented out by Inspection START (11/5/2015 9:22 PM):
+//    @FXML
+//    private void handleSave() {
+//        ModelFacade.getInstance().saveModelText();
+//    }
+// --Commented out by Inspection STOP (11/5/2015 9:22 PM)
+
+
+
+
+
+>>>>>>> 72c3bb9b2af841c899658bdd0974b40d4228b9dd
     @FXML
     public void initialize(URL url, ResourceBundle rb ) {
-        generateScreen();
+        try {
+            generateScreen();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public Tile getTile() {
+        return tile;
+    }
+
+    private void getButtons(int x, int y, String color) {
+        try{
+            ObservableList<Node> buttons = gridpane.getChildren();
+            System.out.println(buttons);
+            buttons.stream().filter(node -> node.getId() != null && (node.getId().compareTo("plain") == 0
+                    || node.getId().compareTo("2mountain") == 0 || node.getId().compareTo("river") == 0
+                    || node.getId().compareTo("3mountain") == 0 || node.getId().compareTo("1mountain") == 0)).forEach(node -> {
+                Button b = (Button) node;
+                if ((int) b.getLayoutX() == x && (int) b.getLayoutY() == y) {
+                    node.setStyle("-fx-border-color:" + color + "; -fx-background-color: transparent; " +
+                            "-fx-border-width: 6px; -fx-text-fill: black;");
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

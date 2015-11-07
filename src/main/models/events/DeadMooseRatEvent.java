@@ -10,8 +10,6 @@ import main.models.Round;
  */
 public class DeadMooseRatEvent extends Event {
 
-    private Player p;
-
     //public DeadMooseRatEvent() {
     //    p = MapScreenController.getInstance().getCurrentPlayer();
     //}
@@ -23,7 +21,7 @@ public class DeadMooseRatEvent extends Event {
 
     @Override
     public String performEvent() {
-        p = MapScreenController.getInstance().getCurrentPlayer();
+        Player p = MapScreenController.getInstance().getCurrentPlayer();
         int change = 2 * getRound();
         p.setMoney(p.getMoney() + change);
         return "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $" + change;

@@ -25,7 +25,7 @@ public class TownController {
     }
 
     @FXML
-    public void handleMap() throws Exception {
+    public void handleMap() {
         MuleUI.getInstance().loadMap();
     }
 }

@@ -17,11 +17,11 @@ import javafx.scene.media.MediaPlayer;
      private static MuleUI instance;
      private int numPlayers;
      private int difficulty; //beginner - 0, standard - 1, tournament - 2
-     public int playerTurn;
-     public boolean isLoaded = false;
+     private final int playerTurn;
+     private boolean isLoaded = false;
 
-     public Scene mapScene;
-     public Parent pageMap = null;
+     private Scene mapScene;
+     private Parent pageMap = null;
      
      private Player[] players;
 
@@ -125,7 +125,7 @@ import javafx.scene.media.MediaPlayer;
          launch(args);
      }
      
-     public void loadSelect() throws Exception {
+     public void loadSelect() {
          try {
              replaceSceneContent("/main/SelectRace.fxml");
          } catch (Exception e) {
@@ -134,19 +134,19 @@ import javafx.scene.media.MediaPlayer;
          }
      }
      
-     public void loadMap() throws Exception {
+     public void loadMap() {
 
          try {
              if (!isLoaded) {
                  pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/MapScreen.fxml"),
                          null, new JavaFXBuilderFactory());
-                 Scene scene = stage.getScene();
-                 scene.setRoot(pageMap);
+                 mapScene = stage.getScene();
+                 mapScene.setRoot(pageMap);
                  stage.sizeToScene();
                  isLoaded = true;
              } else {
-                 Scene scene = stage.getScene();
-                 scene.setRoot(pageMap);
+                 mapScene = stage.getScene();
+                 mapScene.setRoot(pageMap);
                  stage.sizeToScene();
              }
          } catch (Exception e) {
@@ -154,8 +154,14 @@ import javafx.scene.media.MediaPlayer;
              System.out.println("An error has occurred...");
          }
      }
-     
-     public void loadTown() throws Exception {
+
+     public Scene getMapScene() throws Exception {
+         loadMap();
+         return mapScene;
+     }
+
+
+     public void loadTown() {
          try {
              replaceSceneContent("/main/TownScreen.fxml");
          } catch (Exception e) {
@@ -199,6 +205,8 @@ import javafx.scene.media.MediaPlayer;
              System.out.println("An error has occurred...");
          }
      }
+
+
  }
  
  

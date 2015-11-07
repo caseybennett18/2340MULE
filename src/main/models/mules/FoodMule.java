@@ -8,11 +8,9 @@ import main.models.Player;
  */
 public class FoodMule extends Mule {
 
-    private Player p;
-
     public FoodMule(int playerId, String buttonId, Player p) {
         super(playerId, buttonId);
-        this.p = new Player(playerId);
+        Player p1 = new Player(playerId);
         price = 125;
     }
 

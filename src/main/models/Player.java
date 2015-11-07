@@ -1,5 +1,6 @@
 package main.models;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javafx.scene.control.Button;
@@ -19,10 +20,9 @@ public class Player {
     //private ArrayList<Resource> resources;
     //private ArrayList<Property> properties;
     private int playerColor; // 0 - Red, 1 - Blue, 2 - Green, 3 - Yellow
-    private int playerID;
+    private final int playerID;
     private String playerName;
-    protected Race race;
-    private int time;
+    private Race race;
     private boolean turnPassed;
 
     private int food;
@@ -35,7 +35,7 @@ public class Player {
 
     //temporary fix
     private int numLandGrants;
-    private ArrayList<Button> ownedLand;
+    private final ArrayList<Button> ownedLand;
     private boolean hasPicked;
 
     private ArrayList<Mule> ownedMules;
@@ -53,7 +53,7 @@ public class Player {
         this.playerName = null;
         this.mule = null;
         this.playerColor = 0;
-        this.time = 50;
+        int time = 50;
         turnPassed = false;
         numLandGrants = 0;
         ownedLand = new ArrayList<>();
@@ -96,19 +96,38 @@ public class Player {
         }
     }
 
+
+
+    public String getPlayerColor(int color) {
+        if (color == 0) {
+            return "#FF0000";
+        } else if (color == 1) {
+            return "#0000FF";
+        } else if (color == 2) {
+            return "#00FF00";
+        } else {
+            return "#FFFF00";
+        }
+    }
+
     /**
     * @param color
     *           sets playerColor to color
     */
     public void setPlayerColor(String color) {
-        if (color == "#FF0000") {
-            playerColor = 0;
-        } else if (color == "#0000FF") {
-            playerColor = 1;
-        } else if (color == "#00FF00") {
-            playerColor = 2;
-        } else {
-            playerColor = 3;
+        switch (color) {
+            case "#FF0000":
+                playerColor = 0;
+                break;
+            case "#0000FF":
+                playerColor = 1;
+                break;
+            case "#00FF00":
+                playerColor = 2;
+                break;
+            default:
+                playerColor = 3;
+                break;
         }
     }
 
@@ -134,21 +153,25 @@ public class Player {
         return race;
     }
     
-    /**
-    * checks whether the player chose to pass or not
-    * @return turnPassed
-    */
-    public boolean getTurnPassed() {
-        return turnPassed;
-    }
-    
-    /**
-    * @param b
-    *         set turnPassed status
-    */
-    public void setTurnPassed(boolean b) {
-        turnPassed = b;
-    }
+// --Commented out by Inspection START (11/5/2015 8:35 PM):
+//    /**
+//    * checks whether the player chose to pass or not
+//    * @return turnPassed
+//    */
+//    public boolean getTurnPassed() {
+//        return turnPassed;
+//    }
+// --Commented out by Inspection STOP (11/5/2015 8:35 PM)
+
+// --Commented out by Inspection START (11/5/2015 8:35 PM):
+//    /**
+//    * @param b
+//    *         set turnPassed status
+//    */
+//    public void setTurnPassed(boolean b) {
+//        turnPassed = b;
+//    }
+// --Commented out by Inspection STOP (11/5/2015 8:35 PM)
 
     //0 for human, 1 for buzzite, 2 for ugaite, 3 for bonzoid, 4 for flapper
     /**
@@ -175,10 +198,10 @@ public class Player {
     
     //0 for human, 1 for buzzite, 2 for ugaite, 3 for bonzoid, 4 for flapper
     /**
-    * @param
+    * @param String race
     *         
     */
-    public Race createRace(String race) {
+    private Race createRace(String race) {
         switch (race) {
             case "human":
                 return new HumanRace(playerID);
@@ -195,9 +218,11 @@ public class Player {
         }
     }
 
-    public void setOwnedMules(ArrayList<Mule> mules) {
-        ownedMules = mules;
-    }
+// --Commented out by Inspection START (11/5/2015 8:35 PM):
+//    public void setOwnedMules(ArrayList<Mule> mules) {
+//        ownedMules = mules;
+//    }
+// --Commented out by Inspection STOP (11/5/2015 8:35 PM)
 
     public ArrayList<Mule> getOwnedMules() {
         return ownedMules;
@@ -247,7 +272,7 @@ public class Player {
         this.score = score;
     }
 
-    public int getNumProperties() {
+    private int getNumProperties() {
         return ownedLand.size();
     }
 
@@ -267,7 +292,7 @@ public class Player {
         return numLandGrants > 0;
     }
 
-    public ArrayList<Button> getOwnedLand() {
+    private ArrayList<Button> getOwnedLand() {
         return ownedLand;
     }
 
@@ -275,9 +300,11 @@ public class Player {
         ownedLand.add(b);
     }
 
-    public void removeProperty(Button b) {
-        ownedLand.remove(b);
-    }
+// --Commented out by Inspection START (11/5/2015 8:35 PM):
+//    public void removeProperty(Button b) {
+//        ownedLand.remove(b);
+//    }
+// --Commented out by Inspection STOP (11/5/2015 8:35 PM)
 
     public boolean ownsLand(Button b) {
         return ownedLand.contains(b);
@@ -289,5 +316,11 @@ public class Player {
 
     public void setHasPicked(boolean b) {
         hasPicked = b;
+    }
+
+
+
+    public void saveTo(PrintWriter out) {
+        out.println(playerName + "\t" + playerColor + "\t" + playerID + "\t" + race + "\t" + food + "\t" + energy + "\t" + money + "\t" + ore + "\t" + score + "\t" + getOwnedLand() + "\t" + ownedMules.toString());
     }
 }
