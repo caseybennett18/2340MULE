@@ -44,7 +44,7 @@ public class LandOfficeController {
         }
     }
 
-<<<<<<< HEAD
+
     /**
      * handleLandOffice method: loads the land office.
      * Throws Exception
@@ -54,14 +54,14 @@ public class LandOfficeController {
     public void handleLandOffice() throws Exception {
         MuleUI.getInstance().loadLandOffice();
     }
-=======
+
 // --Commented out by Inspection START (11/5/2015 9:25 PM):
 //    @FXML
 //    public void handleLandOffice() throws Exception {
 //        MuleUI.getInstance().loadLandOffice();
 //    }
 // --Commented out by Inspection STOP (11/5/2015 9:25 PM)
->>>>>>> 72c3bb9b2af841c899658bdd0974b40d4228b9dd
+
 
     /**
      * handleLandOffice method: loads the land office.
@@ -73,7 +73,7 @@ public class LandOfficeController {
         MuleUI.getInstance().loadTown();
     }
 
-<<<<<<< HEAD
+
     /**
      * initialize Method
      * Param: URL url and ResourceBundle rb
@@ -82,12 +82,12 @@ public class LandOfficeController {
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
     }
-=======
+
 
 // --Commented out by Inspection START (11/5/2015 9:25 PM):
 //    @FXML
 //    public void initialize(URL url, ResourceBundle rb) {
 //    }
 // --Commented out by Inspection STOP (11/5/2015 9:25 PM)
->>>>>>> 72c3bb9b2af841c899658bdd0974b40d4228b9dd
+
 }
