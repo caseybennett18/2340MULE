@@ -154,7 +154,6 @@ public class MapScreenController implements Initializable {
                 clickedButton.setStyle("-fx-border-color:" + currentPlayer.getPlayerColor() + "; -fx-background-color: transparent; -fx-border-width: 6px;");
                 currentPlayer.addProperty(clickedButton);
                 tile.setTileLocationColor(clickedButton.getLayoutX(), clickedButton.getLayoutY(), currentPlayer.getPlayerColor());
-                System.out.print(tile.getColorMatrix()[0][0]);
                 currentPlayer.decrementNumLandGrants();
             }
 
@@ -477,6 +476,7 @@ public class MapScreenController implements Initializable {
                     if ((int) b.getLayoutX() == x && (int) b.getLayoutY() == y) {
                         node.setStyle("-fx-border-color:" + color + "; -fx-background-color: transparent; " +
                                 "-fx-border-width: 6px; -fx-text-fill: black;");
+                        tile.setTileLocationColor((double) x, (double) y, color);
                     }
                 }
             }
