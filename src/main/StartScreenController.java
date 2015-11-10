@@ -37,7 +37,15 @@ public class StartScreenController implements Initializable {
 
     private int numPlayers;
     private int difficulty;
-     
+
+    public int getNumPlayers() {
+        return numPlayers;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
     /**
     *
     *
@@ -127,7 +135,7 @@ public class StartScreenController implements Initializable {
     /**
     * creates an array of players with the length of numPlayers
     */
-    private void createPlayers() {
+    public void createPlayers() {
         for (int i = 0; i < this.numPlayers; i++) {
             Player p = new Player(i);
             if (this.difficulty == 0) {
