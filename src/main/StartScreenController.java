@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import main.models.ModelFacade;
-import main.models.Mule;
 import main.models.Player;
 import javafx.scene.control.Button;
 
@@ -20,8 +19,10 @@ public class StartScreenController implements Initializable {
     @FXML
     Button startButton;
 
-    @FXML
-    Button beginnerButton;
+// --Commented out by Inspection START (11/5/2015 9:37 PM):
+//    @FXML
+//    Button beginnerButton;
+// --Commented out by Inspection STOP (11/5/2015 9:37 PM)
     @FXML
     Button standardButton;
     @FXML
@@ -38,11 +39,11 @@ public class StartScreenController implements Initializable {
     private int difficulty;
      
     /**
-    * 
-    * 
+    *
+    *
     */
     @FXML
-    private void handleStart(ActionEvent event) throws Exception {
+    private void handleStart(ActionEvent event) {
         this.saveSettings();
         MuleUI.getInstance().loadSelect();
     }
@@ -51,7 +52,7 @@ public class StartScreenController implements Initializable {
     @FXML
     private void loadGame(ActionEvent e) throws Exception {
         ModelFacade model = new ModelFacade();
-        model.getInstance().loadModelText();
+        ModelFacade.getInstance().loadModelText();
         MuleUI.getInstance().loadMap();
     }
 
@@ -114,7 +115,7 @@ public class StartScreenController implements Initializable {
     }
 
     /**
-    * Takes settings inputed into view and sets the appropriate values in the
+    * Takes settings inputted into view and sets the appropriate values in the
     * GameUI singleton instance
     */
     private void saveSettings() {

@@ -53,8 +53,7 @@ public class SelectScreenController implements Initializable {
  	private int index;
  	private Player player;
 
- 	private String name;
- 	private String raceId;
+	private String raceId;
  	private String playerColor;
 
  	/**
@@ -71,7 +70,7 @@ public class SelectScreenController implements Initializable {
 	 *@throws Exception
 	 *				sets the name, race, color, and money for subsequent players
 	 */
- 	public void handleContinue() throws Exception {
+ 	public void handleContinue() {
  		this.player = MuleUI.getInstance().getPlayer(index);
  		this.setNameText();
  		this.player.setRace(raceId);
@@ -95,9 +94,9 @@ public class SelectScreenController implements Initializable {
     * setPlayerName is set to nameText
     */
  	@FXML
- 	public void setNameText() {
- 		this.name = nameText.getText();
- 		this.player.setPlayerName(this.name);
+	private void setNameText() {
+		String name = nameText.getText();
+ 		this.player.setPlayerName(name);
  	}
 
  	/**

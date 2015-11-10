@@ -19,20 +19,20 @@ public class PubController implements Initializable {
     @FXML
     Button gambleButton;
 
-    private Gamble gamble;
-    private Random rand;
-    private Round round;
-    private Timer timer;
+    private final Gamble gamble;
+    // --Commented out by Inspection (11/5/2015 9:33 PM):private final Random rand;
+    private final Round round;
+    private final Timer timer;
 
     public PubController() {
         gamble = new Gamble();
-        rand = new Random();
+        //rand = new Random();
         timer = MapScreenController.getInstance().getTimer();
         round = MapScreenController.getInstance().getCurrentRound();
     }
 
     @FXML
-    public void gamble() throws Exception {
+    public void gamble() {
         int winnings = gamble.calculateBonus(timer.getTime(), round.currentRound);
         Player p = MapScreenController.getInstance().getCurrentPlayer();
         System.out.println("Player Name: " + p.getPlayerName());
@@ -44,14 +44,16 @@ public class PubController implements Initializable {
         MuleUI.getInstance().loadMap();
     }
 
-    @FXML
-    public void handlePub() throws Exception {
-        MuleUI.getInstance().loadPub();
-    }
+// --Commented out by Inspection START (11/5/2015 9:34 PM):
+//    @FXML
+//    public void handlePub() throws Exception {
+//        MuleUI.getInstance().loadPub();
+//    }
+// --Commented out by Inspection STOP (11/5/2015 9:34 PM)
 
 
     @FXML
-    public void handleTown() throws Exception {
+    public void handleTown() {
         MuleUI.getInstance().loadTown();
     }
 

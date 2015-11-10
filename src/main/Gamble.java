@@ -4,6 +4,7 @@ import java.util.Random;
 
 /**
  * Created by clint on 9/30/15.
+ * The Gamble class calculates money bonus based off round phase and time left.
  */
 public class Gamble {
 
@@ -15,14 +16,29 @@ public class Gamble {
         rand = new Random();
     }
 
+    /**
+     * Getter for Winning
+     * Param: none
+     * Return Type: int
+     */
     public int getWinnings() {
         return winnings;
     }
 
+    /**
+     * Setter for Winnings: winnings = bonusValue.
+     * Param: bonusValue
+     * Return Type: void
+     */
     public void setWinnings(int bonusValue) {
         winnings = bonusValue;
     }
 
+    /**
+     * CalculateBonus method calculates bonus with round phase + time left in your round.
+     * Param: bonusValue
+     * Return Type: void
+     */
     public int calculateBonus(int timeLeft, int roundPhase) {
         int moneyBonus;
         int timeBonus;

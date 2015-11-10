@@ -17,11 +17,11 @@ import javafx.scene.media.MediaPlayer;
      private static MuleUI instance;
      private int numPlayers;
      private int difficulty; //beginner - 0, standard - 1, tournament - 2
-     public int playerTurn;
-     public boolean isLoaded = false;
+     private final int playerTurn;
+     private boolean isLoaded = false;
 
-     public Scene mapScene;
-     public Parent pageMap = null;
+     private Scene mapScene;
+     private Parent pageMap = null;
      
      private Player[] players;
 
@@ -125,7 +125,7 @@ import javafx.scene.media.MediaPlayer;
          launch(args);
      }
      
-     public void loadSelect() throws Exception {
+     public void loadSelect() {
          try {
              replaceSceneContent("/main/SelectRace.fxml");
          } catch (Exception e) {
@@ -134,7 +134,7 @@ import javafx.scene.media.MediaPlayer;
          }
      }
      
-     public void loadMap() throws Exception {
+     public void loadMap() {
 
          try {
              if (!isLoaded) {
@@ -161,7 +161,7 @@ import javafx.scene.media.MediaPlayer;
      }
 
 
-     public void loadTown() throws Exception {
+     public void loadTown() {
          try {
              replaceSceneContent("/main/TownScreen.fxml");
          } catch (Exception e) {

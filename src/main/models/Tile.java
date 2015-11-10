@@ -19,7 +19,7 @@ public class Tile {
 
     int xCord;
     int yCord;
-    String[][] colorMatrix;
+    static String[][] colorMatrix;
 
     public Tile() {
         xCord = 0;
@@ -112,7 +112,7 @@ public class Tile {
     }
 
 
-    public void saveColorMatrix(PrintWriter out) {
+    public void saveColorMatrix(PrintWriter out, String[][] colorMatrix) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 if (colorMatrix[i][j] != null) {

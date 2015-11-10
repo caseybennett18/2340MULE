@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SelectScreenController">
-   <children>
-      <ImageView fitHeight="400.0" fitWidth="606.0">
-         <image>
-            <Image url="@res/Blue-Background-Images-HD-Wallpaper-1080x607.jpg" />
-         </image>
-      </ImageView>
-      <TextField fx:id="nameText" layoutX="50.0" layoutY="67.0" />
-      <Label layoutX="46.0" layoutY="14.0" prefHeight="33.0" prefWidth="191.0" text="Player Name" textFill="#dde818">
-         <font>
-            <Font name="System Bold Italic" size="31.0" />
-         </font>
-      </Label>
-      <Label layoutX="50.0" layoutY="132.0" prefHeight="46.0" prefWidth="360.0" text="Select A Race" textFill="#dde818">
-         <font>
-            <Font name="System Bold Italic" size="31.0" />
-         </font>
-      </Label>
-      <Label layoutX="50.0" layoutY="245.0" prefHeight="46.0" prefWidth="360.0" text="Select A Color" textFill="#dde818">
-         <font>
-            <Font name="System Bold Italic" size="31.0" />
-         </font>
-      </Label>
-      <Button fx:id="continueButton" layoutX="472.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleContinue" text="Continue" />
-      <Button fx:id="human" layoutX="50.0" layoutY="194.0" mnemonicParsing="false" text="Human" onAction="#setHumanRace"/>
-      <Button fx:id="flapper" layoutX="142.0" layoutY="194.0" mnemonicParsing="false" text="Flapper" onAction="#setFlapperRace"/>
-      <Button fx:id="buzzite" layoutX="235.0" layoutY="194.0" mnemonicParsing="false" text="Buzzite" onAction="#setBuzziteRace"/>
-       <Button fx:id="ugaite" layoutX="300.0" layoutY="194.0" mnemonicParsing="false" text="Ugaite" onAction="#setUgaiteRace"/>
-       <Button fx:id="bonzoid" layoutX="370.0" layoutY="194.0" mnemonicParsing="false" text="Bonzoid" onAction="#setBonzoidRace"/>
-       <Button fx:id="red" layoutX="50.0" layoutY="303.0" mnemonicParsing="false" text="Red" onAction="#setRedColor"/>
-      <Button fx:id="blue" layoutX="125.0" layoutY="303.0" mnemonicParsing="false" text="Blue" onAction="#setBlueColor"/>
-      <Button fx:id="green" layoutX="208.0" layoutY="303.0" mnemonicParsing="false" text="Green" onAction="#setGreenColor"/>
-      <Button fx:id="yellow" layoutX="300.0" layoutY="303.0" mnemonicParsing="false" text="Yellow" onAction="#setYellowColor"/>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.SelectScreenController">
+  <children>
+    <ImageView fitHeight="400.0" fitWidth="606.0">
+      <image>
+        <Image url="@res/Blue-Background-Images-HD-Wallpaper-1080x607.jpg" />
+      </image>
+    </ImageView>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLACK" height="400.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" width="606.0" />
+    <TextField fx:id="nameText" layoutX="228.0" layoutY="94.0" />
+    <Label layoutX="233.0" layoutY="41.0" prefHeight="33.0" prefWidth="134.0" text="Player Name" textFill="WHITE">
+      <font>
+        <Font name="Andale Mono" size="20.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="221.0" layoutY="128.0" prefHeight="46.0" prefWidth="158.0" text="Player A Race" textFill="WHITE" />
+    <Label font="$x1" layoutX="214.0" layoutY="232.0" prefHeight="46.0" prefWidth="172.0" text="Select A Color" textFill="WHITE" />
+    <Button fx:id="continueButton" layoutX="260.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleContinue" text="Continue" />
+    <Button fx:id="human" layoutX="96.0" layoutY="193.0" mnemonicParsing="false" onAction="#setHumanRace" text="Human" />
+    <Button fx:id="flapper" layoutX="180.0" layoutY="193.0" mnemonicParsing="false" onAction="#setFlapperRace" text="Flapper" />
+    <Button fx:id="buzzite" layoutX="271.0" layoutY="193.0" mnemonicParsing="false" onAction="#setBuzziteRace" text="Buzzite" />
+    <Button fx:id="ugaite" layoutX="357.0" layoutY="193.0" mnemonicParsing="false" onAction="#setUgaiteRace" text="Ugaite" />
+    <Button fx:id="bonzoid" layoutX="439.0" layoutY="193.0" mnemonicParsing="false" onAction="#setBonzoidRace" text="Bonzoid" />
+    <Button fx:id="red" layoutX="164.0" layoutY="293.0" mnemonicParsing="false" onAction="#setRedColor" text="Red" />
+    <Button fx:id="blue" layoutX="229.0" layoutY="293.0" mnemonicParsing="false" onAction="#setBlueColor" text="Blue" />
+    <Button fx:id="green" layoutX="295.0" layoutY="293.0" mnemonicParsing="false" onAction="#setGreenColor" text="Green" />
+    <Button fx:id="yellow" layoutX="372.0" layoutY="293.0" mnemonicParsing="false" onAction="#setYellowColor" text="Yellow" />
+  </children>
 </AnchorPane>

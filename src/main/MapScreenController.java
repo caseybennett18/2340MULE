@@ -6,32 +6,32 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
- import java.util.ArrayList;
- import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.animation.KeyFrame;
- import javafx.animation.Timeline;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
- import javafx.scene.input.MouseEvent;
- import javafx.scene.layout.AnchorPane;
- import javafx.event.*;
- import javafx.fxml.FXML;
- import javafx.fxml.Initializable;
- import javafx.scene.layout.BorderPane;
- import javafx.scene.layout.GridPane;
- import javafx.scene.control.Button;
- import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.event.*;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
 import javafx.scene.text.TextFlow;
- import javafx.util.Duration;
+import javafx.util.Duration;
 import main.models.*;
 import main.models.Event;
 
@@ -41,40 +41,40 @@ public class MapScreenController implements Initializable {
     @FXML
     GridPane gridpane;
 
-     @FXML
-     AnchorPane anchorpane;
+    @FXML
+    AnchorPane anchorpane;
 
-     @FXML
-     TextFlow textflow;
+    @FXML
+    TextFlow textflow;
 
-     @FXML
-     BorderPane borderpane;
-
-
+    @FXML
+    BorderPane borderpane;
 
 
-     private ImageView iv;
-     private Timeline timeline;
-     private Timer timer;
 
-     private Label timerLabel;
-     boolean landSelectionPhaseOver = false;
 
-    private Tile tile;
+    private ImageView iv;
+    private Timeline timeline;
+    private Timer timer;
 
-     private final static int TILE_WIDTH = 78;
-     private final static int TILE_HEIGHT = 120;
+    private Label timerLabel;
+    boolean landSelectionPhaseOver = false;
 
-     private static MapScreenController instance;
-     private Player[] players;
-     private Round round;
-     private Button clickedButton;
-     private ArrayList<Button> allOwnedLands;
-     protected boolean timeRanOut = false;
-     final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
+    private static Tile tile;
 
-     private boolean alreadyPicked = false;
-    
+    private final static int TILE_WIDTH = 78;
+    private final static int TILE_HEIGHT = 120;
+
+    private static MapScreenController instance;
+    private Player[] players;
+    private Round round;
+    private Button clickedButton;
+    private ArrayList<Button> allOwnedLands;
+    protected boolean timeRanOut = false;
+    final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
+
+    private boolean alreadyPicked = false;
+
     public MapScreenController() {
         instance = this;
         this.players = MuleUI.getInstance().getPlayerArray();
@@ -88,45 +88,45 @@ public class MapScreenController implements Initializable {
         updatePlayersScores(players);
     }
 
-     public static MapScreenController getInstance() {
-         return instance;
-     }
+    public static MapScreenController getInstance() {
+        return instance;
+    }
 
-     public void nextTurn() {
-         nextTurnHandler.nextTurn();
-     }
+    public void nextTurn() {
+        nextTurnHandler.nextTurn();
+    }
 
-     public Player getCurrentPlayer() {
-         if (round.turnPhase == 0) {
-             return players[round.turnPhase];
-         } else {
-             return players[round.turnPhase - 1];
-         }
-     }
+    public Player getCurrentPlayer() {
+        if (round.turnPhase == 0) {
+            return players[round.turnPhase];
+        } else {
+            return players[round.turnPhase - 1];
+        }
+    }
 
-     public Round getCurrentRound() {
-         return round;
-     }
+    public Round getCurrentRound() {
+        return round;
+    }
 
-     public Timer getTimer() {
-         return timer;
-     }
+    public Timer getTimer() {
+        return timer;
+    }
 
-     public ArrayList<Button> getAllOwnedLands() {
-         return allOwnedLands;
-     }
+    public ArrayList<Button> getAllOwnedLands() {
+        return allOwnedLands;
+    }
 
-     private void updatePlayersScores(Player[] players) {
-         for (Player p: players) {
-             p.updatePlayerScore();
-         }
-     }
+    private void updatePlayersScores(Player[] players) {
+        for (Player p: players) {
+            p.updatePlayerScore();
+        }
+    }
 
-     @FXML
-     public void handleTown() throws Exception {
-         MuleUI.getInstance().loadTown();
-     }
-    
+    @FXML
+    public void handleTown() throws Exception {
+        MuleUI.getInstance().loadTown();
+    }
+
     @FXML
     private void handleBuyLand(ActionEvent event) {
         Player currentPlayer = players[round.turnPhase-1];
@@ -171,70 +171,70 @@ public class MapScreenController implements Initializable {
         }
     }
 
-     public VBox addPlayerAttributes() {
-         int i = 0;
-         VBox vbox = new VBox();
-         for (Player cp: players) {
-             Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
-                     + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
-                     + " | Energy: " + cp.getEnergy());
-             vbox.getChildren().add(p);
-         }
-         return vbox;
-     }
+    public VBox addPlayerAttributes() {
+        int i = 0;
+        VBox vbox = new VBox();
+        for (Player cp: players) {
+            Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
+                    + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
+                    + " | Energy: " + cp.getEnergy());
+            vbox.getChildren().add(p);
+        }
+        return vbox;
+    }
 
 
-     public void addPlayerDescriptions(TextFlow tf) {
+    public void addPlayerDescriptions(TextFlow tf) {
 
-         System.out.println("Round: " + round.getCurrentRound());
-         VBox vboxx = new VBox();
-         //Round round = new Round(players);
-         if (round.currentRound == 0) {
-             System.out.println(round.getCurrentRound());
-             Label playerTurnLabel = new Label("Click on Button to Start Land Selection Phase!");
-             vboxx.getChildren().add(playerTurnLabel);
-         } else {
-             Label playerTurnLabel = new Label("Click on Button to Continue Loaded Game!");
-             vboxx.getChildren().add(playerTurnLabel);
-         }
+        System.out.println("Round: " + round.getCurrentRound());
+        VBox vboxx = new VBox();
+        //Round round = new Round(players);
+        if (round.currentRound == 0) {
+            System.out.println(round.getCurrentRound());
+            Label playerTurnLabel = new Label("Click on Button to Start Land Selection Phase!");
+            vboxx.getChildren().add(playerTurnLabel);
+        } else {
+            Label playerTurnLabel = new Label("Click on Button to Continue Loaded Game!");
+            vboxx.getChildren().add(playerTurnLabel);
+        }
 
-         Button nextButton = new Button();
-         nextButton.setText("Next Player's Turn");
-         nextButton.setOnMouseClicked(new NextButtonPressedHandler());
-         nextButton.setOnMouseReleased(new TimerHandler());
-         vboxx.getChildren().add(nextButton);
-         vboxx.getChildren().add(addPlayerAttributes());
+        Button nextButton = new Button();
+        nextButton.setText("Next Player's Turn");
+        nextButton.setOnMouseClicked(new NextButtonPressedHandler());
+        nextButton.setOnMouseReleased(new TimerHandler());
+        vboxx.getChildren().add(nextButton);
+        vboxx.getChildren().add(addPlayerAttributes());
 
-         tf.getChildren().add(vboxx);
-     }
+        tf.getChildren().add(vboxx);
+    }
 
-     private void generateScreen() throws Exception {
+    private void generateScreen() throws Exception {
         Group root = new Group();
 
 
 
-         if (ModelFacade.getInstance() != null) {
-             try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
+        if (ModelFacade.getInstance() != null) {
+            try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
 
-                 for (int i = 0; i < 45; i++) {
-                     String line = br.readLine();
-                     if (line != null){
-                         String[] tokens = line.split("\t");
-                         getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
-                     }
-                 }
+                for (int i = 0; i < 45; i++) {
+                    String line = br.readLine();
+                    if (line != null){
+                        String[] tokens = line.split("\t");
+                        getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
+                    }
+                }
 
-             } catch (FileNotFoundException ex) {
-                 Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
-             }
-             if (ModelFacade.getInstance().getLoaded()) {
-                 round.currentRound = ModelFacade.getInstance().getRoundFromData();
-                 System.out.println("Round load: " + round.currentRound);
-                 if (round.currentRound > 1) {
-                     landSelectionPhaseOver = true;
-                 }
-             }
-         }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (ModelFacade.getInstance().getLoaded()) {
+                round.currentRound = ModelFacade.getInstance().getRoundFromData();
+                System.out.println("Round load: " + round.currentRound);
+                if (round.currentRound > 1) {
+                    landSelectionPhaseOver = true;
+                }
+            }
+        }
 
         VBox vbox = new VBox(); //has another vbox with a label and a button
         addPlayerDescriptions(textflow);
@@ -242,11 +242,11 @@ public class MapScreenController implements Initializable {
         root.getChildren().add(vbox);//root has one vbox
 
         anchorpane.getChildren().add(root);//has a group
-     }
+    }
 
-     private class NextButtonPressedHandler implements EventHandler<MouseEvent> {
+    private class NextButtonPressedHandler implements EventHandler<MouseEvent> {
 
-         String labelText;
+        String labelText;
 
 
         public void nextTurn() {
@@ -309,7 +309,7 @@ public class MapScreenController implements Initializable {
                     updatePlayersScores(players);
                     round.turnPhase++;
 
-                //getting ready for next round
+                    //getting ready for next round
                 } else {
                     round.turnPhase = 0;
                     labelText = "It is now " + players[round.turnPhase].getPlayerName() + "'s turn!";
@@ -345,100 +345,100 @@ public class MapScreenController implements Initializable {
         }
 
 
-         public VBox addPlayerAttributes() {
-             int i = 0;
-             VBox vbox = new VBox();
-             for (Player cp: players) {
-                 Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
-                         + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
-                         + " | Energy: " + cp.getEnergy());
-                 vbox.getChildren().add(p);
-             }
-             return vbox;
-         }
+        public VBox addPlayerAttributes() {
+            int i = 0;
+            VBox vbox = new VBox();
+            for (Player cp: players) {
+                Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
+                        + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
+                        + " | Energy: " + cp.getEnergy());
+                vbox.getChildren().add(p);
+            }
+            return vbox;
+        }
 
 
-         public void handle(MouseEvent me) {
-             clickedButton = (Button) me.getSource();
-             if (!(clickedButton.isDisabled())) {
-                 nextTurn();
-             }
+        public void handle(MouseEvent me) {
+            clickedButton = (Button) me.getSource();
+            if (!(clickedButton.isDisabled())) {
+                nextTurn();
+            }
 
-             if (timeRanOut) {
-                 timer.setTime(31);
-                 timeRanOut = false;
-             }
-         }
+            if (timeRanOut) {
+                timer.setTime(31);
+                timeRanOut = false;
+            }
+        }
 
-     }
+    }
 
-     private class TimerHandler implements EventHandler<MouseEvent> {
+    private class TimerHandler implements EventHandler<MouseEvent> {
 
-         final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
+        final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
 
-         public void restartTimer() {
-             if (timeline != null) {
-                 timeline.stop();
-             }
+        public void restartTimer() {
+            if (timeline != null) {
+                timeline.stop();
+            }
 
-             timer.setTime(timer.getTime());
-             timerLabel.setText("Time remaining in turn - " + timer.getTime());
-             timeline = new Timeline();
-             timeline.setCycleCount(Timeline.INDEFINITE);
-             timeline.getKeyFrames().add(
-                     new KeyFrame(Duration.seconds(1),
-                             new EventHandler<ActionEvent>() {
-                                 public void handle(ActionEvent event) {
-                                     timer.decrementTimer();
-                                     timerLabel.setText("Time remaining in turn - " + timer.getTime());
-                                     if (timer.getTime() <= 0) {
-                                         timeline.stop();
-                                         timeRanOut = true;
-                                         nextTurnHandler.nextTurn();
-                                         timer.setTime(31);
-                                         timeline.playFromStart();
-                                     }
-                                 }
+            timer.setTime(timer.getTime());
+            timerLabel.setText("Time remaining in turn - " + timer.getTime());
+            timeline = new Timeline();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.getKeyFrames().add(
+                    new KeyFrame(Duration.seconds(1),
+                            new EventHandler<ActionEvent>() {
+                                public void handle(ActionEvent event) {
+                                    timer.decrementTimer();
+                                    timerLabel.setText("Time remaining in turn - " + timer.getTime());
+                                    if (timer.getTime() <= 0) {
+                                        timeline.stop();
+                                        timeRanOut = true;
+                                        nextTurnHandler.nextTurn();
+                                        timer.setTime(31);
+                                        timeline.playFromStart();
+                                    }
+                                }
 
-                             }
-                     ));
-             timeline.playFromStart();
-         }
+                            }
+                    ));
+            timeline.playFromStart();
+        }
 
-         public void handle(MouseEvent me) {
-             restartTimer();
-         }
-     }
+        public void handle(MouseEvent me) {
+            restartTimer();
+        }
+    }
 
-     public void calculateTime(int roundPhase) {
-         boolean hasPartialShortage = false;
-         boolean hasTotalShortage = false;
-         if (0 <= roundPhase && roundPhase <= 4) {
-             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 3) {
-                 hasPartialShortage = true;
-             } else if (players[round.turnPhase].getFood() == 0) {
-                 hasTotalShortage = true;
-             }
-         } else if (5 <= roundPhase && roundPhase <= 8) {
-             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 4) {
-                 hasPartialShortage = true;
-             } else if (players[round.turnPhase].getFood() == 0) {
-                 hasTotalShortage = true;
-             }
-         } else {
-             if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 5) {
-                 hasPartialShortage = true;
-             } else if (players[round.turnPhase].getFood() == 0) {
-                 hasTotalShortage = true;
-             }
-         }
+    public void calculateTime(int roundPhase) {
+        boolean hasPartialShortage = false;
+        boolean hasTotalShortage = false;
+        if (0 <= roundPhase && roundPhase <= 4) {
+            if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 3) {
+                hasPartialShortage = true;
+            } else if (players[round.turnPhase].getFood() == 0) {
+                hasTotalShortage = true;
+            }
+        } else if (5 <= roundPhase && roundPhase <= 8) {
+            if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 4) {
+                hasPartialShortage = true;
+            } else if (players[round.turnPhase].getFood() == 0) {
+                hasTotalShortage = true;
+            }
+        } else {
+            if (0 < players[round.turnPhase].getFood() && players[round.turnPhase].getFood() < 5) {
+                hasPartialShortage = true;
+            } else if (players[round.turnPhase].getFood() == 0) {
+                hasTotalShortage = true;
+            }
+        }
 
-         if (hasPartialShortage) {
-             timer.setTime(30);
-         } else if (hasTotalShortage) {
-             timer.setTime(5);
-         }
-     }
+        if (hasPartialShortage) {
+            timer.setTime(30);
+        } else if (hasTotalShortage) {
+            timer.setTime(5);
+        }
+    }
 
     @FXML
     private void handleSave(ActionEvent e) throws Exception {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PubController">
    <children>
@@ -15,21 +15,35 @@
                <children>
                   <ImageView fitHeight="413.0" fitWidth="614.0" layoutX="-8.0" layoutY="-6.0">
                      <image>
-                        <Image url="@res/pub_background.jpg" />
+                        <Image url="@res/cropped-brad-and-mike-drunk-at-the-bar.jpeg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="gambleButton" layoutX="259.0" layoutY="187.0" mnemonicParsing="false" onAction="#gamble" text="Gamble?" />
-                  <Text fill="#f5f5f0" layoutX="152.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Pub! ">
+                  <Button fx:id="gambleButton" layoutX="259.0" layoutY="188.0" mnemonicParsing="false" onAction="#gamble" text="Gamble?">
                      <font>
-                        <Font name="AppleGothic Regular" size="31.0" />
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+                  <Text fill="#f5f5f0" layoutX="175.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Pub! " wrappingWidth="240.0390625">
+                     <font>
+                        <Font name="Andale Mono" size="20.0" />
                      </font>
                   </Text>
-                  <Button layoutX="21.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleTown" text="Go Back to Town" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </center>
          <bottom>
-            <TextFlow prefHeight="123.0" prefWidth="593.0" BorderPane.alignment="CENTER" />
+            <TextFlow prefHeight="123.0" prefWidth="593.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleTown" text="Go Back to Town" textAlignment="CENTER">
+                     <font>
+                        <Font name="Andale Mono" size="13.0" />
+                     </font></Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="5.0" top="10.0" />
+               </padding></TextFlow>
          </bottom>
          <top>
             <MenuBar BorderPane.alignment="CENTER">
