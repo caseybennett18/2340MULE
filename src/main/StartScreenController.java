@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 * Controller for StartScreenController view
 * 
 */
-
 public class StartScreenController implements Initializable {
      
     @FXML
@@ -47,8 +46,8 @@ public class StartScreenController implements Initializable {
     }
 
     /**
-    *
-    *
+    * @param event
+    *           load screen based on saved settings
     */
     @FXML
     private void handleStart(ActionEvent event) {
@@ -56,7 +55,11 @@ public class StartScreenController implements Initializable {
         MuleUI.getInstance().loadSelect();
     }
 
-
+    /**
+    * @param e
+    * @throws exception
+    *               loads game
+    */
     @FXML
     private void loadGame(ActionEvent e) throws Exception {
         ModelFacade model = new ModelFacade();
@@ -65,7 +68,7 @@ public class StartScreenController implements Initializable {
     }
 
     /**
-    * Loads game
+    * @param url, rb
     */
     @FXML
     public void initialize(URL url, ResourceBundle rb ) {
