@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SelectScreenController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="606.0">
+         <image>
+            <Image url="@res/Blue-Background-Images-HD-Wallpaper-1080x607.jpg" />
+         </image>
+      </ImageView>
+      <TextField layoutX="50.0" layoutY="67.0" />
+      <Label layoutX="46.0" layoutY="14.0" prefHeight="33.0" prefWidth="191.0" text="Player Name" textFill="#dde818">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="132.0" prefHeight="46.0" prefWidth="360.0" text="Select A Race" textFill="#dde818">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="245.0" prefHeight="46.0" prefWidth="360.0" text="Select A Color" textFill="#dde818">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
+      <Button fx:id="continueButton" layoutX="472.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleContinue" text="Continue" />
+      <Button layoutX="50.0" layoutY="194.0" mnemonicParsing="false" text="Human" />
+      <Button layoutX="142.0" layoutY="194.0" mnemonicParsing="false" text="Flapper" />
+      <Button layoutX="235.0" layoutY="194.0" mnemonicParsing="false" text="Buzzite, Ugaite, or Bonzoid" />
+      <Button layoutX="50.0" layoutY="303.0" mnemonicParsing="false" text="Red" />
+      <Button layoutX="125.0" layoutY="303.0" mnemonicParsing="false" text="Blue" />
+      <Button layoutX="208.0" layoutY="303.0" mnemonicParsing="false" text="Green" />
+      <Button layoutX="300.0" layoutY="303.0" mnemonicParsing="false" text="Yellow" />
+   </children>
+</AnchorPane>

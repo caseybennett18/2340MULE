@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MULEStartScreenController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0">
+         <image>
+            <Image url="@res/planet-m.u.l.e.-1.jpg" />
+         </image>
+      </ImageView>
+      <TextField layoutX="188.0" layoutY="88.0" text="Player Name" />
+      <MenuButton layoutX="188.0" layoutY="181.0" mnemonicParsing="false" text="Race">
+        <items>
+            <MenuItem mnemonicParsing="false" text="Human" />
+            <MenuItem mnemonicParsing="false" text="Flapper" />
+            <MenuItem mnemonicParsing="false" text="Bonzoid" />
+          <MenuItem mnemonicParsing="false" text="Ugaite" />
+          <MenuItem mnemonicParsing="false" text="Buzzite" />
+        </items>
+      </MenuButton>
+      <ColorPicker layoutX="188.0" layoutY="281.0" />
+      <Button fx:id="button2" layoutX="452.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Continue" AnchorPane.rightAnchor="51.0" />
+   </children>
+</AnchorPane>
