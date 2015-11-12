@@ -2,6 +2,7 @@ package main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import main.models.Map;
 import main.models.Player;
 import main.models.Round;
 
@@ -33,9 +34,10 @@ public class LandOfficeController {
     public void buyLandGrant() {
         Player p = MapScreenController.getInstance().getCurrentPlayer();
         int landPrice = round.getLandPrice();
-        ArrayList<Button> allOwnedLand = MapScreenController.getInstance().getAllOwnedLands();
-        int numLandAvailable = 45 - allOwnedLand.size();
-        if (p.getMoney() >= landPrice && numLandAvailable > 0) {
+        boolean isLandAvailable = MapScreenController.getInstance().isLandAvailable();
+        //ArrayList<Button> allOwnedLand = MapScreenController.getInstance().getAllOwnedLands();
+        //int numLandAvailable = 44 - allOwnedLand.size();
+        if (p.getMoney() >= landPrice && isLandAvailable) {
             p.incrementNumLandGrants();
             p.setMoney(p.getMoney() - landPrice);
             p.updatePlayerScore();
