@@ -70,6 +70,7 @@ public class MapScreenController implements Initializable {
     private Round round;
     private Button clickedButton;
     private ArrayList<Button> allOwnedLands;
+    private int allOwnedLands_size;
     protected boolean timeRanOut = false;
     final NextButtonPressedHandler nextTurnHandler = new NextButtonPressedHandler();
 
@@ -114,6 +115,14 @@ public class MapScreenController implements Initializable {
 
     public ArrayList<Button> getAllOwnedLands() {
         return allOwnedLands;
+    }
+
+    public boolean isLandAvailable() {
+        return allOwnedLands.size() < 45;
+    }
+
+    public void addLand(Button b) {
+        allOwnedLands.add(b);
     }
 
     private void updatePlayersScores(Player[] players) {
