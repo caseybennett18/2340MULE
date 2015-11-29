@@ -4,11 +4,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javafx.scene.control.Button;
-import main.models.races.BuzziteRace;
-import main.models.races.UgaiteRace;
-import main.models.races.BonzoidRace;
-import main.models.races.HumanRace;
-import main.models.races.FlapperRace;
+import main.models.races.*;
 
 /**
  * Holds a Player's information
@@ -190,6 +186,14 @@ public class Player {
                 race = createRace(playerRace);
             case "flapper":
                 race = createRace(playerRace);
+            case "mechtron":
+                race = createRace(playerRace);
+            case "leggite":
+                race = createRace(playerRace);
+            case "gollumer":
+                race = createRace(playerRace);
+            case "packer":
+                race = createRace(playerRace);
             default:
                 race = createRace(playerRace);
         }
@@ -212,6 +216,14 @@ public class Player {
                 return new BonzoidRace(playerID);
             case "flapper":
                 return new FlapperRace(playerID);
+            case "mechtron":
+                return new MechtronRace(playerID);
+            case "leggite":
+                return new LeggiteRace(playerID);
+            case "gollumer":
+                return new GollumerRace(playerID);
+            case "packer":
+                return new PackerRace(playerID);
             default:
                 return new HumanRace(playerID);
         }

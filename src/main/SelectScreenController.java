@@ -139,6 +139,14 @@ public class SelectScreenController implements Initializable {
  		this.raceId = "bonzoid";
  	}
 
+	public void setMechtronRace() { this.raceId = "mechtron"; }
+
+    public void setLeggiteRace() { this.raceId = "leggite"; }
+
+    public void setGollumerRace() { this.raceId = "gollumer"; }
+
+    public void setPackerRace() { this.raceId = "packer"; }
+
  	/**
     * playerColor is set to red
     */
