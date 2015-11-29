@@ -12,7 +12,8 @@ import main.models.mules.OreMule;
 
 
 /**
- * Created by Charlie on 10/4/2015.
+ * Controller for StoreController view
+ *
  */
 public class StoreController {
 
@@ -40,7 +41,10 @@ public class StoreController {
     private final Store store;
 
 
-
+    /**
+     * constructor for StoreController
+     *
+     */
     public StoreController() {
         Player[] players = MuleUI.getInstance().getPlayerArray();
         Round round = new Round(MuleUI.getInstance().getPlayerArray());
@@ -48,11 +52,18 @@ public class StoreController {
         this.store = new Store(MuleUI.getInstance().getDifficulty());
     }
 
+    /**
+    * loads the back to town button 
+    */
     @FXML
     public void handleTown() {
         MuleUI.getInstance().loadTown();
     }
 
+    /**
+    * @param event
+    *           playerScore is updated based on items bought
+    */
     @FXML
     public void handleBuyAction(ActionEvent event) {
         Player p = MapScreenController.getInstance().getCurrentPlayer();
