@@ -20,7 +20,8 @@ public abstract class Event {
     private static Event[] events = {new GTAlumniEvent(), new WanderingTechStudentEvent(),
             new MuseumBoughtAntiqueEvent(), new DeadMooseRatEvent(),
             new FlyingCatBugsEvent(), new UGAStudentEvent(),
-            new SpaceGypsyEvent()};
+            new SpaceGypsyEvent(), new HomeWorldCharity(), new MischievousGlacElves(),
+            new MuleCleaningCost(), new SwampEelEatingContest()};
 
     final private int[] roundFactors = {25, 25, 25, 50, 50, 50, 50, 75, 75, 75, 75, 100};
 
@@ -41,8 +42,7 @@ public abstract class Event {
 
     public static Event getRandomEvent() {
         Random rand = new Random();
-        Event e = events[rand.nextInt(events.length)];
-        return e;
+        return events[rand.nextInt(events.length)];
     }
 
     public static String checkForRandomEvent(Player[] players, Player p) {

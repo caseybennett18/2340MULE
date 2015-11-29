@@ -10,10 +10,9 @@ public class Store {
     private int energyAmount;
     private int oreAmount;
     private int muleAmount;
-    private int difficulty;
 
     public Store(int difficulty) {
-        this.difficulty = difficulty;
+        int difficulty1 = difficulty;
         setStoreInventory(difficulty);
     }
 

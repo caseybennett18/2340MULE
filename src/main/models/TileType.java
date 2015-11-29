@@ -16,7 +16,7 @@ public enum TileType {
     private int ore;
     private String imagePath;
 
-    private TileType(int food, int energy, int ore, String imagePath) {
+    TileType(int food, int energy, int ore, String imagePath) {
         this.food = food;
         this.energy = energy;
         this.ore = ore;

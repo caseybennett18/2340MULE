@@ -10,7 +10,6 @@ import main.models.Round;
  * Created by Charlie on 10/26/2015.
  */
 public class SpaceGypsyEvent extends Event {
-    private Player p;
 
     @Override
     public boolean badEvent() {
@@ -19,7 +18,7 @@ public class SpaceGypsyEvent extends Event {
 
     @Override
     public String performEvent() {
-        p = MapScreenController.getInstance().getCurrentPlayer();
+        Player p = MapScreenController.getInstance().getCurrentPlayer();
         int change = 6 * getRound();
 
         //makes sure a players $ cannot go below 0

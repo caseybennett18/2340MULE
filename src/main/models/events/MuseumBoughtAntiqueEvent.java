@@ -10,8 +10,6 @@ import main.models.Round;
  */
 public class MuseumBoughtAntiqueEvent extends Event {
 
-    private Player p;
-
     @Override
     public boolean badEvent() {
         return false;
@@ -19,7 +17,7 @@ public class MuseumBoughtAntiqueEvent extends Event {
 
     @Override
     public String performEvent() {
-        p = MapScreenController.getInstance().getCurrentPlayer();
+        Player p = MapScreenController.getInstance().getCurrentPlayer();
         int change = 8 * getRound();
         p.setMoney(p.getMoney() + change);
         return "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $" + change;

@@ -7,13 +7,12 @@ package main.models;
 public abstract class Mule {
 
 
-    private int playerId;
     protected String buttonId;
 
     protected int price;
 
     public Mule(int playerId, String buttonId) {
-        this.playerId = playerId;
+        int playerId1 = playerId;
         this.buttonId = buttonId;
     }
 

@@ -6,11 +6,6 @@ package main.models;
  *
  */
 public class Race {
-    
-    /**
-	 * id of player who is the Race
-	 */
-	private int playerId;
 
 	protected static int money;
 	
@@ -19,7 +14,10 @@ public class Race {
 	 * @param playerId
 	 */
 	public Race(int playerId) {
-		this.playerId = playerId;
+		/*
+	  id of player who is the Race
+	 */
+		int playerId1 = playerId;
 	}
 	
 	/**

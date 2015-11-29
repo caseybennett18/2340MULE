@@ -443,7 +443,7 @@ public class MapScreenController implements Initializable {
     @FXML
     private void handleSave(ActionEvent e) throws Exception {
         ModelFacade model = new ModelFacade();
-        model.getInstance().saveModelText();
+        ModelFacade.getInstance().saveModelText();
     }
 
 

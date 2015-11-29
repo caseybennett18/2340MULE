@@ -9,8 +9,6 @@ import main.MapScreenController;
  */
 public class WanderingTechStudentEvent extends Event {
 
-    private Player p;
-
     //public WanderingTechStudentEvent() {
     //    p = MapScreenController.getInstance().getCurrentPlayer();
     //}
@@ -22,7 +20,7 @@ public class WanderingTechStudentEvent extends Event {
 
     @Override
     public String performEvent() {
-        p = MapScreenController.getInstance().getCurrentPlayer();
+        Player p = MapScreenController.getInstance().getCurrentPlayer();
         p.setOre(p.getOre() + 2);
         return "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE.";
     }

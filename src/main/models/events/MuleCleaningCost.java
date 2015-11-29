@@ -3,12 +3,11 @@ package main.models.events;
 import main.MapScreenController;
 import main.models.Event;
 import main.models.Player;
-import main.models.Round;
 
 /**
- * Created by Charlie on 10/26/2015.
+ * Created by Charlie on 11/29/2015.
  */
-public class UGAStudentEvent extends Event {
+public class MuleCleaningCost extends Event {
 
     @Override
     public boolean badEvent() {
@@ -18,8 +17,12 @@ public class UGAStudentEvent extends Event {
     @Override
     public String performEvent() {
         Player p = MapScreenController.getInstance().getCurrentPlayer();
-        p.setFood(p.getFood() / 2);
-
-        return "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
+        int mules = p.getOwnedMules().size();
+        int money = p.getMoney();
+        int cost = mules * 50;
+        p.setMoney(money - cost);
+        return "THE SOLAR COLLECTORS ON YOUR ENERGY MULES ARE DIRTY. CLEANING COST YOU $50 EACH.";
     }
+
+
 }

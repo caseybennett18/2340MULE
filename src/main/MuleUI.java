@@ -17,7 +17,6 @@ import javafx.scene.media.MediaPlayer;
      private static MuleUI instance;
      private int numPlayers;
      private int difficulty; //beginner - 0, standard - 1, tournament - 2
-     private final int playerTurn;
      private boolean isLoaded = false;
 
      private Scene mapScene;
@@ -32,7 +31,7 @@ import javafx.scene.media.MediaPlayer;
          numPlayers = 1;
          difficulty = 0;
          players = new Player[numPlayers];
-         playerTurn = 0;
+         int playerTurn = 0;
      }
 
      public void getPlayerOrder(Player[] players) {

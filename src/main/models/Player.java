@@ -19,11 +19,10 @@ public class Player {
     
     //private ArrayList<Resource> resources;
     //private ArrayList<Property> properties;
-    private int playerColor; // 0 - Red, 1 - Blue, 2 - Green, 3 - Yellow
+    public int playerColor; // 0 - Red, 1 - Blue, 2 - Green, 3 - Yellow
     private final int playerID;
     private String playerName;
-    private Race race;
-    private boolean turnPassed;
+    public Race race;
 
     private int food;
     private int energy;
@@ -54,7 +53,7 @@ public class Player {
         this.mule = null;
         this.playerColor = 0;
         int time = 50;
-        turnPassed = false;
+        boolean turnPassed = false;
         numLandGrants = 0;
         ownedLand = new ArrayList<>();
         ownedMules = new ArrayList<>();

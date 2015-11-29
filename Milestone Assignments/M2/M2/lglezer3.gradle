@@ -1,6 +1,7 @@
 apply plugin: 'java'
 defaultTasks 'build'
 
+//noinspection GroovyUnusedAssignment
 sourceCompatibility = 1.7
 version = '0.1.0'
 
