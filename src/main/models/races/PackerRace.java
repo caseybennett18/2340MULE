@@ -19,7 +19,7 @@ public class PackerRace extends Race {
 
     @Override
     public String toString() {
-        return "Buzzite";
+        return "Packer";
     }
 
     @Override

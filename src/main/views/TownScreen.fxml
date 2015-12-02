@@ -52,7 +52,7 @@
                         <Image url="@../res/Shape-Diamond-256%20(1).png" />
                      </image>
                   </ImageView>
-            <Button layoutX="310.0" layoutY="221.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="123.0" style="-fx-background-color: transparent;" text="" />
+            <Button layoutX="310.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleAssayOffice" prefHeight="96.0" prefWidth="123.0" style="-fx-background-color: transparent;" text="" />
           </children>
         </AnchorPane>
       </left>

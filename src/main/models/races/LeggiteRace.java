@@ -19,7 +19,7 @@ public class LeggiteRace extends Race {
 
     @Override
     public String toString() {
-        return "Buzzite";
+        return "Leggite";
     }
 
     @Override

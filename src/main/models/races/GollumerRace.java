@@ -19,7 +19,7 @@ public class GollumerRace extends Race {
 
     @Override
     public String toString() {
-        return "Buzzite";
+        return "Gollumer";
     }
 
     @Override

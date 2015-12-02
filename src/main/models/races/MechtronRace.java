@@ -24,7 +24,7 @@ public class MechtronRace extends Race {
 
     @Override
     public String toString() {
-        return "Buzzite";
+        return "Mechtron";
     }
 
     @Override

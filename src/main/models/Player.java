@@ -25,6 +25,7 @@ public class Player {
     private int ore;
     private int money;
     private Mule mule;
+    private int crystite;
 
     private int score;
 
@@ -327,6 +328,14 @@ public class Player {
 
     public void setHasPicked(boolean b) {
         hasPicked = b;
+    }
+
+    public int getCrystite() {
+        return crystite;
+    }
+
+    public void setCrystite(int numCrystite) {
+        crystite = numCrystite;
     }
 
 

@@ -183,7 +183,7 @@ public class MapScreenController implements Initializable {
         for (Player cp: players) {
             Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
                     + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
-                    + " | Energy: " + cp.getEnergy());
+                    + " | Energy: " + cp.getEnergy() + " | Crystite: " + cp.getCrystite());
             vbox.getChildren().add(p);
         }
         return vbox;
@@ -357,7 +357,7 @@ public class MapScreenController implements Initializable {
             for (Player cp: players) {
                 Label p = new Label("Player: " + cp.getPlayerName() + " | Score: "
                         + cp.getScore() + " | Money: " + cp.getMoney() + " | Ore: " + cp.getOre() + " | Food: " + cp.getFood()
-                        + " | Energy: " + cp.getEnergy());
+                        + " | Energy: " + cp.getEnergy() + " | Crystite: " + cp.getCrystite());
                 vbox.getChildren().add(p);
             }
             return vbox;

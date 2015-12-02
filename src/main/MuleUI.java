@@ -207,7 +207,14 @@ import javafx.scene.media.MediaPlayer;
          }
      }
 
-
+     public void loadAssayOffice() throws Exception {
+         try {
+             replaceSceneContent("/main/views/AssayOffice.fxml");
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.out.println("An error has occurred...");
+         }
+     }
  }
  
  

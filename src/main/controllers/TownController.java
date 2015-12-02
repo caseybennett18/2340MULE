@@ -38,6 +38,11 @@ public class TownController {
         MuleUI.getInstance().loadLandOffice();
     }
 
+    @FXML
+    public void handleAssayOffice() throws Exception {
+        MuleUI.getInstance().loadAssayOffice();
+    }
+
     /**
     * back to map button
     */
