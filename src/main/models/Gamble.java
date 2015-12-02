@@ -1,4 +1,4 @@
-package main;
+package main.models;
 
 import java.util.Random;
 
@@ -7,7 +7,6 @@ import java.util.Random;
  * The Gamble class calculates money bonus based off round phase and time left.
  */
 public class Gamble {
-
     private int winnings;
     private Random rand;
 
