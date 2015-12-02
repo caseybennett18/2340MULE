@@ -1,7 +1,5 @@
-package main;
+package main.controllers;
 
-import java.awt.*;
-import java.awt.event.InputEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,13 +9,11 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +28,7 @@ import javafx.scene.layout.VBox;
 
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
+import main.MuleUI;
 import main.models.*;
 import main.models.Event;
 

@@ -1,7 +1,7 @@
 package main.models;
 
 
-import main.MapScreenController;
+import main.controllers.MapScreenController;
 import main.models.events.*;
 
 import java.util.Random;

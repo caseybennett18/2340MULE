@@ -1,10 +1,11 @@
-package main;
+package main.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import main.MuleUI;
 import main.models.ModelFacade;
 import main.models.Player;
 import javafx.scene.control.Button;

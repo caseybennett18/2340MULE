@@ -1,8 +1,7 @@
 package main.test;
 
 import main.MuleUI;
-import main.StartScreenController;
-import main.models.Mule;
+import main.controllers.StartScreenController;
 import main.models.Player;
 import org.junit.Test;
 

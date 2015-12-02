@@ -1,13 +1,12 @@
-package main;
+package main.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import main.models.Map;
+import main.MuleUI;
 import main.models.Player;
 import main.models.Round;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**

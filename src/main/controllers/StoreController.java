@@ -1,8 +1,10 @@
-package main;
+package main.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import main.MuleUI;
+import main.controllers.MapScreenController;
 import main.models.Player;
 import main.models.Round;
 import main.models.Store;

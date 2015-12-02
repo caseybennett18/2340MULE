@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.TownController">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.TownController">
   <children>
     <BorderPane prefHeight="200.0" prefWidth="200.0">
       <bottom>
@@ -43,13 +43,13 @@
             <Button layoutX="142.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleStore" prefHeight="103.0" prefWidth="119.0" style="-fx-background-color: transparent;" text="" />
                   <ImageView fitHeight="138.0" fitWidth="138.0" layoutX="296.0" layoutY="15.0">
                      <image>
-                        <Image url="@res/Office-256%20(1).png" />
+                        <Image url="@../res/Office-256%20(1).png" />
                      </image>
                   </ImageView>
             <Button layoutX="305.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleLandOffice" prefHeight="85.0" prefWidth="122.9998779296875" style="-fx-background-color: transparent;" text="" />
                   <ImageView fitHeight="136.0" fitWidth="136.0" layoutX="304.0" layoutY="200.0">
                      <image>
-                        <Image url="@res/Shape-Diamond-256%20(1).png" />
+                        <Image url="@../res/Shape-Diamond-256%20(1).png" />
                      </image>
                   </ImageView>
             <Button layoutX="310.0" layoutY="221.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="123.0" style="-fx-background-color: transparent;" text="" />

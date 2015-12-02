@@ -1,10 +1,6 @@
 package main.test;
 
-import main.MuleUI;
-import main.SelectScreenController;
 import main.models.Player;
-import main.models.Race;
-import main.models.races.BuzziteRace;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
