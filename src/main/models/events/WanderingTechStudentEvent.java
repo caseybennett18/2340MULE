@@ -2,7 +2,7 @@ package main.models.events;
 
 import main.models.Event;
 import main.models.Player;
-import main.MapScreenController;
+import main.controllers.MapScreenController;
 
 /**
  * Created by Charlie on 10/26/2015.

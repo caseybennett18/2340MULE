@@ -1,6 +1,7 @@
-package main;
+package main.controllers;
 
 import javafx.fxml.FXML;
+import main.MuleUI;
 
 /**
  * Controller for TownController view

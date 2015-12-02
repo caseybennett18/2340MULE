@@ -1,5 +1,6 @@
-package main;
+package main.controllers;
 
+import main.MuleUI;
 import main.models.Round;
 import main.models.Player;
 

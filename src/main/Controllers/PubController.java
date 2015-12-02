@@ -1,14 +1,15 @@
-package main;
+package main.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import main.MuleUI;
+import main.models.Gamble;
 import main.models.Player;
 import main.models.Round;
 import main.models.Timer;
 
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 /**

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.StartScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.StartScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="407.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Button fx:id="startButton" layoutX="251.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleStart" text="Start Game">
@@ -65,7 +65,7 @@
       </Button>
       <ImageView fitHeight="138.0" fitWidth="200.0" layoutX="200.0" layoutY="136.0">
          <image>
-            <Image url="@res/M.U.L.E..png" />
+            <Image url="@../res/M.U.L.E..png" />
          </image>
       </ImageView>
    </children>

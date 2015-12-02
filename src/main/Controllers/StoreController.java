@@ -1,10 +1,12 @@
-package main;
+package main.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import main.MuleUI;
 import main.models.Player;
 import main.models.Round;
+import main.models.Store;
 import main.models.Timer;
 import main.models.mules.EnergyMule;
 import main.models.mules.FoodMule;

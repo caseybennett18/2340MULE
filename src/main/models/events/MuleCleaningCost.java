@@ -1,6 +1,6 @@
 package main.models.events;
 
-import main.MapScreenController;
+import main.controllers.MapScreenController;
 import main.models.Event;
 import main.models.Player;
 

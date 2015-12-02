@@ -3,11 +3,10 @@ package main.models;
 
 //import com.google.gson.Gson;
 //import com.google.gson.reflect.TypeToken;
-import main.MapScreenController;
+import main.controllers.MapScreenController;
 import main.MuleUI;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;

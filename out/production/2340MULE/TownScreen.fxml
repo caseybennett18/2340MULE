@@ -39,12 +39,12 @@
                         </ImageView>
                         <ImageView fitHeight="203.0" fitWidth="301.0" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@res/LandOffice.png" />
+                              <Image url="@res/LandOffice2.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="201.0" fitWidth="301.0" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@res/AssayOffice.png" />
+                              <Image url="@res/AssayOffice2.png" />
                            </image>
                         </ImageView>
                         <Button onAction="#handlePub" prefHeight="202.0" prefWidth="299.0" style="-fx-background-color: transparent;" />

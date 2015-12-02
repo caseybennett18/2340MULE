@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.TownController">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.TownController">
   <children>
     <BorderPane prefHeight="200.0" prefWidth="200.0">
       <bottom>
@@ -31,25 +31,25 @@
             <Label font="$x1" layoutX="297.0" layoutY="343.0" prefHeight="33.0" prefWidth="148.0" text="Assay Office" textAlignment="CENTER" textFill="WHITE" />
                   <ImageView id="Shopping-Cart-02-256.png" fitHeight="134.0" fitWidth="134.0001220703125" layoutX="135.0" layoutY="202.0">
                      <image>
-                        <Image url="@res/beerIcon.png" />
+                        <Image url="@../res/beerIcon.png" />
                      </image>
                   </ImageView>
             <Button layoutX="135.0" layoutY="219.0" onAction="#handlePub" prefHeight="96.00009999999747" prefWidth="134.0" style="-fx-background-color: transparent;" text="" />
                   <ImageView fitHeight="135.0" fitWidth="138.0" layoutX="133.0" layoutY="18.0">
                      <image>
-                        <Image url="@res/Shopping-Cart-01-256.png" />
+                        <Image url="@../res/Shopping-Cart-01-256.png" />
                      </image>
                   </ImageView>
             <Button layoutX="142.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleStore" prefHeight="103.0" prefWidth="119.0" style="-fx-background-color: transparent;" text="" />
                   <ImageView fitHeight="138.0" fitWidth="138.0" layoutX="296.0" layoutY="15.0">
                      <image>
-                        <Image url="@res/Office-256%20(1).png" />
+                        <Image url="@../res/Office-256%20(1).png" />
                      </image>
                   </ImageView>
             <Button layoutX="305.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleLandOffice" prefHeight="85.0" prefWidth="122.9998779296875" style="-fx-background-color: transparent;" text="" />
                   <ImageView fitHeight="136.0" fitWidth="136.0" layoutX="304.0" layoutY="200.0">
                      <image>
-                        <Image url="@res/Shape-Diamond-256%20(1).png" />
+                        <Image url="@../res/Shape-Diamond-256%20(1).png" />
                      </image>
                   </ImageView>
             <Button layoutX="310.0" layoutY="221.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="123.0" style="-fx-background-color: transparent;" text="" />
