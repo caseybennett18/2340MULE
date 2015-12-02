@@ -14,7 +14,7 @@
                <children>
                   <ImageView fitHeight="321.0" fitWidth="605.0" layoutX="-6.0">
                      <image>
-                        <Image url="@res/farmacia_editada.png" />
+                        <Image url="@../res/farmacia_editada.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="buyFoodMule" layoutX="15.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleBuyAction" prefHeight="26.0" prefWidth="137.0" text="Buy Food Mule">

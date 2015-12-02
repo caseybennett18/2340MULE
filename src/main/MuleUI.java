@@ -97,7 +97,7 @@ import javafx.scene.media.MediaPlayer;
              MediaPlayer mediaPlayer = new MediaPlayer(media);
              mediaPlayer.play();
              FXMLLoader loader = new FXMLLoader();
-             loader.setLocation(MuleUI.class.getResource("/main/MainMenu.fxml"));
+             loader.setLocation(MuleUI.class.getResource("/main/views/MainMenu.fxml"));
              Parent root = loader.load();
              Scene scene = new Scene(root);
 
@@ -127,7 +127,7 @@ import javafx.scene.media.MediaPlayer;
      
      public void loadSelect() {
          try {
-             replaceSceneContent("/main/SelectRace.fxml");
+             replaceSceneContent("/main/views/SelectRace.fxml");
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");
@@ -138,7 +138,7 @@ import javafx.scene.media.MediaPlayer;
 
          try {
              if (!isLoaded) {
-                 pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/MapScreen.fxml"),
+                 pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen.fxml"),
                          null, new JavaFXBuilderFactory());
                  mapScene = stage.getScene();
                  mapScene.setRoot(pageMap);
@@ -163,7 +163,7 @@ import javafx.scene.media.MediaPlayer;
 
      public void loadTown() {
          try {
-             replaceSceneContent("/main/TownScreen.fxml");
+             replaceSceneContent("/main/views/TownScreen.fxml");
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");
@@ -172,7 +172,7 @@ import javafx.scene.media.MediaPlayer;
 
      public void loadPub() throws Exception  {
          try {
-             replaceSceneContent("/main/Pub.fxml");
+             replaceSceneContent("/main/views/Pub.fxml");
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");
@@ -190,7 +190,7 @@ import javafx.scene.media.MediaPlayer;
 
      public void loadLandOffice() throws Exception {
          try {
-             replaceSceneContent("/main/LandOffice.fxml");
+             replaceSceneContent("/main/views/LandOffice.fxml");
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");
@@ -199,7 +199,7 @@ import javafx.scene.media.MediaPlayer;
 
      public void loadStore() throws Exception {
          try {
-             replaceSceneContent("/main/StoreScreen.fxml");
+             replaceSceneContent("/main/views/StoreScreen.fxml");
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");

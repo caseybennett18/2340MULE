@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="606.0">
          <image>
-            <Image url="@res/Blue-Background-Images-HD-Wallpaper-1080x607.jpg" />
+            <Image url="@../res/Blue-Background-Images-HD-Wallpaper-1080x607.jpg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLACK" height="400.0" stroke="BLACK" strokeType="INSIDE" width="606.0" />

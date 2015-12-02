@@ -65,7 +65,7 @@
       </Button>
       <ImageView fitHeight="138.0" fitWidth="200.0" layoutX="200.0" layoutY="136.0">
          <image>
-            <Image url="@res/M.U.L.E..png" />
+            <Image url="@../res/M.U.L.E..png" />
          </image>
       </ImageView>
    </children>
