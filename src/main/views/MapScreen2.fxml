@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<?import java.lang.*?>-->
+<!--<?import java.util.*?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.effect.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+<!--<?import javafx.scene.paint.*?>-->
+<!--<?import javafx.scene.shape.*?>-->
+<!--<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="MapScreenController">-->
+<!--<children>-->
+<!--<Button fx:id="passButton" defaultButton="false" depthTest="INHERIT" focusTraversable="false" layoutX="582.0" layoutY="608.0" mnemonicParsing="false" mouseTransparent="false"  prefWidth="79.0" text="Pass">-->
+<!--<effect>-->
+<!--<Lighting diffuseConstant="1.7777777777777777" specularConstant="0.6015873015873016" specularExponent="22.22222222222222" surfaceScale="3.492063492063492">-->
+<!--<bumpInput>-->
+<!--<Shadow />-->
+<!--</bumpInput>-->
+<!--<light>-->
+<!--<javafx.scene.effect.Light.Distant color="#d4bc82" />-->
+<!--</light>-->
+<!--</Lighting>-->
+<!--</effect>-->
+<!--</Button>-->
+<!--<ProgressBar fx:id="progressBar" layoutX="69.0" layoutY="738.0" prefWidth="617.0" progress="0.0" />-->
+<!--<MenuBar focusTraversable="false" layoutX="0.0" layoutY="735.0" useSystemMenuBar="false" visible="true">-->
+<!--<menus>-->
+<!--<Menu mnemonicParsing="false" text="File">-->
+<!--<items>-->
+<!--<MenuItem mnemonicParsing="false" text="Save" fx:id="saveMenuItem" />-->
+<!--<MenuItem mnemonicParsing="false"  text="Open" fx:id="openMenuItem" />-->
+<!--<MenuItem mnemonicParsing="false" text="Quit" fx:id="quitMenuItem" />-->
+<!--</items>-->
+<!--</Menu>-->
+<!--</menus>-->
+<!--</MenuBar>-->
+<!--</children>-->
+<!--</AnchorPane>-->
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.MapScreenController">
+   <children>
+      <BorderPane fx:id="borderpane" prefHeight="812.0" prefWidth="471.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleSave" text="SaveGame" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Turn">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Pass" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <AnchorPane fx:id="anchorpane" prefHeight="665.0" prefWidth="672.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane fx:id="gridpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="610.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="133.0" fitWidth="69.0" onMouseClicked="#handleBuyLand" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/OtherTwoMountain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="69.0" GridPane.columnIndex="2">
+                           <image>
+                              <Image url="@../res/MountainTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="69.0" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/OtherMountain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="67.0" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="67.0">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="74.0" GridPane.columnIndex="3">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="134.0" fitWidth="71.0" GridPane.columnIndex="5">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="7">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="69.0" GridPane.columnIndex="8">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="69.0" GridPane.columnIndex="8" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="71.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/Plain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="69.0" GridPane.columnIndex="6">
+                           <image>
+                              <Image url="@../res/OtherTwoMountain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="69.0" GridPane.columnIndex="8" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/MountainTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="133.0" fitWidth="69.0" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/OtherTwoMountain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/MountainTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.columnIndex="6" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/MountainTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="134.0" fitWidth="69.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/MountainTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="69.0" GridPane.columnIndex="8" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/OtherMountain.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="134.0" fitWidth="69.0" GridPane.columnIndex="4">
+                           <image>
+                              <Image url="@../res/WaterTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="135.0" fitWidth="68.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../res/WaterTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="139.0" fitWidth="70.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../res/WaterTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="134.0" fitWidth="70.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../res/WaterTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="134.0" fitWidth="69.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../res/TownTile.jpg" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="plain" layoutX="0" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" />
+                        <Button fx:id="plain" layoutX="1" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="1" />
+                        <Button fx:id="1mountain" layoutX="2" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="2" />
+                        <Button fx:id="plain" layoutX="3" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="3" />
+                        <Button fx:id="river" layoutX="4" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="4" />
+                        <Button fx:id="plain" layoutX="5" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="5" />
+                        <Button fx:id="3mountain" layoutX="6" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="6" />
+                        <Button fx:id="plain" layoutX="7" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="7" />
+                        <Button fx:id="plain" layoutX="8" layoutY="0" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="8" />
+                        <Button fx:id="plain" layoutX="0" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.rowIndex="1" />
+                        <Button fx:id="1mountain" layoutX="1" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="plain" layoutX="2" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button fx:id="plain" layoutX="3" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Button fx:id="river" layoutX="4" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Button fx:id="plain" layoutX="5" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <Button fx:id="plain" layoutX="6" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                        <Button fx:id="plain" layoutX="7" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                        <Button fx:id="3mountain" layoutX="8" layoutY="1" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                        <Button fx:id="plain" layoutX="0" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="plain" layoutX="1" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button fx:id="plain" layoutX="2" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Button fx:id="town" layoutX="3" layoutY="2" mnemonicParsing="false" onAction="#handleTown" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <Button fx:id="plain" layoutX="4" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <Button fx:id="plain" layoutX="5" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                        <Button fx:id="plain" layoutX="6" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                        <Button fx:id="1mountain" layoutX="7" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+                        <Button fx:id="3mountain" layoutX="8" layoutY="2" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.rowIndex="2" />
+                        <Button fx:id="plain" layoutX="0" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.rowIndex="3" />
+                        <Button fx:id="2mountain" layoutX="1" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="plain" layoutX="2" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Button fx:id="plain" layoutX="3" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Button fx:id="river" layoutX="4" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Button fx:id="plain" layoutX="5" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                        <Button fx:id="2mountain" layoutX="6" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                        <Button fx:id="plain" layoutX="7" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                        <Button fx:id="plain" layoutX="8" layoutY="3" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                        <Button fx:id="plain" layoutX="0" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.rowIndex="4" />
+                        <Button fx:id="plain" layoutX="1" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Button fx:id="2mountain" layoutX="2" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="140.0" prefWidth="71.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Button fx:id="plain" layoutX="3" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Button fx:id="river" layoutX="4" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <Button fx:id="plain" layoutX="5" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                        <Button fx:id="plain" layoutX="6" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                        <Button fx:id="plain" layoutX="7" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="134.0" prefWidth="86.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                        <Button fx:id="2mountain" layoutX="8" layoutY="4" mnemonicParsing="false" onAction="#handleBuyLand" prefHeight="148.0" prefWidth="73.0" style="-fx-background-color: transparent;" textFill="#91c61f" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <TextFlow fx:id="textflow" prefHeight="118.0" prefWidth="610.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</VBox>

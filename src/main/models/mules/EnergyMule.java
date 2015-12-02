@@ -32,6 +32,9 @@ public class EnergyMule extends Mule{
             case "river":
                 p.setEnergy(p.getEnergy() + 2);
                 break;
+            case "swamp":
+                p.setEnergy(p.getEnergy() + 2);
+                break;
             default:
                 p.setEnergy(p.getEnergy());
                 break;

@@ -11,8 +11,10 @@ import main.models.Player;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
- 
- public class MuleUI extends Application {
+import java.util.Random;
+
+
+public class MuleUI extends Application {
      
      private Stage stage;
      private static MuleUI instance;
@@ -136,11 +138,25 @@ import javafx.scene.media.MediaPlayer;
      }
      
      public void loadMap() {
-
+         Random rand = new Random();
+         int seed = 17;
+         int randInt = rand.nextInt(seed);
+         System.out.println("randint" + randInt);
          try {
              if (!isLoaded) {
-                 pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen.fxml"),
-                         null, new JavaFXBuilderFactory());
+                 if (randInt <= 3) {
+                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen.fxml"),
+                             null, new JavaFXBuilderFactory());
+                 } else if (randInt <= 7) {
+                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen2.fxml"),
+                             null, new JavaFXBuilderFactory());
+                 } else if (randInt < 10){
+                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen3.fxml"),
+                             null, new JavaFXBuilderFactory());
+                 } else {
+                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen4.fxml"),
+                             null, new JavaFXBuilderFactory());
+                 }
                  mapScene = stage.getScene();
                  mapScene.setRoot(pageMap);
                  stage.sizeToScene();

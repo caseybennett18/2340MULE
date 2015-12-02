@@ -4,45 +4,45 @@ import main.models.Mule;
 import main.models.Player;
 
 /**
- * Created by Charlie on 10/4/2015.
+ * Created by caseybennett on 12/2/15.
  */
-public class FoodMule extends Mule {
-
-    public FoodMule(int playerId, String buttonId, Player p) {
+public class CrystiteMule extends Mule {
+    public CrystiteMule(int playerId, String buttonId, Player p) {
         super(playerId, buttonId);
         Player p1 = new Player(playerId);
-        price = 125;
+        price = 100;
     }
 
     public void produce(Player p) {
         switch(buttonId) {
             case "plain":
-                p.setFood(p.getFood() + 2);
+                p.setCrystite(p.getCrystite() + 3);
                 break;
             case "1mountain":
-                p.setFood(p.getFood() + 1);
+                p.setCrystite(p.getCrystite() + 1);
                 break;
             case "2mountain":
-                p.setFood(p.getFood() + 1);
+                p.setCrystite(p.getCrystite() + 1);
                 break;
             case "3mountain":
-                p.setFood(p.getFood() + 1);
+                p.setCrystite(p.getCrystite() + 1);
                 break;
             case "river":
-                p.setFood(p.getFood() + 4);
+                p.setCrystite(p.getCrystite() + 2);
                 break;
             case "swamp":
-                p.setFood(p.getFood() + 1);
+                p.setCrystite(p.getCrystite() + 2);
                 break;
             default:
-                p.setFood(p.getFood());
+                p.setCrystite(p.getCrystite());
                 break;
         }
-
     }
 
     @Override
     public String toString() {
-        return "Food Mule";
+        return "Crystite Mule";
     }
+
+
 }

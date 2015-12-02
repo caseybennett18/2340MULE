@@ -31,6 +31,9 @@ public class OreMule extends Mule {
             case "river":
                 p.setOre(p.getOre());
                 break;
+            case "swamp":
+                p.setOre(p.getOre() + 2);
+                break;
             default:
                 p.setOre(p.getOre());
                 break;
