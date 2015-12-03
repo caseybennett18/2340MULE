@@ -1,77 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.StartScreenController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="407.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <Button fx:id="startButton" layoutX="251.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleStart" text="Start Game">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font></Button>
-      <Button layoutX="43.0" layoutY="188.0" mnemonicParsing="false" onAction="#setBeginnerButton" prefHeight="26.0" prefWidth="97.0" text="Beginner">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font></Button>
-      <Button layoutX="43.0" layoutY="222.0" mnemonicParsing="false" onAction="#setStandardButton" prefHeight="26.0" prefWidth="97.0" text="Standard">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font></Button>
-      <Button layoutX="43.0" layoutY="256.0" mnemonicParsing="false" onAction="#setTournamentButton" text="Tournament">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font></Button>
-      <Button layoutX="493.0" layoutY="192.0" mnemonicParsing="false" onAction="#numPlayersOne" text="1">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font></Button>
-      <Button layoutX="493.0" layoutY="227.0" mnemonicParsing="false" onAction="#numPlayersTwo" text="2">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font></Button>
-      <Button layoutX="532.0" layoutY="227.0" mnemonicParsing="false" onAction="#numPlayersFour" text="4">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font></Button>
-      <Text fill="WHITE" layoutX="198.0" layoutY="92.0" stroke="WHITE" text="MULE">
-         <font>
-            <Font name="Andale Mono" size="85.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="477.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Players?">
-         <font>
-            <Font name="Andale Mono" size="20.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="25.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty?">
-         <font>
-            <Font name="Andale Mono" size="20.0" />
-         </font>
-      </Text>
-      <Button layoutX="251.0" layoutY="354.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="25.0" prefWidth="97.0" text="Load Game">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="532.0" layoutY="192.0" mnemonicParsing="false" onAction="#numPlayersFour" text="3">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font>
-      </Button>
-      <ImageView fx:id="mule" fitHeight="138.0" fitWidth="200.0" layoutX="200.0" layoutY="136.0">
-         <image>
-            <Image url="@../res/M.U.L.E..png" />
-         </image>
-      </ImageView>
-      <Button fx:id="instructions" layoutX="461.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleInstructions" text="Instructions">
-         <font>
-            <Font name="Andale Mono" size="13.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.controllers.StartScreenController">
+  <children>
+    <ImageView id="MuleScreen.jpg" layoutX="1.0" layoutY="0.0">
+      <image>
+        <Image url="@../res/MuleBG.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Button layoutX="252.0" layoutY="348.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="25.0" prefWidth="97.0" text="Load Game">
+      <font>
+        <Font name="Andale Mono" size="13.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button font="$x1" layoutX="249.0" layoutY="124.0" mnemonicParsing="false" onAction="#setBeginnerButton" prefHeight="26.0" prefWidth="97.0" text="Beginner" />
+    <Button font="$x1" layoutX="249.0" layoutY="153.0" mnemonicParsing="false" onAction="#setStandardButton" prefHeight="26.0" prefWidth="97.0" text="Standard" />
+    <Button fx:id="startButton" font="$x1" layoutX="250.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleStart" text="Start Game" />
+    <Button font="$x1" layoutX="246.0" layoutY="182.0" mnemonicParsing="false" onAction="#setTournamentButton" text="Tournament" />
+    <Button font="$x1" layoutX="238.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersOne" text="1" />
+    <Button font="$x1" layoutX="270.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersTwo" text="2" />
+    <Button font="$x1" layoutX="334.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersFour" text="4" />
+    <Button fx:id="startButton1" font="$x1" layoutX="468.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleStart" text="Instructions" />
+    <Button font="$x1" layoutX="302.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersFour" text="3" />
+    <Label layoutX="239.0" layoutY="82.0" prefHeight="33.0" prefWidth="122.0" text="Difficulty" textAlignment="CENTER" textFill="WHITE">
+      <font>
+        <Font name="Andale Mono" size="20.0" fx:id="x2" />
+      </font>
+    </Label>
+    <Label font="$x2" layoutX="257.0" layoutY="211.0" prefHeight="33.0" prefWidth="85.0" text="Players" textAlignment="CENTER" textFill="WHITE" />
+    <Label font="$x2" layoutX="275.0" layoutY="283.0" prefHeight="33.0" prefWidth="58.0" text="Game" textAlignment="CENTER" textFill="WHITE" />
+  </children>
 </AnchorPane>
