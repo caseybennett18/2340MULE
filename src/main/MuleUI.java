@@ -141,6 +141,7 @@ public class MuleUI extends Application {
          Random rand = new Random();
          int seed = 17;
          int randInt = rand.nextInt(seed);
+         //int randInt = 88;
          System.out.println("randint" + randInt);
          try {
              if (!isLoaded) {
@@ -205,7 +206,16 @@ public class MuleUI extends Application {
          }
      }
 
-     public void loadLandOffice() throws Exception {
+    public void loadInstructions() throws Exception {
+        try {
+            replaceSceneContent("/main/views/Instructions.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("An error has occurred...");
+        }
+    }
+
+    public void loadLandOffice() throws Exception {
          try {
              replaceSceneContent("/main/views/LandOffice.fxml");
          } catch (Exception e) {
@@ -231,6 +241,15 @@ public class MuleUI extends Application {
              System.out.println("An error has occurred...");
          }
      }
+
+    public void loadMainMenu() throws Exception {
+        try {
+            replaceSceneContent("/main/views/MainMenu.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("An error has occurred...");
+        }
+    }
  }
  
  

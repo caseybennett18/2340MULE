@@ -140,6 +140,10 @@ public class SelectScreenController implements Initializable {
  		this.raceId = "bonzoid";
  	}
 
+	public void setSpheroidRace() {
+		this.raceId = "spheroid";
+	}
+
 	public void setMechtronRace() { this.raceId = "mechtron"; }
 
     public void setLeggiteRace() { this.raceId = "leggite"; }

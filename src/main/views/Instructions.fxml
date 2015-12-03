@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.SelectScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.StartScreenController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="606.0">
          <image>
@@ -20,7 +20,7 @@
             <Font name="Andale Mono" size="20.0" fx:id="x1" />
          </font>
       </Label>
-      <Button fx:id="continueButton" layoutX="260.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleContinue" text="Continue" />
+      <Button fx:id="continueButton" layoutX="260.0" layoutY="344.0" onAction="#goBack" mnemonicParsing="false" text="Back" />
       <Label layoutX="12.0" layoutY="60.0" prefHeight="68.0" prefWidth="582.0" text="Pick the number of players (1 - 4), and the game difficulty (beginner, standard, or tournament)." textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Andale Mono" size="10.0" fx:id="x11" />

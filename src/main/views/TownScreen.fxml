@@ -11,11 +11,7 @@
   <children>
     <BorderPane prefHeight="200.0" prefWidth="200.0">
       <bottom>
-        <TextFlow prefHeight="127.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-          <children>
-            <Button onAction="#handleMap" text="Back to Map" />
-          </children>
-        </TextFlow>
+        <TextFlow prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
       </bottom>
       <left>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -53,6 +49,7 @@
                      </image>
                   </ImageView>
             <Button layoutX="310.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleAssayOffice" prefHeight="96.0" prefWidth="123.0" style="-fx-background-color: transparent;" text="" />
+            <Button layoutX="29.0" layoutY="358.0" onAction="#handleMap" text="Back to Map" />
           </children>
         </AnchorPane>
       </left>

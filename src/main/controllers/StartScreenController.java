@@ -2,13 +2,26 @@ package main.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import main.MuleUI;
 import main.models.ModelFacade;
+import main.models.Mule;
 import main.models.Player;
 import javafx.scene.control.Button;
+
+import javax.swing.*;
 
 /**
 * Controller for StartScreenController view
@@ -18,6 +31,11 @@ public class StartScreenController implements Initializable {
      
     @FXML
     Button startButton;
+
+    @FXML
+    ImageView mule;
+
+
 
 // --Commented out by Inspection START (11/5/2015 9:37 PM):
 //    @FXML
@@ -54,6 +72,41 @@ public class StartScreenController implements Initializable {
     private void handleStart(ActionEvent event) {
         this.saveSettings();
         MuleUI.getInstance().loadSelect();
+    }
+
+    @FXML
+    private void animate() {
+        //mule.setRotate(20);
+        Rectangle rect = new Rectangle (100, 40, 100, 100);
+        rect.setArcHeight(50);
+        rect.setArcWidth(50);
+        rect.setFill(Color.VIOLET);
+
+        RotateTransition rt = new RotateTransition(Duration.millis(3000), rect);
+        rt.setByAngle(180);
+        rt.setCycleCount(4);
+        rt.setAutoReverse(true);
+
+        rt.play();
+
+
+        System.out.print("rotated");
+        RotateTransition tt = new RotateTransition(Duration.seconds(30), mule);
+        tt.setByAngle(360);
+        tt.setCycleCount(Timeline.INDEFINITE);
+        tt.setInterpolator(Interpolator.LINEAR);
+        tt.play();
+    }
+
+
+    @FXML
+    private void handleInstructions(ActionEvent event) throws Exception {
+        MuleUI.getInstance().loadInstructions();
+    }
+
+    @FXML
+    private void goBack(ActionEvent event) throws Exception {
+        MuleUI.getInstance().loadMainMenu();
     }
 
     /**
@@ -161,6 +214,7 @@ public class StartScreenController implements Initializable {
     public StartScreenController() {
         this.numPlayers = 1;
         this.difficulty = 0;
+        this.animate();
     }
 }   
   

@@ -9,6 +9,7 @@ import main.models.Player;
 import main.models.Round;
 import main.models.Store;
 import main.models.Timer;
+import main.models.mules.CrystiteMule;
 import main.models.mules.EnergyMule;
 import main.models.mules.FoodMule;
 import main.models.mules.OreMule;
@@ -26,6 +27,8 @@ public class StoreController {
     Button buyEnergyMule;
     @FXML
     Button buyOreMule;
+    @FXML
+    Button buyCrystiteMule;
     @FXML
     Button buyFood;
     @FXML
@@ -96,6 +99,12 @@ public class StoreController {
                     store.decrementMuleAmount();
                 }
                 break;
+            case("buyCrystiteMule"):
+                if (p.getMoney() >= 100 && p.getMule() == null) {
+                    p.setMule(new CrystiteMule(p.getPlayerID(), null, p));
+                    p.setMoney(p.getMoney() - 100);
+                    store.decrementMuleAmount();
+                }
             case("buyFood"):
                 if (p.getMoney() >= 30) {
                     p.setMoney(p.getMoney() - 30);
