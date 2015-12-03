@@ -63,7 +63,7 @@ public class MapScreenController implements Initializable {
     private final static int TILE_HEIGHT = 120;
 
     private static MapScreenController instance;
-    private Player[] players;
+    public Player[] players;
     private Round round;
     private Button clickedButton;
     private ArrayList<Button> allOwnedLands;
@@ -104,6 +104,10 @@ public class MapScreenController implements Initializable {
 
     public Round getCurrentRound() {
         return round;
+    }
+
+    public void setCurrentRound(Round round) {
+        this.round = round;
     }
 
     public Timer getTimer() {

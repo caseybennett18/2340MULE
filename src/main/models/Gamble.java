@@ -10,6 +10,9 @@ public class Gamble {
     private int winnings;
     private Random rand;
 
+    public int timeBonus;
+    public int roundBonus;
+
     public Gamble() {
         this.winnings = 0;
         rand = new Random();
@@ -40,8 +43,7 @@ public class Gamble {
      */
     public int calculateBonus(int timeLeft, int roundPhase) {
         int moneyBonus;
-        int timeBonus;
-        int roundBonus;
+
 
         if (roundPhase >= 0 && roundPhase <= 2) {
             roundBonus = 50;

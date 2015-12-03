@@ -59,7 +59,7 @@ public class Player {
     //cost of food = cost of energy = cost of ore = $100
     public void updatePlayerScore() {
 
-        score = money + (getNumProperties() * 500) + ((food + energy + ore) * 100);
+        score = money + (getNumProperties() * 500) + ((food + energy + ore + crystite) * 100);
     }
     
     /**
@@ -205,7 +205,7 @@ public class Player {
     * @param String race
     *         
     */
-    private Race createRace(String race) {
+    public Race createRace(String race) {
         switch (race) {
             case "human":
                 return new HumanRace(playerID);
