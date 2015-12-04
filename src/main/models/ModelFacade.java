@@ -112,6 +112,7 @@ public class ModelFacade {
 
                 int numPlayers = (int) document.get("numPlayers");
                 int difficutlty = (int) document.get("difficulty");
+                round = (int) document.get("round");
                 MuleUI.getInstance().setnumPlayers(numPlayers);
                 MuleUI.getInstance().setDifficulty(difficutlty);
 
