@@ -23,6 +23,7 @@ public class MuleUI extends Application {
      private final int playerTurn;
      private boolean isLoaded = false;
 
+     private static String mapType = "";
      private Scene mapScene;
      private Parent pageMap = null;
      
@@ -71,7 +72,15 @@ public class MuleUI extends Application {
      public int getDifficulty() {
          return difficulty;
      }
-     
+
+     public String getMapType() {
+         return mapType;
+     }
+
+     public void setMapType(String s) {
+         mapType = s;
+     }
+
      public void setDifficulty(int d) {
          difficulty = d;
      }
@@ -146,18 +155,16 @@ public class MuleUI extends Application {
          try {
              if (!isLoaded) {
                  if (randInt <= 3) {
-                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen.fxml"),
-                             null, new JavaFXBuilderFactory());
+                     mapType = "/main/views/MapScreen.fxml";
                  } else if (randInt <= 7) {
-                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen2.fxml"),
-                             null, new JavaFXBuilderFactory());
+                     mapType = "/main/views/MapScreen2.fxml";
                  } else if (randInt < 10){
-                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen3.fxml"),
-                             null, new JavaFXBuilderFactory());
+                     mapType = "/main/views/MapScreen3.fxml";
                  } else {
-                     pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource("/main/views/MapScreen4.fxml"),
-                             null, new JavaFXBuilderFactory());
+                     mapType = "/main/views/MapScreen4.fxml";
                  }
+                 pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource(mapType),
+                         null, new JavaFXBuilderFactory());
                  mapScene = stage.getScene();
                  mapScene.setRoot(pageMap);
                  stage.sizeToScene();
@@ -170,6 +177,19 @@ public class MuleUI extends Application {
          } catch (Exception e) {
              e.printStackTrace();
              System.out.println("An error has occurred...");
+         }
+     }
+
+     public void loadMap(String mapType) {
+         try {
+             pageMap = (Parent) FXMLLoader.load(MuleUI.class.getResource(mapType),
+                     null, new JavaFXBuilderFactory());
+             mapScene = stage.getScene();
+             mapScene.setRoot(pageMap);
+             stage.sizeToScene();
+             isLoaded = true;
+         } catch (Exception e) {
+             e.printStackTrace();
          }
      }
 

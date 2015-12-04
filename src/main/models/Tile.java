@@ -5,6 +5,9 @@ package main.models;
  */
 
 import java.io.PrintWriter;
+
+import main.MuleUI;
+import main.controllers.MapScreenController;
 import org.bson.Document;
 
 /**
@@ -113,17 +116,17 @@ public class Tile {
     }
 
 
-//    public void saveColorMatrix(PrintWriter out, String[][] colorMatrix) {
-//        for (int i = 0; i < 5; i++) {
-//            for (int j = 0; j < 9; j++) {
-//                if (colorMatrix[i][j] != null) {
-//                    out.println(j + "\t" + i + "\t" + colorMatrix[i][j]);
-//                }
-//            }
-//        }
-//    }
+    public void saveColorMatrix(PrintWriter out, String[][] colorMatrix) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (colorMatrix[i][j] != null) {
+                    out.println(j + "\t" + i + "\t" + colorMatrix[i][j]);
+                }
+            }
+        }
+    }
 
-    public Document saveColorMatrix(Document document, String[][] colorMatrix) {
+    public Document saveColorMatrixDocument(Document document, String[][] colorMatrix) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 if (colorMatrix[i][j] != null) {
@@ -131,6 +134,7 @@ public class Tile {
                 }
             }
         }
+        document.append("mapType", MuleUI.getInstance().getMapType());
         return document;
     }
 }

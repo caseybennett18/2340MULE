@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
 import javafx.scene.control.Button;
+import jdk.nashorn.internal.runtime.ECMAException;
 import main.controllers.MapScreenController;
 import main.MuleUI;
 
@@ -88,7 +89,8 @@ public class ModelFacade {
         }
         try (PrintWriter out = new PrintWriter(new File("map.text"))) {
             String[][] colorMatrix = MapScreenController.getInstance().getTile().getColorMatrix();
-            document = MapScreenController.getInstance().getTile().saveColorMatrix(document, colorMatrix);
+            MapScreenController.getInstance().getTile().saveColorMatrix(out, colorMatrix);
+            document = MapScreenController.getInstance().getTile().saveColorMatrixDocument(document, colorMatrix);
 
             System.out.println(document);
             saved.insertOne(document);
@@ -102,86 +104,66 @@ public class ModelFacade {
 
     public void loadModelText() throws Exception {
         loaded = true;
+        //String mapType = "";
 
-        FindIterable<Document> iterable = saved.find().skip((int) saved.count() - 1);
+        try {
+            FindIterable<Document> iterable = saved.find().skip((int) saved.count() - 1);
 
-        iterable.forEach(new Block<Document>() {
-            @Override
-            public void apply(Document document) {
-                //System.out.println("Document: " + document);
+            iterable.forEach(new Block<Document>() {
+                @Override
+                public void apply(Document document) {
+                    //System.out.println("Document: " + document);
 
-                int numPlayers = (int) document.get("numPlayers");
-                int difficutlty = (int) document.get("difficulty");
-                round = (int) document.get("round");
-                MuleUI.getInstance().setnumPlayers(numPlayers);
-                MuleUI.getInstance().setDifficulty(difficutlty);
+                    int numPlayers = (int) document.get("numPlayers");
+                    int difficutlty = (int) document.get("difficulty");
+                    round = (int) document.get("round");
+                    MuleUI.getInstance().setnumPlayers(numPlayers);
+                    MuleUI.getInstance().setDifficulty(difficutlty);
+                    //String mapType = (String) document.get("mapType");
 
-                for (int i = 0; i < numPlayers; ++i) {
-                    System.out.println("ID: " + document.get("playerID" + i)
-                            + "\nName: " + document.get("playerName" + i)
-                            + "\nColor: " + document.get("playerColor" + i)
-                            + "\nRace: " + document.get("race" + i)
-                            + "\nFood: " + document.get("food" + i)
-                            + "\nOre: " + document.get("ore" + i)
-                            + "\nCrystite: " + document.get("cyrstite" + i)
-                            + "\nMoney: " + document.get("money" + i)
-                            + "\nScore: " + document.get("score" + i));
+                    for (int i = 0; i < numPlayers; ++i) {
+                        System.out.println("ID: " + document.get("playerID" + i)
+                                + "\nName: " + document.get("playerName" + i)
+                                + "\nColor: " + document.get("playerColor" + i)
+                                + "\nRace: " + document.get("race" + i)
+                                + "\nFood: " + document.get("food" + i)
+                                + "\nOre: " + document.get("ore" + i)
+                                + "\nCrystite: " + document.get("cyrstite" + i)
+                                + "\nMoney: " + document.get("money" + i)
+                                + "\nScore: " + document.get("score" + i));
 
-                    Player p = new Player((int) document.get("playerID" + i));
-                    p.setPlayerName((String) document.get("playerName" + i));
-                    p.setPlayerColor(p.getPlayerColor((int) document.get("playerColor" + i)));
-                    p.setRace((String) document.get("race" + i));
-                    p.setFood((int) document.get("food" + i));
-                    p.setOre((int) document.get("ore" + i));
-                    p.setCrystite((int) document.get("crystite" + i));
-                    p.setMoney((int) document.get("money" + i));
-                    p.setScore((int) document.get("score" + i));
-                    MuleUI.getInstance().setPlayerArray(p, i);
+                        Player p = new Player((int) document.get("playerID" + i));
+                        p.setPlayerName((String) document.get("playerName" + i));
+                        p.setPlayerColor(p.getPlayerColor((int) document.get("playerColor" + i)));
+                        p.setRace((String) document.get("race" + i));
+                        p.setFood((int) document.get("food" + i));
+                        p.setOre((int) document.get("ore" + i));
+                        p.setCrystite((int) document.get("crystite" + i));
+                        p.setMoney((int) document.get("money" + i));
+                        p.setScore((int) document.get("score" + i));
+                        MuleUI.getInstance().setPlayerArray(p, i);
+                        MuleUI.getInstance().setMapType((String) document.get("mapType"));
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {
+            System.out.println("error loading");
+            e.printStackTrace();
+        }
 
-//        try {
-//            try (BufferedReader br = new BufferedReader(new FileReader("data.text"))) {
-//                int numPlayers = Integer.parseInt(br.readLine());
-//                int difficulty = Integer.parseInt(br.readLine());
-//                round = Integer.parseInt(br.readLine());
-//                MuleUI.getInstance().setnumPlayers(numPlayers);
-//                MuleUI.getInstance().setDifficulty(difficulty);
-//
-//                for (int i = 0; i < numPlayers; ++i) {
-//                    String line = br.readLine();
-//                    String[] tokens = line.split("\t");
-//                    Player newPlayer = new Player(Integer.parseInt(tokens[2]));
-//                    newPlayer.setEnergy(Integer.parseInt(tokens[5]));
-//                    newPlayer.setPlayerName(tokens[0]);
-//                    newPlayer.setFood(Integer.parseInt(tokens[4]));
-//                    newPlayer.setOre(Integer.parseInt(tokens[7]));
-//                    newPlayer.setScore(Integer.parseInt(tokens[8]));
-//                    newPlayer.setMoney(Integer.parseInt(tokens[6]));
-//                    newPlayer.setPlayerColor(newPlayer.getPlayerColor(Integer.parseInt(tokens[1])));
-//                    newPlayer.setRace(tokens[3]);
-//                    MuleUI.getInstance().setPlayerArray(newPlayer, i);
-//                }
-//
-//            } catch (FileNotFoundException ex) {
-//                Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        } catch (IOException ex) {
-//            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
-//            MapScreenController ms = new MapScreenController();
-//            for (int i = 0; i <3; i++) {
-//                String line = br.readLine();
-//                String[] tokens = line.split("\t");
-//                ms.getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
-//            }
-//
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try (BufferedReader br = new BufferedReader(new FileReader("map.text"))) {
+            MapScreenController ms = new MapScreenController();
+            MuleUI.getInstance().loadMap(MuleUI.getInstance().getMapType());
+            //MapScreenController ms = MapScreenController.getInstance();
+            for (int i = 0; i <3; i++) {
+                String line = br.readLine();
+                String[] tokens = line.split("\t");
+                ms.getButtons(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2]);
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ModelFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 
