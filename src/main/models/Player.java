@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import javafx.scene.control.Button;
 import main.models.races.*;
 
+import org.bson.Document;
+
+import javax.print.Doc;
+
 /**
  * Holds a Player's information
  *
@@ -31,7 +35,7 @@ public class Player {
 
     //temporary fix
     private int numLandGrants;
-    private final ArrayList<Button> ownedLand;
+    private  ArrayList<Button> ownedLand;
     private boolean hasPicked;
 
     private ArrayList<Mule> ownedMules;
@@ -244,6 +248,10 @@ public class Player {
         ownedMules.add(mule);
     }
 
+    public void setOwnedMules(ArrayList<Mule> list) {
+        ownedMules = list;
+    }
+
     public int getFood() {
         return food;
     }
@@ -308,6 +316,10 @@ public class Player {
         return ownedLand;
     }
 
+    public void setOwnedLand(ArrayList<Button> list) {
+        ownedLand = list;
+    }
+
     public void addProperty(Button b) {
         ownedLand.add(b);
     }
@@ -340,7 +352,23 @@ public class Player {
 
 
 
-    public void saveTo(PrintWriter out) {
-        out.println(playerName + "\t" + playerColor + "\t" + playerID + "\t" + race + "\t" + food + "\t" + energy + "\t" + money + "\t" + ore + "\t" + score + "\t" + getOwnedLand() + "\t" + ownedMules.toString());
+//    public void saveTo(PrintWriter out) {
+//        out.println(playerName + "\t" + playerColor + "\t" + playerID + "\t" + race + "\t" + food + "\t" + energy + "\t" + money + "\t" + ore + "\t" + score + "\t" + getOwnedLand() + "\t" + ownedMules.toString());
+//    }
+
+    public Document saveTo(Document document) {
+        document.append("playerName" + playerID, playerName)
+                .append("playerColor" + playerID, playerColor)
+                .append("playerID" + playerID, playerID)
+                .append("race" + playerID, race.toString())
+                .append("food" + playerID, food)
+                .append("energy" + playerID, energy)
+                .append("money" + playerID, money)
+                .append("ore" + playerID, ore)
+                .append("crystite" + playerID, crystite)
+                .append("score" + playerID, score)
+                .append("ownedLand" + playerID, getOwnedLand().toString())
+                .append("ownedMules" + playerID, ownedMules.toString());
+        return document;
     }
 }

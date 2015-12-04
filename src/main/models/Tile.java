@@ -5,6 +5,7 @@ package main.models;
  */
 
 import java.io.PrintWriter;
+import org.bson.Document;
 
 /**
  * This class defines a Tile which resides on the Map.
@@ -112,13 +113,24 @@ public class Tile {
     }
 
 
-    public void saveColorMatrix(PrintWriter out, String[][] colorMatrix) {
+//    public void saveColorMatrix(PrintWriter out, String[][] colorMatrix) {
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 9; j++) {
+//                if (colorMatrix[i][j] != null) {
+//                    out.println(j + "\t" + i + "\t" + colorMatrix[i][j]);
+//                }
+//            }
+//        }
+//    }
+
+    public Document saveColorMatrix(Document document, String[][] colorMatrix) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 if (colorMatrix[i][j] != null) {
-                    out.println(j + "\t" + i + "\t" + colorMatrix[i][j]);
+                    document.append("[" + i + "][" + j + "]", colorMatrix[i][j]);
                 }
             }
         }
+        return document;
     }
 }

@@ -26,7 +26,7 @@
     <Button font="$x1" layoutX="238.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersOne" text="1" />
     <Button font="$x1" layoutX="270.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersTwo" text="2" />
     <Button font="$x1" layoutX="334.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersFour" text="4" />
-    <Button fx:id="startButton1" font="$x1" layoutX="468.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleStart" text="Instructions" />
+    <Button fx:id="startButton1" font="$x1" layoutX="468.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleInstructions" text="Instructions" />
     <Button font="$x1" layoutX="302.0" layoutY="252.0" mnemonicParsing="false" onAction="#numPlayersFour" text="3" />
     <Label layoutX="239.0" layoutY="82.0" prefHeight="33.0" prefWidth="122.0" text="Difficulty" textAlignment="CENTER" textFill="WHITE">
       <font>
